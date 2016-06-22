@@ -33,6 +33,10 @@ namespace ublxsd
             {
                 XmlSchemaComplexType xsdComplexType = (XmlSchemaComplexType)codeDecl.GetXmlSchemaType();
 
+                // TODO: Figure out why "{http://www.w3.org/2000/09/xmldsig#:ItemsChoiceType}" is missing
+                if (xsdComplexType == null)
+                    continue;
+
                 // Add comment to class
                 XmlSchemaDocumentation xsdDocNode = xsdComplexType.Annotation?.Items.OfType<XmlSchemaDocumentation>().FirstOrDefault();
                 if (xsdDocNode != null)

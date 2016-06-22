@@ -44,7 +44,7 @@ namespace ublxsd
 
             UblCodeGenerator gen = new UblCodeGenerator(ublSettings);
             // namespacelist parameter will drag in all other dependant types. New extensions shold probably be appended here...
-            var allCodeDecls = gen.CreateCodeTypeDeclarations(schemaSet, new[] { Constants.BaseDocumentTargetNamespace, Constants.Xadesv141TargetNamespace });
+            var allCodeDecls = gen.CreateCodeTypeDeclarations(schemaSet, new[] { Constants.BaseDocumentTargetNamespace, Constants.SignatureAggregateComponents});
 
             UblDocumentationTool.AddDocumentation(allCodeDecls);
 

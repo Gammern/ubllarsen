@@ -43,7 +43,8 @@ namespace ublxsd
             ["Sbc"] = new[] { "Udt" }, // recusion
             ["Cctscct"] = new[] { "Udt", "Sbc", "Ext", "Cbc" },
             ["Abs"] = new[] { "Udt", "Ext", "Cbc" }, // Cbc for basedoc
-            ["Xades"] = new[] { "DS" }
+            ["Xades"] = new[] { "DS" },
+            ["Sac"] = new[] { "Udt", "Sbc", "DS" }
         };
 
         Dictionary<string, string[]> codeNamespaceUsingsOptimized = new Dictionary<string, string[]>
@@ -55,7 +56,8 @@ namespace ublxsd
             ["Sbc"] = new[] { "Udt" },
             ["Cctscct"] = new[] { "Udt", "Sbc", "Ext" },
             ["Abs"] = new[] { "Udt", "Ext" }, // Hack for basedoc
-            ["Xades"] = new[] { "DS" }
+            ["Xades"] = new[] { "DS" },
+            ["Sac"] = new[] { "Udt", "Sbc", "DS" }
         };
 
         Dictionary<string, string> xml2CSharpNamespaceDictionary;
@@ -85,7 +87,7 @@ namespace ublxsd
             xml2CSharpNamespaceDictionary.Add(Constants.CommonSignatureComponentsTargetNamespace, $"{csDefaultNamespace}.Csc");
             xml2CSharpNamespaceDictionary[Constants.Xadesv132TargetNamespace] = $"{csDefaultNamespace}.Xades";
             xml2CSharpNamespaceDictionary[Constants.Xadesv141TargetNamespace] = $"{csDefaultNamespace}.Xades";// 141"; // Probably incorrect
-            
+
             // add key:xmlns value:cSharpScope for all maindocs. They all point to the same scope value string
             foreach (XmlSchema schema in schemaSet.MaindocSchemas().Cast<XmlSchema>())
             {
@@ -175,6 +177,14 @@ namespace ublxsd
             }
             if (res != string.Empty) res = Environment.NewLine + res + Environment.NewLine;
             return res;
+        }
+
+        public XmlSchema[] Schemas
+        {
+            get
+            {
+                return this.schemaSet.Schemas().OfType<XmlSchema>().ToArray();
+            }
         }
     }
 }

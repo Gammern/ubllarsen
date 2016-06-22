@@ -5,7 +5,7 @@
 //     Changes to this file may cause incorrect behavior and will be lost if
 //     the code is regenerated.
 //
-//     http://ubllarsen.codeplex.com/
+//     https://github.com/Gammern/ubllarsen
 //     
 // UBL BBIEs (Basic Business Information Entities) are the leaf nodes of every UBL document structure.
 // Types in this scope has been optimized/replaced by types from Udt.

@@ -87,19 +87,21 @@ namespace ublxsd
         {
             var codeDeclsBySchema = (from t in allCodeDecls
                                      group t by t.GetSchema() into g
-                                     select g).ToList();
+                                     select g)
+                                     .ToDictionary(k => k.Key, v => v.ToArray());
 
-            foreach (var schemaGroup in codeDeclsBySchema) // TODO: Might miss out on empty files. Find some other means to enum files to be generated
+            foreach (var schema in nsMan.Schemas)
             {
-                XmlSchema schema = schemaGroup.Key;
                 CodeNamespace codeNamespace = nsMan.GetCodeNamespaceForXmltargetNamespace(schema.TargetNamespace);
-                codeNamespace.Types.AddRange(schemaGroup.ToArray());
-
-                if (UblSettings.OptionMemberTypeToGenerate == UblXsdSettings.FieldTypesEnum.AutoProperty)
+                if (codeDeclsBySchema.ContainsKey(schema))
                 {
-                    ConvertFieldsToAutoProperties(codeNamespace); // Hack: append get/set to the Name of a field. 
-                }
+                    codeNamespace.Types.AddRange(codeDeclsBySchema[schema]);
 
+                    if (UblSettings.OptionMemberTypeToGenerate == UblXsdSettings.FieldTypesEnum.AutoProperty)
+                    {
+                        ConvertFieldsToAutoProperties(codeNamespace); // Hack: append get/set to the Name of a field. 
+                    }
+                }
                 string csCodeFilename = schema.GetCSharpFilename(UblSettings.CodeGenOutputPath);
                 SaveToFile(codeNamespace, csCodeFilename);
             }

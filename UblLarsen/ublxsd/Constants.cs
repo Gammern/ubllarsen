@@ -13,6 +13,7 @@
         public static readonly string Xadesv132TargetNamespace = "http://uri.etsi.org/01903/v1.3.2#";
         public static readonly string Xadesv141TargetNamespace = "http://uri.etsi.org/01903/v1.4.1#";
         public static readonly string InvoiceTargetNamespace = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2";
+        public static readonly string SignatureAggregateComponents = "urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2";
 
         public static readonly string BaseDocumentTargetNamespace = "urn:oasis:names:specification:ubl:schema:xsd:BaseDocument-2";
         public static readonly string abstractBaseSchemaName = "BaseDocument";

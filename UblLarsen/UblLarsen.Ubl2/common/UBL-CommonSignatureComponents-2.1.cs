@@ -5,7 +5,7 @@
 //     Changes to this file may cause incorrect behavior and will be lost if
 //     the code is regenerated.
 //
-//     http://ubllarsen.codeplex.com/
+//     https://github.com/Gammern/ubllarsen
 //     
 // </auto-generated>
 //------------------------------------------------------------------------------
