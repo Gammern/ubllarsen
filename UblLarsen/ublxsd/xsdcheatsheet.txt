@@ -1,0 +1,36 @@
+﻿Ubl xsd's follow structure something like this:
+
+	<xsd:element name="Invoice" type="InvoiceType"/>
+
+	<xsd:complexType name="InvoiceType">
+	  <xsd:sequence>
+		<xsd:element ref="ext:UBLExtensions" minOccurs="0" maxOccurs="1"/>
+		<xsd:element ref="cbc:UBLVersionID" minOccurs="0" maxOccurs="1"/>
+		.....
+	  </xsd:sequence>
+	</xsd:complexType">
+
+Optionally change to something like:
+
+	<xs:element name="Invoice" type="InvoiceType"/>
+
+	<xs:complexType name="InvoiceType">
+	   <xs:complexContent>
+		 <xs:extension base="UblBaseDocumentType">
+		   <xs:sequence>
+		     // non-shared elements
+		   </xs:sequence>
+		 </xs:extension>
+	   </xs:complexContent>
+	</xs:complexType>
+
++
+
+	<xsd:element name="UblBaseDocument" type="UblBaseDocumentType"/>
+
+	<xs:complexType name="UblBaseDocumentType" abstract="true">
+	   <xs:sequence>
+	     // shared elements
+	   </xs:sequence>
+	</xs:complexType>
+

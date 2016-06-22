@@ -1,0 +1,284 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UblLarsen.Ubl2", "UblLarsen.Ubl2\UblLarsen.Ubl2.csproj", "{B5BEB0F4-1D60-4079-847F-6120519E7B3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UblLarsen.Test", "UblLarsen.Test\UblLarsen.Test.csproj", "{86E5C1C6-A529-4110-A729-50B1F98330B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0DB73882-C6EF-4BFB-BB18-8B463CAECEF1}"
+	ProjectSection(SolutionItems) = preProject
+		CustomDictionary.xml = CustomDictionary.xml
+		Local.testsettings = Local.testsettings
+		ReadmeFirst.txt = ReadmeFirst.txt
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		UblLarsen.snk = UblLarsen.snk
+		UblLarsen.vsmdi = UblLarsen.vsmdi
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F3DCB420-CA59-4CB1-AE5C-097EC7277EDE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{2AE2B035-A7E8-499C-A928-4DEB07DD3130}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceSample", "InvoiceSample\InvoiceSample.csproj", "{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceSaveSample", "InvoiceSaveSample\InvoiceSaveSample.csproj", "{4084FCAD-AE20-4E13-8B55-73E2AD34C13A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ublxsd", "ublxsd\ublxsd.csproj", "{B5CADD23-EA9B-4C0F-95B2-B8409BC578C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumrateUblFiles", "EnumrateUblFiles\EnumrateUblFiles.csproj", "{D811F56D-AC77-485D-8295-214FAB53BC4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Oasis.Ubl.Packages", "Oasis.Ubl.Packages", "{D1DAE82E-EB4A-4671-B552-27DD74BE9193}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UBL-2.1", "UBL-2.1", "{D44A2A38-1B17-4A81-B211-22E4E0F6B2FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xsd", "xsd", "{90921088-5342-4E3F-BBA2-E9C9AFBF75F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{D4FEF963-593A-4282-8209-54D9B44BFEAE}"
+	ProjectSection(SolutionItems) = preProject
+		UBL-2.1\xml\MyTransportationStatus.xml = UBL-2.1\xml\MyTransportationStatus.xml
+		UBL-2.1\xml\UBL-CreditNote-2.0-Example.xml = UBL-2.1\xml\UBL-CreditNote-2.0-Example.xml
+		UBL-2.1\xml\UBL-CreditNote-2.1-Example.xml = UBL-2.1\xml\UBL-CreditNote-2.1-Example.xml
+		UBL-2.1\xml\UBL-DebitNote-2.1-Example.xml = UBL-2.1\xml\UBL-DebitNote-2.1-Example.xml
+		UBL-2.1\xml\UBL-DespatchAdvice-2.0-Example.xml = UBL-2.1\xml\UBL-DespatchAdvice-2.0-Example.xml
+		UBL-2.1\xml\UBL-ExceptionCriteria-2.1-Example.xml = UBL-2.1\xml\UBL-ExceptionCriteria-2.1-Example.xml
+		UBL-2.1\xml\UBL-ExceptionNotification-2.1-Example.xml = UBL-2.1\xml\UBL-ExceptionNotification-2.1-Example.xml
+		UBL-2.1\xml\UBL-Forecast-2.1-Example.xml = UBL-2.1\xml\UBL-Forecast-2.1-Example.xml
+		UBL-2.1\xml\UBL-ForecastRevision-2.1-Example.xml = UBL-2.1\xml\UBL-ForecastRevision-2.1-Example.xml
+		UBL-2.1\xml\UBL-ForwardingInstructions-2.0-Example-International.xml = UBL-2.1\xml\UBL-ForwardingInstructions-2.0-Example-International.xml
+		UBL-2.1\xml\UBL-FreightInvoice-2.1-Example.xml = UBL-2.1\xml\UBL-FreightInvoice-2.1-Example.xml
+		UBL-2.1\xml\UBL-FulfilmentCancellation-2.1-Example.xml = UBL-2.1\xml\UBL-FulfilmentCancellation-2.1-Example.xml
+		UBL-2.1\xml\UBL-GoodsItemItinerary-2.1-Example.xml = UBL-2.1\xml\UBL-GoodsItemItinerary-2.1-Example.xml
+		UBL-2.1\xml\UBL-InstructionForReturns-2.1-Example.xml = UBL-2.1\xml\UBL-InstructionForReturns-2.1-Example.xml
+		UBL-2.1\xml\UBL-InventoryReport-2.1-Example.xml = UBL-2.1\xml\UBL-InventoryReport-2.1-Example.xml
+		UBL-2.1\xml\UBL-Invoice-2.0-Detached-Signature.xml = UBL-2.1\xml\UBL-Invoice-2.0-Detached-Signature.xml
+		UBL-2.1\xml\UBL-Invoice-2.0-Detached.xml = UBL-2.1\xml\UBL-Invoice-2.0-Detached.xml
+		UBL-2.1\xml\UBL-Invoice-2.0-Enveloped.xml = UBL-2.1\xml\UBL-Invoice-2.0-Enveloped.xml
+		UBL-2.1\xml\UBL-Invoice-2.0-Example-NS1.xml = UBL-2.1\xml\UBL-Invoice-2.0-Example-NS1.xml
+		UBL-2.1\xml\UBL-Invoice-2.0-Example-NS2.xml = UBL-2.1\xml\UBL-Invoice-2.0-Example-NS2.xml
+		UBL-2.1\xml\UBL-Invoice-2.0-Example-NS3.xml = UBL-2.1\xml\UBL-Invoice-2.0-Example-NS3.xml
+		UBL-2.1\xml\UBL-Invoice-2.0-Example-NS4.xml = UBL-2.1\xml\UBL-Invoice-2.0-Example-NS4.xml
+		UBL-2.1\xml\UBL-Invoice-2.0-Example.xml = UBL-2.1\xml\UBL-Invoice-2.0-Example.xml
+		UBL-2.1\xml\UBL-Invoice-2.1-Example-Trivial.xml = UBL-2.1\xml\UBL-Invoice-2.1-Example-Trivial.xml
+		UBL-2.1\xml\UBL-Invoice-2.1-Example.xml = UBL-2.1\xml\UBL-Invoice-2.1-Example.xml
+		UBL-2.1\xml\UBL-Order-2.0-Example-International.xml = UBL-2.1\xml\UBL-Order-2.0-Example-International.xml
+		UBL-2.1\xml\UBL-Order-2.0-Example.xml = UBL-2.1\xml\UBL-Order-2.0-Example.xml
+		UBL-2.1\xml\UBL-Order-2.1-Example.xml = UBL-2.1\xml\UBL-Order-2.1-Example.xml
+		UBL-2.1\xml\UBL-OrderCancellation-2.1-Example.xml = UBL-2.1\xml\UBL-OrderCancellation-2.1-Example.xml
+		UBL-2.1\xml\UBL-OrderChange-2.1-Example.xml = UBL-2.1\xml\UBL-OrderChange-2.1-Example.xml
+		UBL-2.1\xml\UBL-OrderResponse-2.1-Example.xml = UBL-2.1\xml\UBL-OrderResponse-2.1-Example.xml
+		UBL-2.1\xml\UBL-OrderResponseSimple-2.0-Example.xml = UBL-2.1\xml\UBL-OrderResponseSimple-2.0-Example.xml
+		UBL-2.1\xml\UBL-OrderResponseSimple-2.1-Example.xml = UBL-2.1\xml\UBL-OrderResponseSimple-2.1-Example.xml
+		UBL-2.1\xml\UBL-ProductActivity-2.1-Example-1.xml = UBL-2.1\xml\UBL-ProductActivity-2.1-Example-1.xml
+		UBL-2.1\xml\UBL-ProductActivity-2.1-Example-2.xml = UBL-2.1\xml\UBL-ProductActivity-2.1-Example-2.xml
+		UBL-2.1\xml\UBL-ProductActivity-2.1-Example-3.xml = UBL-2.1\xml\UBL-ProductActivity-2.1-Example-3.xml
+		UBL-2.1\xml\UBL-Quotation-2.0-Example.xml = UBL-2.1\xml\UBL-Quotation-2.0-Example.xml
+		UBL-2.1\xml\UBL-Quotation-2.1-Example.xml = UBL-2.1\xml\UBL-Quotation-2.1-Example.xml
+		UBL-2.1\xml\UBL-ReceiptAdvice-2.0-Example.xml = UBL-2.1\xml\UBL-ReceiptAdvice-2.0-Example.xml
+		UBL-2.1\xml\UBL-Reminder-2.1-Example.xml = UBL-2.1\xml\UBL-Reminder-2.1-Example.xml
+		UBL-2.1\xml\UBL-RemittanceAdvice-2.0-Example.xml = UBL-2.1\xml\UBL-RemittanceAdvice-2.0-Example.xml
+		UBL-2.1\xml\UBL-RequestForQuotation-2.0-Example.xml = UBL-2.1\xml\UBL-RequestForQuotation-2.0-Example.xml
+		UBL-2.1\xml\UBL-RequestForQuotation-2.1-Example.xml = UBL-2.1\xml\UBL-RequestForQuotation-2.1-Example.xml
+		UBL-2.1\xml\UBL-RetailEvent-2.1-Example.xml = UBL-2.1\xml\UBL-RetailEvent-2.1-Example.xml
+		UBL-2.1\xml\UBL-SelfBilledCreditNote-2.1-Example.xml = UBL-2.1\xml\UBL-SelfBilledCreditNote-2.1-Example.xml
+		UBL-2.1\xml\UBL-Statement-2.0-Example.xml = UBL-2.1\xml\UBL-Statement-2.0-Example.xml
+		UBL-2.1\xml\UBL-StockAvailabilityReport-2.1-Example.xml = UBL-2.1\xml\UBL-StockAvailabilityReport-2.1-Example.xml
+		UBL-2.1\xml\UBL-TradeItemLocationProfile-2.1-Example.xml = UBL-2.1\xml\UBL-TradeItemLocationProfile-2.1-Example.xml
+		UBL-2.1\xml\UBL-TransportationStatus-2.1-Example.xml = UBL-2.1\xml\UBL-TransportationStatus-2.1-Example.xml
+		UBL-2.1\xml\UBL-TransportationStatusRequest-2.1-Example.xml = UBL-2.1\xml\UBL-TransportationStatusRequest-2.1-Example.xml
+		UBL-2.1\xml\UBL-TransportExecutionPlan-2.1-Example.xml = UBL-2.1\xml\UBL-TransportExecutionPlan-2.1-Example.xml
+		UBL-2.1\xml\UBL-TransportExecutionPlanRequest-2.1-Example.xml = UBL-2.1\xml\UBL-TransportExecutionPlanRequest-2.1-Example.xml
+		UBL-2.1\xml\UBL-TransportProgressStatus-2.1-Example.xml = UBL-2.1\xml\UBL-TransportProgressStatus-2.1-Example.xml
+		UBL-2.1\xml\UBL-TransportProgressStatusRequest-2.1-Example.xml = UBL-2.1\xml\UBL-TransportProgressStatusRequest-2.1-Example.xml
+		UBL-2.1\xml\UBL-TransportServiceDescription-2.1-Example.xml = UBL-2.1\xml\UBL-TransportServiceDescription-2.1-Example.xml
+		UBL-2.1\xml\UBL-TransportServiceDescriptionRequest-2.1-Example.xml = UBL-2.1\xml\UBL-TransportServiceDescriptionRequest-2.1-Example.xml
+		UBL-2.1\xml\UBL-Waybill-2.0-Example-International.xml = UBL-2.1\xml\UBL-Waybill-2.0-Example-International.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "maindoc", "maindoc", "{AAAC30DF-69C6-4F41-BD51-80BEF1C4D18A}"
+	ProjectSection(SolutionItems) = preProject
+		UBL-2.1\xsd\maindoc\UBL-ApplicationResponse-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-ApplicationResponse-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-AttachedDocument-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-AttachedDocument-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-AwardedNotification-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-AwardedNotification-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-BillOfLading-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-BillOfLading-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-CallForTenders-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-CallForTenders-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-Catalogue-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-Catalogue-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-CatalogueDeletion-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-CatalogueDeletion-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-CatalogueItemSpecificationUpdate-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-CatalogueItemSpecificationUpdate-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-CataloguePricingUpdate-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-CataloguePricingUpdate-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-CatalogueRequest-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-CatalogueRequest-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-CertificateOfOrigin-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-CertificateOfOrigin-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-ContractAwardNotice-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-ContractAwardNotice-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-ContractNotice-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-ContractNotice-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-CreditNote-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-CreditNote-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-DebitNote-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-DebitNote-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-DespatchAdvice-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-DespatchAdvice-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-DocumentStatus-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-DocumentStatus-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-DocumentStatusRequest-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-DocumentStatusRequest-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-ExceptionCriteria-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-ExceptionCriteria-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-ExceptionNotification-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-ExceptionNotification-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-Forecast-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-Forecast-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-ForecastRevision-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-ForecastRevision-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-ForwardingInstructions-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-ForwardingInstructions-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-FreightInvoice-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-FreightInvoice-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-FulfilmentCancellation-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-FulfilmentCancellation-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-GoodsItemItinerary-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-GoodsItemItinerary-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-GuaranteeCertificate-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-GuaranteeCertificate-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-InstructionForReturns-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-InstructionForReturns-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-InventoryReport-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-InventoryReport-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-Invoice-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-Invoice-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-ItemInformationRequest-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-ItemInformationRequest-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-Order-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-Order-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-OrderCancellation-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-OrderCancellation-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-OrderChange-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-OrderChange-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-OrderResponse-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-OrderResponse-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-OrderResponseSimple-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-OrderResponseSimple-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-PackingList-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-PackingList-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-PriorInformationNotice-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-PriorInformationNotice-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-ProductActivity-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-ProductActivity-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-Quotation-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-Quotation-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-ReceiptAdvice-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-ReceiptAdvice-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-Reminder-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-Reminder-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-RemittanceAdvice-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-RemittanceAdvice-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-RequestForQuotation-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-RequestForQuotation-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-RetailEvent-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-RetailEvent-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-SelfBilledCreditNote-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-SelfBilledCreditNote-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-SelfBilledInvoice-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-SelfBilledInvoice-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-Statement-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-Statement-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-StockAvailabilityReport-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-StockAvailabilityReport-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-Tender-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-Tender-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-TendererQualification-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-TendererQualification-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-TendererQualificationResponse-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-TendererQualificationResponse-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-TenderReceipt-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-TenderReceipt-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-TradeItemLocationProfile-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-TradeItemLocationProfile-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-TransportationStatus-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-TransportationStatus-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-TransportationStatusRequest-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-TransportationStatusRequest-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-TransportExecutionPlan-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-TransportExecutionPlan-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-TransportExecutionPlanRequest-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-TransportExecutionPlanRequest-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-TransportProgressStatus-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-TransportProgressStatus-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-TransportProgressStatusRequest-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-TransportProgressStatusRequest-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-TransportServiceDescription-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-TransportServiceDescription-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-TransportServiceDescriptionRequest-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-TransportServiceDescriptionRequest-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-UnawardedNotification-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-UnawardedNotification-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-UtilityStatement-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-UtilityStatement-2.1.xsd
+		UBL-2.1\xsd\maindoc\UBL-Waybill-2.1.xsd = UBL-2.1\xsd\maindoc\UBL-Waybill-2.1.xsd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{7C81F29F-0117-45FE-BEFB-A5232DE4CFD2}"
+	ProjectSection(SolutionItems) = preProject
+		UBL-2.1\xsd\common\CCTS_CCT_SchemaModule-2.1.xsd = UBL-2.1\xsd\common\CCTS_CCT_SchemaModule-2.1.xsd
+		UBL-2.1\xsd\common\UBL-CommonAggregateComponents-2.1.xsd = UBL-2.1\xsd\common\UBL-CommonAggregateComponents-2.1.xsd
+		UBL-2.1\xsd\common\UBL-CommonBasicComponents-2.1.xsd = UBL-2.1\xsd\common\UBL-CommonBasicComponents-2.1.xsd
+		UBL-2.1\xsd\common\UBL-CommonExtensionComponents-2.1.xsd = UBL-2.1\xsd\common\UBL-CommonExtensionComponents-2.1.xsd
+		UBL-2.1\xsd\common\UBL-CommonSignatureComponents-2.1.xsd = UBL-2.1\xsd\common\UBL-CommonSignatureComponents-2.1.xsd
+		UBL-2.1\xsd\common\UBL-CoreComponentParameters-2.1.xsd = UBL-2.1\xsd\common\UBL-CoreComponentParameters-2.1.xsd
+		UBL-2.1\xsd\common\UBL-ExtensionContentDataType-2.1.xsd = UBL-2.1\xsd\common\UBL-ExtensionContentDataType-2.1.xsd
+		UBL-2.1\xsd\common\UBL-QualifiedDataTypes-2.1.xsd = UBL-2.1\xsd\common\UBL-QualifiedDataTypes-2.1.xsd
+		UBL-2.1\xsd\common\UBL-SignatureAggregateComponents-2.1.xsd = UBL-2.1\xsd\common\UBL-SignatureAggregateComponents-2.1.xsd
+		UBL-2.1\xsd\common\UBL-SignatureBasicComponents-2.1.xsd = UBL-2.1\xsd\common\UBL-SignatureBasicComponents-2.1.xsd
+		UBL-2.1\xsd\common\UBL-UnqualifiedDataTypes-2.1.xsd = UBL-2.1\xsd\common\UBL-UnqualifiedDataTypes-2.1.xsd
+		UBL-2.1\xsd\common\UBL-XAdESv132-2.1.xsd = UBL-2.1\xsd\common\UBL-XAdESv132-2.1.xsd
+		UBL-2.1\xsd\common\UBL-XAdESv141-2.1.xsd = UBL-2.1\xsd\common\UBL-XAdESv141-2.1.xsd
+		UBL-2.1\xsd\common\UBL-xmldsig-core-schema-2.1.xsd = UBL-2.1\xsd\common\UBL-xmldsig-core-schema-2.1.xsd
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5BEB0F4-1D60-4079-847F-6120519E7B3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BEB0F4-1D60-4079-847F-6120519E7B3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BEB0F4-1D60-4079-847F-6120519E7B3B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B5BEB0F4-1D60-4079-847F-6120519E7B3B}.Debug|x64.Build.0 = Debug|Any CPU
+		{B5BEB0F4-1D60-4079-847F-6120519E7B3B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B5BEB0F4-1D60-4079-847F-6120519E7B3B}.Debug|x86.Build.0 = Debug|Any CPU
+		{B5BEB0F4-1D60-4079-847F-6120519E7B3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BEB0F4-1D60-4079-847F-6120519E7B3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5BEB0F4-1D60-4079-847F-6120519E7B3B}.Release|x64.ActiveCfg = Release|Any CPU
+		{B5BEB0F4-1D60-4079-847F-6120519E7B3B}.Release|x64.Build.0 = Release|Any CPU
+		{B5BEB0F4-1D60-4079-847F-6120519E7B3B}.Release|x86.ActiveCfg = Release|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|x64.Build.0 = Debug|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|x86.Build.0 = Debug|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|x64.ActiveCfg = Release|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|x64.Build.0 = Release|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|x86.ActiveCfg = Release|Any CPU
+		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Debug|x64.Build.0 = Debug|Any CPU
+		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Debug|x86.Build.0 = Debug|Any CPU
+		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Release|x64.ActiveCfg = Release|Any CPU
+		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Release|x64.Build.0 = Release|Any CPU
+		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Release|x86.ActiveCfg = Release|Any CPU
+		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Release|x86.Build.0 = Release|Any CPU
+		{4084FCAD-AE20-4E13-8B55-73E2AD34C13A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4084FCAD-AE20-4E13-8B55-73E2AD34C13A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4084FCAD-AE20-4E13-8B55-73E2AD34C13A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4084FCAD-AE20-4E13-8B55-73E2AD34C13A}.Debug|x64.Build.0 = Debug|Any CPU
+		{4084FCAD-AE20-4E13-8B55-73E2AD34C13A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4084FCAD-AE20-4E13-8B55-73E2AD34C13A}.Debug|x86.Build.0 = Debug|Any CPU
+		{4084FCAD-AE20-4E13-8B55-73E2AD34C13A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4084FCAD-AE20-4E13-8B55-73E2AD34C13A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4084FCAD-AE20-4E13-8B55-73E2AD34C13A}.Release|x64.ActiveCfg = Release|Any CPU
+		{4084FCAD-AE20-4E13-8B55-73E2AD34C13A}.Release|x64.Build.0 = Release|Any CPU
+		{4084FCAD-AE20-4E13-8B55-73E2AD34C13A}.Release|x86.ActiveCfg = Release|Any CPU
+		{4084FCAD-AE20-4E13-8B55-73E2AD34C13A}.Release|x86.Build.0 = Release|Any CPU
+		{B5CADD23-EA9B-4C0F-95B2-B8409BC578C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5CADD23-EA9B-4C0F-95B2-B8409BC578C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5CADD23-EA9B-4C0F-95B2-B8409BC578C1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B5CADD23-EA9B-4C0F-95B2-B8409BC578C1}.Debug|x64.Build.0 = Debug|Any CPU
+		{B5CADD23-EA9B-4C0F-95B2-B8409BC578C1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B5CADD23-EA9B-4C0F-95B2-B8409BC578C1}.Debug|x86.Build.0 = Debug|Any CPU
+		{B5CADD23-EA9B-4C0F-95B2-B8409BC578C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5CADD23-EA9B-4C0F-95B2-B8409BC578C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5CADD23-EA9B-4C0F-95B2-B8409BC578C1}.Release|x64.ActiveCfg = Release|Any CPU
+		{B5CADD23-EA9B-4C0F-95B2-B8409BC578C1}.Release|x64.Build.0 = Release|Any CPU
+		{B5CADD23-EA9B-4C0F-95B2-B8409BC578C1}.Release|x86.ActiveCfg = Release|Any CPU
+		{B5CADD23-EA9B-4C0F-95B2-B8409BC578C1}.Release|x86.Build.0 = Release|Any CPU
+		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Debug|x64.Build.0 = Debug|Any CPU
+		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Debug|x86.Build.0 = Debug|Any CPU
+		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Release|x64.ActiveCfg = Release|Any CPU
+		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Release|x64.Build.0 = Release|Any CPU
+		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Release|x86.ActiveCfg = Release|Any CPU
+		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{86E5C1C6-A529-4110-A729-50B1F98330B1} = {F3DCB420-CA59-4CB1-AE5C-097EC7277EDE}
+		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA} = {2AE2B035-A7E8-499C-A928-4DEB07DD3130}
+		{4084FCAD-AE20-4E13-8B55-73E2AD34C13A} = {2AE2B035-A7E8-499C-A928-4DEB07DD3130}
+		{D811F56D-AC77-485D-8295-214FAB53BC4F} = {2AE2B035-A7E8-499C-A928-4DEB07DD3130}
+		{D44A2A38-1B17-4A81-B211-22E4E0F6B2FD} = {D1DAE82E-EB4A-4671-B552-27DD74BE9193}
+		{90921088-5342-4E3F-BBA2-E9C9AFBF75F7} = {D44A2A38-1B17-4A81-B211-22E4E0F6B2FD}
+		{D4FEF963-593A-4282-8209-54D9B44BFEAE} = {D44A2A38-1B17-4A81-B211-22E4E0F6B2FD}
+		{AAAC30DF-69C6-4F41-BD51-80BEF1C4D18A} = {90921088-5342-4E3F-BBA2-E9C9AFBF75F7}
+		{7C81F29F-0117-45FE-BEFB-A5232DE4CFD2} = {90921088-5342-4E3F-BBA2-E9C9AFBF75F7}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = UblLarsen.vsmdi
+	EndGlobalSection
+EndGlobal
