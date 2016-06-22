@@ -44,7 +44,8 @@ namespace ublxsd
             ["Cctscct"] = new[] { "Udt", "Sbc", "Ext", "Cbc" },
             ["Abs"] = new[] { "Udt", "Ext", "Cbc" }, // Cbc for basedoc
             ["Xades"] = new[] { "DS" },
-            ["Sac"] = new[] { "Udt", "Sbc", "DS" }
+            ["Sac"] = new[] { "Udt", "Sbc", "DS" },
+            ["Csc"] = new[] { "Sac" }
         };
 
         Dictionary<string, string[]> codeNamespaceUsingsOptimized = new Dictionary<string, string[]>
@@ -57,7 +58,8 @@ namespace ublxsd
             ["Cctscct"] = new[] { "Udt", "Sbc", "Ext" },
             ["Abs"] = new[] { "Udt", "Ext" }, // Hack for basedoc
             ["Xades"] = new[] { "DS" },
-            ["Sac"] = new[] { "Udt", "Sbc", "DS" }
+            ["Sac"] = new[] { "Udt", "Sbc", "DS" },
+            ["Csc"] = new[] { "Sac" }
         };
 
         Dictionary<string, string> xml2CSharpNamespaceDictionary;
