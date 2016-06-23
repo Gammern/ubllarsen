@@ -40,7 +40,7 @@ namespace ublxsd
             ["Ext"] = new[] { "Udt", "Cbc" },
             ["Qdt"] = new[] { "Udt" },
             ["Udt"] = new[] { "Sbc", "Ext", "Cctscct", "Cbc" },
-            ["Sbc"] = new[] { "Udt" }, // recusion
+            ["Sbc"] = new[] { "Udt" }, // recursion
             ["Cctscct"] = new[] { "Udt", "Sbc", "Ext", "Cbc" },
             ["Abs"] = new[] { "Udt", "Ext", "Cbc" }, // Cbc for basedoc
             ["Xades"] = new[] { "DS" },
@@ -65,17 +65,17 @@ namespace ublxsd
         Dictionary<string, string> xml2CSharpNamespaceDictionary;
         private XmlSchemaSet schemaSet;
         private string csDefaultNamespace;
+        private bool OptionOptimizeCommonBasicComponents;
         static string[] unwantedPrefixes = new string[] { "", "xsd", "abs", "cct" }; //,"ccts-cct" ,"ds", "xades" };
 
-        private UblXsdSettings ublsettings;
 
         /// <summary>
         /// </summary>
-        public UblNamespaceManager(XmlSchemaSet schemaSet, UblXsdSettings settings)
+        public UblNamespaceManager(XmlSchemaSet schemaSet, string csDefaultNamespace, bool optimizeCommonBasicComponents)
         {
             this.schemaSet = schemaSet;
-            this.csDefaultNamespace = settings.CSharpDefaultNamespace;
-            this.ublsettings = settings;
+            this.csDefaultNamespace = csDefaultNamespace;
+            this.OptionOptimizeCommonBasicComponents = optimizeCommonBasicComponents;
 
             // Build a xml namespace(key) to csharp codenamespace/scope(value) dictionary by looking at all schema root xmlns attributes
             // Will bomb out on Distinct() if schemas use different namespace prefixes for the same namespace (empty ones are removed)
@@ -101,7 +101,7 @@ namespace ublxsd
             }
 
             // using directives in csharp files may vary depending on optimising of types
-            if (settings.OptionOptimizeCommonBasicComponents)
+            if (this.OptionOptimizeCommonBasicComponents)
             {
                 codeNamespaceUsings = codeNamespaceUsingsOptimized;
             }
@@ -112,7 +112,6 @@ namespace ublxsd
             // prepend dictionary keys with default C# code namespace separated by a dot.
             codeNamespaceUsings = codeNamespaceUsings.ToDictionary(k => csDefaultNamespace + (k.Key == "" ? "" : ".") + k.Key, v => v.Value);
         }
-
 
         public CodeNamespace GetCodeNamespaceForXmltargetNamespace(string xmlNamespace)
         {
@@ -155,7 +154,7 @@ namespace ublxsd
             if (csScopeName.EndsWith(".Cbc"))
             {
                 res = " UBL BBIEs (Basic Business Information Entities) are the leaf nodes of every UBL document structure.";
-                if (this.ublsettings.OptionOptimizeCommonBasicComponents)
+                if (this.OptionOptimizeCommonBasicComponents)
                 {
                     res = res + Environment.NewLine + " Types in this scope has been optimized/replaced by types from Udt."
                         + Environment.NewLine + " Members of maindocs streamed under Cbc namespace will in fact be Udt types.";
@@ -181,11 +180,15 @@ namespace ublxsd
             return res;
         }
 
-        public XmlSchema[] Schemas
+        /// <summary>
+        /// Return a list of all schemas for the purpose of generating matching c# files. 
+        /// Some schemas will not contain any CodeTypeDeclaration/generated code, and hence, c# file will be empty with a header only.
+        /// </summary>
+        public IEnumerable<XmlSchema> Schemas
         {
             get
             {
-                return this.schemaSet.Schemas().OfType<XmlSchema>().ToArray();
+                return this.schemaSet.Schemas(). Cast<XmlSchema>();
             }
         }
     }

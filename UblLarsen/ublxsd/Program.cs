@@ -43,7 +43,7 @@ namespace ublxsd
             schemaSet.Compile();
 
             UblCodeGenerator gen = new UblCodeGenerator(ublSettings);
-            // namespacelist parameter will drag in all other dependent types. New extensions shold probably be appended here...
+            // namespacelist parameter will drag in all other dependent types. New extensions shold probably be appended here... or...
             var allCodeDecls = gen.CreateCodeTypeDeclarations(schemaSet, 
                 new[] {
                     Constants.BaseDocumentTargetNamespace,
@@ -62,7 +62,7 @@ namespace ublxsd
             MainDocsAttributeTool.RenameTopLevelXmlType(mainDocCodeDecls);
             MainDocsAttributeTool.AddXmlRootAttributes(mainDocCodeDecls);
 
-            gen.GenerateAndSaveCodeFilesBySchema(allCodeDecls, new UblNamespaceManager(schemaSet, ublSettings));
+            gen.GenerateAndSaveCodeFilesBySchema(allCodeDecls, new UblNamespaceManager(schemaSet, ublSettings.CSharpDefaultNamespace, ublSettings.OptionOptimizeCommonBasicComponents));
 
             UblSchemaStatsTool.ShowStats(allCodeDecls);
 
