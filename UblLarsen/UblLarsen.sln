@@ -10,11 +10,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0DB73882-C6EF-4BFB-BB18-8B463CAECEF1}"
 	ProjectSection(SolutionItems) = preProject
 		CustomDictionary.xml = CustomDictionary.xml
-		Local.testsettings = Local.testsettings
+		UblLarsen.Test\Local.testsettings = UblLarsen.Test\Local.testsettings
 		ReadmeFirst.txt = ReadmeFirst.txt
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 		UblLarsen.snk = UblLarsen.snk
-		UblLarsen.vsmdi = UblLarsen.vsmdi
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F3DCB420-CA59-4CB1-AE5C-097EC7277EDE}"

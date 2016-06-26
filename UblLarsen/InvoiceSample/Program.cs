@@ -18,24 +18,29 @@ namespace InvoiceSample
         static void Main(string[] args)
         {
             // Please change the paths if you have a local copy of the UBL zip package (remote download is slow)
-            //string xsdFilenameUrl = @"http://docs.oasis-open.org/ubl/os-UBL-2.0-update/xsd/maindoc/UBL-Invoice-2.0.xsd";
-            //xsdFilenameUrl = @"..\..\..\..\UblLarsen.Generator\XsdOnly\xsd\maindoc\UBL-Invoice-2.1.xsd";
-            string xmlFilename = @"UBL-Invoice-2_0-Example.xml";
-            UblLarsen.Ubl2.InvoiceType invoice = null;
+            string xmsschemaFilename = @"..\..\..\UBL-2.1\xsd\maindoc\UBL-Invoice-2.1.xsd";
 
+            LoadAndValidateInvoice("UBL-Invoice-2_0-Example.xml", xmsschemaFilename);
+
+            LoadAndValidateInvoice("UBL-Invoice-2_0-ExampleWithError.xml", xmsschemaFilename);
+        }
+
+        private static void LoadAndValidateInvoice(string xmlFilename, string xmlSchemaFilename )
+        {
+            UblLarsen.Ubl2.InvoiceType invoice = null;
             using (FileStream fs = File.OpenRead(xmlFilename))
             {
                 // Validation
                 XDocument xmlInvoice = XDocument.Load(fs);
-                //if (!ValidateUblDocument(xmlInvoice, xsdFilenameUrl))
-                //{
-                //    Console.WriteLine("Invalid document. Unable to continue");
-                //    return;
-                //}
-
-                // Load xml into an UBL Larsen invoice instance
-                XmlSerializer xs = new XmlSerializer(typeof(UblLarsen.Ubl2.InvoiceType));
+                if (!ValidateUblDocument(xmlInvoice, xmlSchemaFilename))
+                {
+                    Console.WriteLine("Invalid document. Unable to continue");
+                    return;
+                }
                 fs.Position = 0;
+
+                // Load xml into an invoiceType instance by using Xmlserializer
+                XmlSerializer xs = new XmlSerializer(typeof(UblLarsen.Ubl2.InvoiceType));
                 invoice = (UblLarsen.Ubl2.InvoiceType)xs.Deserialize(fs);
             }
 
@@ -50,7 +55,6 @@ namespace InvoiceSample
         }
 
         // Validation is not part of the UBL Larsen library.
-        // If you can't compile this then upgrade to VS2010 .NET 4.0 or replace valHandler with null
         private static bool ValidateUblDocument(XDocument ublDocument, string xsdFilename)
         {
             bool res = true;
@@ -62,19 +66,26 @@ namespace InvoiceSample
                 if (e.Severity == XmlSeverityType.Error) res = false;
             };
 
+            string preLoadToAvoidExceptionFilename = @"..\..\..\UBL-2.1\xsd\common\UBL-xmldsig-core-schema-2.1.xsd";
+            using (XmlTextReader tr = new XmlTextReader(preLoadToAvoidExceptionFilename))
+            {
+                ublDocSchemaSet.Add(XmlSchema.Read(tr, valHandler));
+            }
+
             using (XmlTextReader tr = new XmlTextReader(xsdFilename))
             {
                 ublDocSchemaSet.Add(XmlSchema.Read(tr, valHandler));
             }
 
-            // this is not funny ms!
             try
             {
                 System.Xml.Schema.Extensions.Validate(ublDocument, ublDocSchemaSet, valHandler);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Should have been handled by eventhandler, but there might have been an intern......\n" + e.Message);
+                // Errors should be handled by valHandler above
+                res = false;
+                Console.WriteLine("Schema validation blew up. " + e.Message);
             };
 
             return res;

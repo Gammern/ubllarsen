@@ -33,8 +33,7 @@ namespace UblLarsen.Test
             XmlReader xrChanged = XmlReader.Create(changedMs);
 
             // Modify Utc nodes to localtime and remove schema location
-            string whereDoWeEndupInThisVersionOfVSTestFilename = Path.Combine("xml", filename);
-            XDocument xDocOrg = XDocument.Load(whereDoWeEndupInThisVersionOfVSTestFilename);
+            XDocument xDocOrg = XDocument.Load(filename);
             XName schemaLocationAttrName = (XNamespace)"http://www.w3.org/2001/XMLSchema-instance" + "schemaLocation";
             XAttribute schemaLocationAttr = xDocOrg.Root.Attribute(schemaLocationAttrName);
             if (schemaLocationAttr != null)

@@ -10,8 +10,7 @@ namespace UblLarsen.Test
         public static T Create(string filename)
         {
             T doc = default(T);
-            string whereDoWeEndupInThisVersionOfVSTestFilename = Path.Combine("xml", filename);
-            using (XmlReader xr = XmlReader.Create(whereDoWeEndupInThisVersionOfVSTestFilename))
+            using (XmlReader xr = XmlReader.Create(filename))
             {
                 XmlSerializer xs = new XmlSerializer(typeof(T));
                 doc = (T)xs.Deserialize(xr);
