@@ -331,7 +331,6 @@ namespace UblLarsen.Test
             XDocument xDoc = XDocument.Load(filename);
             // throw if invalid
             System.Xml.Schema.Extensions.Validate(xDoc, invoiceSchemaSet, null);
-
         }
 
         /// <summary>
@@ -356,9 +355,8 @@ namespace UblLarsen.Test
             doc.ProfileID = profileID;
             doc.ID = "654321";
             doc.UBLVersionID = "2.0";
-            //doc.DocumentCurrencyCode = "NOK";
-            doc.IssueDate = new DateTime(2009, 11, 12, 0, 0, 0, DateTimeKind.Utc);
             doc.DocumentCurrencyCode = "NOK";
+            doc.IssueDate = new DateTime(2009, 11, 12, 0, 0, 0, DateTimeKind.Utc);
 
             // <cac:BillingReference> 
             //   <cac:InvoiceDocumentReference> 
@@ -375,7 +373,7 @@ namespace UblLarsen.Test
             {
                 Party = new PartyType
                 {
-                    PartyName = new [] { new PartyNameType { Name = "Leverandør" } }, // "public static implicit operator PartyNameType(..)" kicks in here
+                    PartyName = new [] { new PartyNameType { Name = "Leverandør" } },
                     PostalAddress = new AddressType
                     {
                         Postbox = "Postboks 123",
@@ -403,7 +401,8 @@ namespace UblLarsen.Test
             p.PostalAddress.CityName = "Frogner";
             p.PostalAddress.PostalZone = "2012";
             p.PostalAddress.Country = new CountryType();
-            p.PostalAddress.Country.IdentificationCode = "NO"; // NerdNote! public static implicit operator CountryIdentificationCodeType(System.String value) gets called for string "NO" assignment
+            p.PostalAddress.Country.IdentificationCode = "NO"; // implicit operator called behind the scenes here
+            //p.PostalAddress.Country.IdentificationCode = new CodeType { Value = "NO" };
             p.PartyLegalEntity = new PartyLegalEntityType[] { new PartyLegalEntityType() };
             p.PartyLegalEntity[0].CompanyID = "NO888888888MVA";
             p.Contact = new ContactType { ID = "3150bdn" };
@@ -431,7 +430,7 @@ namespace UblLarsen.Test
             doc.CreditNoteLine[0] = new CreditNoteLineType
             {
                 ID = "1",
-                CreditedQuantity = new Ubl2.Udt.QuantityType { Value = 8, unitCode = "KGM" },
+                CreditedQuantity = new QuantityType { Value = 8, unitCode = "KGM" },
                 LineExtensionAmount = newAmountType(800.0M),
                 TaxTotal = new TaxTotalType[] { new TaxTotalType { TaxAmount = newAmountType(112.0M) } },
                 Item = new ItemType
@@ -459,6 +458,5 @@ namespace UblLarsen.Test
             bool areEqual = UblXmlComparer.IsCopyEqual<CreditNoteType>("NorwegianCreditNoteFromDifiPdfDoc.xml", doc);
             Assert.AreEqual(areEqual, true, "Written UBL doc differs from original");
         }
-
     }
 }

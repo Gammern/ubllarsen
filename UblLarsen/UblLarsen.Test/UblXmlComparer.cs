@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.XmlDiffPatch;
+using System;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
-using Microsoft.XmlDiffPatch;
-using System.Globalization;
-using System.Threading;
 
 namespace UblLarsen.Test
 {
@@ -22,9 +18,6 @@ namespace UblLarsen.Test
         /// <returns></returns>
         public static bool IsCopyEqual<T>(string filename, T originalDoc) where T : UblLarsen.Ubl2.UblBaseDocumentType
         {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
-
             string copyFilename = Path.ChangeExtension(filename, ".copy.xml");
 
             MemoryStream changedMs = new MemoryStream();
@@ -46,9 +39,7 @@ namespace UblLarsen.Test
             {
                 // Format timestring on sourcedoc to make XmlComparer happy
                 Ubl2.Udt.TimeType ublTimeType = new Ubl2.Udt.TimeType { ValueAsXmlString = node.Value };
-                // Debugger won't stop on breakpoint for ubl types! 
-                string tempNonDebuggerStepThrough = ublTimeType.ValueAsXmlString;
-                node.Value = tempNonDebuggerStepThrough;
+                node.Value = ublTimeType.ValueAsXmlString;
             }
 
             MemoryStream moddedOrgMs = new MemoryStream();
