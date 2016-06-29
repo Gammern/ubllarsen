@@ -4,81 +4,87 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Schema;
 
 namespace UblLarsen.Test
 {
     public class UblXmlComparer
     {
+        private static readonly XNamespace cbcNamespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2";
+        private static readonly XName schemaLocationAttrName = XName.Get("schemaLocation", XmlSchema.InstanceNamespace);
+        private static XmlReaderSettings closeInputSettings = new XmlReaderSettings { CloseInput = true };
+
         /// <summary>
         /// Compare a ubl document class instance with a xml file on disk.
         /// </summary>
-        /// <typeparam name="T">ubl document class</typeparam>
-        /// <param name="filename">filname to compare the instance with</param>
-        /// <param name="originalDoc">class instance</param>
-        /// <returns></returns>
-        public static bool IsCopyEqual<T>(string filename, T originalDoc) where T : UblLarsen.Ubl2.UblBaseDocumentType
+        public static bool IsCopyEqual<T>(string filename, T ublLarsenDoc) where T : UblLarsen.Ubl2.UblBaseDocumentType
         {
-            string copyFilename = Path.ChangeExtension(filename, ".copy.xml");
-
-            MemoryStream changedMs = new MemoryStream();
-            UblDoc<T>.Save(changedMs, originalDoc);
-            changedMs.Position = 0;
-            XmlReader xrChanged = XmlReader.Create(changedMs);
-
-            // Modify Utc nodes to localtime and remove schema location
-            XDocument xDocOrg = XDocument.Load(filename);
-            XName schemaLocationAttrName = (XNamespace)"http://www.w3.org/2001/XMLSchema-instance" + "schemaLocation";
-            XAttribute schemaLocationAttr = xDocOrg.Root.Attribute(schemaLocationAttrName);
-            if (schemaLocationAttr != null)
-            {
-                schemaLocationAttr.Remove();
-            }
-            // TimeType props declared under cbc namespace
-            XNamespace cbc = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2";
-            foreach (XElement node in xDocOrg.Root.Descendants().Where(n => n.Name.Namespace == cbc && n.Name.LocalName.EndsWith("Time")))
-            {
-                // Format timestring on sourcedoc to make XmlComparer happy
-                Ubl2.Udt.TimeType ublTimeType = new Ubl2.Udt.TimeType { ValueAsXmlString = node.Value };
-                node.Value = ublTimeType.ValueAsXmlString;
-            }
-
-            MemoryStream moddedOrgMs = new MemoryStream();
-            XmlWriter moddedOrgXw = XmlWriter.Create(moddedOrgMs);
-            xDocOrg.WriteTo(moddedOrgXw);
-            moddedOrgXw.Flush();
-            moddedOrgMs.Position = 0;
-            XmlReader xrOrg = XmlReader.Create(moddedOrgMs);
-
-            XmlDiffOptions options = XmlDiffOptions.IgnoreComments | XmlDiffOptions.IgnoreWhitespace | XmlDiffOptions.IgnoreNamespaces | XmlDiffOptions.IgnorePI | XmlDiffOptions.IgnoreXmlDecl;
-            XmlDiff xmlDiff = new XmlDiff(options);
-
             bool areEqual = true;
-            using (MemoryStream diffgram = new MemoryStream())
+
+            using (XmlReader fileReader = CreateReaderForFile(filename))
+            using (XmlReader docReader = CreateReaderForDoc(ublLarsenDoc))
             {
-                string diff = "";
-                using (XmlTextWriter diffgramWriter = new XmlTextWriter(new StreamWriter(diffgram)))
+                XmlDiffOptions options = XmlDiffOptions.IgnoreComments | XmlDiffOptions.IgnoreWhitespace | XmlDiffOptions.IgnoreNamespaces | XmlDiffOptions.IgnorePI | XmlDiffOptions.IgnoreXmlDecl;
+                XmlDiff xmlDiff = new XmlDiff(options);
+
+                using (MemoryStream diffgramStream = new MemoryStream())
                 {
-                    areEqual = xmlDiff.Compare(xrOrg, xrChanged, diffgramWriter);
-                    if (!areEqual)
+                    string diff = "";
+                    using (XmlTextWriter diffgramWriter = new XmlTextWriter(new StreamWriter(diffgramStream)))
                     {
-                        diffgram.Position = 0;
-                        using (XmlTextReader tr = new XmlTextReader(diffgram))
+                        areEqual = xmlDiff.Compare(fileReader, docReader, diffgramWriter);
+                        if (!areEqual)
                         {
-                            XDocument xdoc = XDocument.Load(tr);
-                            diff = xdoc.ToString();
-                            Console.WriteLine(diff);
+                            diffgramStream.Position = 0;
+                            using (XmlTextReader tr = new XmlTextReader(diffgramStream))
+                            {
+                                XDocument xdoc = XDocument.Load(tr);
+                                diff = xdoc.ToString();
+                                Console.WriteLine(diff);
+                            }
                         }
                     }
                 }
             }
-            // Unit test! Not prod code.
-            xrOrg.Close();
-            xrChanged.Close();
-            changedMs.Close();
-            moddedOrgXw.Close();
-            moddedOrgMs.Close();
             return areEqual;
         }
 
+        private static XmlReader CreateReaderForDoc<T>(T ublLarsenDoc) where T : Ubl2.UblBaseDocumentType
+        {
+            MemoryStream changedMs = new MemoryStream();
+            UblDoc<T>.Save(changedMs, ublLarsenDoc);
+            changedMs.Position = 0;
+            return XmlReader.Create(changedMs, closeInputSettings);
+        }
+
+        private static XmlReader CreateReaderForFile(string filename)
+        {
+            XDocument xDocLoadedFile = XDocument.Load(filename);
+            RemoveSchemaLocationAndFormatTime(xDocLoadedFile);
+            MemoryStream moddedOrgMs = new MemoryStream();
+            using (XmlWriter moddedOrgXw = XmlWriter.Create(moddedOrgMs))
+            {
+                xDocLoadedFile.WriteTo(moddedOrgXw);
+            }
+            moddedOrgMs.Position = 0;
+            return XmlReader.Create(moddedOrgMs, closeInputSettings);
+        }
+
+        private static void RemoveSchemaLocationAndFormatTime(XDocument xDoc)
+        {
+            XAttribute schemaLocationAttr = xDoc.Root.Attribute(schemaLocationAttrName);
+            if (schemaLocationAttr != null)
+            {
+                schemaLocationAttr.Remove();
+            }
+
+            // Format the time string to make XmlComparer happy
+            foreach (XElement node in xDoc.Root.Descendants().Where(n => n.Name.Namespace == cbcNamespace && n.Name.LocalName.EndsWith("Time")))
+            {
+                Ubl2.Udt.TimeType ublTimeType = new Ubl2.Udt.TimeType { ValueAsXmlString = node.Value };
+                node.Value = ublTimeType.ValueAsXmlString;
+            }
+
+        }
     }
 }
