@@ -24,10 +24,12 @@ namespace InvoiceSaveSample
             string xmlFilename = @"InvoiceSaveSample.xml";
             UblLarsen.Ubl2.InvoiceType invoice = PopulateInvoiceWithSampleData();
 
-            XmlWriterSettings setting = new XmlWriterSettings();
-            setting.Indent = true;
-            setting.IndentChars = "\t";
-            setting.NewLineOnAttributes = false;
+            XmlWriterSettings setting = new XmlWriterSettings
+            {
+                Indent = true,
+                IndentChars = "\t",
+                NewLineOnAttributes = false
+            };
 
             using (XmlWriter writer = XmlWriter.Create(xmlFilename, setting))
             {
@@ -329,7 +331,5 @@ namespace InvoiceSaveSample
 
             return res;
         }
-
     }
-
 }

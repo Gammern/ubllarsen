@@ -78,13 +78,12 @@ namespace UblLarsen.Test
                 schemaLocationAttr.Remove();
             }
 
-            // Format the time string to make XmlComparer happy
+            // Format the time string in the inputfile to make XmlComparer happy
             foreach (XElement node in xDoc.Root.Descendants().Where(n => n.Name.Namespace == cbcNamespace && n.Name.LocalName.EndsWith("Time")))
             {
                 Ubl2.Udt.TimeType ublTimeType = new Ubl2.Udt.TimeType { ValueAsXmlString = node.Value };
                 node.Value = ublTimeType.ValueAsXmlString;
             }
-
         }
     }
 }
