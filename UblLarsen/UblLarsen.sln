@@ -5,12 +5,9 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UblLarsen.Ubl2", "UblLarsen.Ubl2\UblLarsen.Ubl2.csproj", "{B5BEB0F4-1D60-4079-847F-6120519E7B3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UblLarsen.Test", "UblLarsen.Test\UblLarsen.Test.csproj", "{86E5C1C6-A529-4110-A729-50B1F98330B1}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0DB73882-C6EF-4BFB-BB18-8B463CAECEF1}"
 	ProjectSection(SolutionItems) = preProject
 		CustomDictionary.xml = CustomDictionary.xml
-		Local.testsettings = Local.testsettings
 		ReadmeFirst.txt = ReadmeFirst.txt
 		UblLarsen.snk = UblLarsen.snk
 	EndProjectSection
@@ -181,6 +178,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{7C81F2
 		UBL-2.1\xsd\common\UBL-xmldsig-core-schema-2.1.xsd = UBL-2.1\xsd\common\UBL-xmldsig-core-schema-2.1.xsd
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UblLarsen.IntegrationV2_0.Test", "UblLarsen.IntegrationV2_0.Test\UblLarsen.IntegrationV2_0.Test.csproj", "{86E5C1C6-A529-4110-A729-50B1F98330B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -203,18 +202,6 @@ Global
 		{B5BEB0F4-1D60-4079-847F-6120519E7B3B}.Release|x64.Build.0 = Release|Any CPU
 		{B5BEB0F4-1D60-4079-847F-6120519E7B3B}.Release|x86.ActiveCfg = Release|Any CPU
 		{B5BEB0F4-1D60-4079-847F-6120519E7B3B}.Release|x86.Build.0 = Release|Any CPU
-		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|x64.Build.0 = Debug|Any CPU
-		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|x86.Build.0 = Debug|Any CPU
-		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|x64.ActiveCfg = Release|Any CPU
-		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|x64.Build.0 = Release|Any CPU
-		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|x86.ActiveCfg = Release|Any CPU
-		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|x86.Build.0 = Release|Any CPU
 		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -263,12 +250,23 @@ Global
 		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Release|x64.Build.0 = Release|Any CPU
 		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Release|x86.ActiveCfg = Release|Any CPU
 		{D811F56D-AC77-485D-8295-214FAB53BC4F}.Release|x86.Build.0 = Release|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|x64.Build.0 = Debug|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Debug|x86.Build.0 = Debug|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|x64.ActiveCfg = Release|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|x64.Build.0 = Release|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|x86.ActiveCfg = Release|Any CPU
+		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{86E5C1C6-A529-4110-A729-50B1F98330B1} = {F3DCB420-CA59-4CB1-AE5C-097EC7277EDE}
 		{B2821208-EEB6-4DE9-A2DA-BD0D469636CA} = {2AE2B035-A7E8-499C-A928-4DEB07DD3130}
 		{4084FCAD-AE20-4E13-8B55-73E2AD34C13A} = {2AE2B035-A7E8-499C-A928-4DEB07DD3130}
 		{D811F56D-AC77-485D-8295-214FAB53BC4F} = {2AE2B035-A7E8-499C-A928-4DEB07DD3130}
@@ -277,6 +275,7 @@ Global
 		{D4FEF963-593A-4282-8209-54D9B44BFEAE} = {D44A2A38-1B17-4A81-B211-22E4E0F6B2FD}
 		{AAAC30DF-69C6-4F41-BD51-80BEF1C4D18A} = {90921088-5342-4E3F-BBA2-E9C9AFBF75F7}
 		{7C81F29F-0117-45FE-BEFB-A5232DE4CFD2} = {90921088-5342-4E3F-BBA2-E9C9AFBF75F7}
+		{86E5C1C6-A529-4110-A729-50B1F98330B1} = {F3DCB420-CA59-4CB1-AE5C-097EC7277EDE}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = UblLarsen.vsmdi
