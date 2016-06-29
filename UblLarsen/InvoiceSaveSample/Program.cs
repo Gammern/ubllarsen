@@ -22,20 +22,18 @@ namespace InvoiceSaveSample
         static void Main(string[] args)
         {
             string xmlFilename = @"InvoiceSaveSample.xml";
-
             UblLarsen.Ubl2.InvoiceType invoice = PopulateInvoiceWithSampleData();
 
-
-            XmlWriterSettings setting = new XmlWriterSettings();
-            setting.Indent = true;
-            setting.IndentChars = "\t";
+            XmlWriterSettings setting = new XmlWriterSettings
+            {
+                Indent = true,
+                IndentChars = "\t",
+                NewLineOnAttributes = false
+            };
 
             using (XmlWriter writer = XmlWriter.Create(xmlFilename, setting))
             {
-                Type typeToSerialize = typeof(UblLarsen.Ubl2.InvoiceType);
-                // invoice.Xmlns namespaces are added to the outputfile
-                XmlSerializer xs = new XmlSerializer(typeToSerialize);
-                xs.Serialize(writer, invoice);
+                new XmlSerializer(invoice.GetType()).Serialize(writer, invoice);
             }
 
             // Make sure namespace declarations are on a separate line. Easy reading
@@ -45,7 +43,8 @@ namespace InvoiceSaveSample
 
             Console.WriteLine("Invoice written to:\n{0}", new FileInfo(xmlFilename).FullName);
             Console.WriteLine("Compare it with:\n{0}", "http://docs.oasis-open.org/ubl/os-UBL-2.0-update/xml/UBL-Invoice-2.0-Example.xml");
-
+            // Don't match 100%. Unused namespace prefix declarations are missing.
+            // Only the ones declared in "UblLarsen.Ubl2\NonGenerated\maindoc\UBL-BaseDocument-2.1.partial.cs" are present.
             // See the unittest for more save samples
         }
 
@@ -53,9 +52,7 @@ namespace InvoiceSaveSample
         {
             // simplify creation of AmountType
             Func<decimal, AmountType> newAmountType = v => new AmountType { Value = v, currencyID = "GBP" };
-            //Func<string, TimeType> newUtcTime = s => { var d = DateTime.Parse(s); DateTime.SpecifyKind(d, DateTimeKind.Utc); return d; };
 
-            // This initialization will only work with C# 3.0 and above
             UblLarsen.Ubl2.InvoiceType res = new UblLarsen.Ubl2.InvoiceType
             {
                 UBLVersionID = "2.0",
@@ -334,7 +331,5 @@ namespace InvoiceSaveSample
 
             return res;
         }
-
     }
-
 }

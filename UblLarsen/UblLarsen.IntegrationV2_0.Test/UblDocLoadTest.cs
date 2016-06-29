@@ -1,16 +1,11 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Diagnostics;
 using System.IO;
-using System.Xml;
-using System.Xml.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.XmlDiffPatch;
 using UblLarsen.Ubl2;
 
 namespace UblLarsen.Test
 {
-
-
     /// <summary>
     ///This is a test class for InvoiceTypeTest and is intended
     ///to contain all InvoiceTypeTest Unit Tests
@@ -18,8 +13,6 @@ namespace UblLarsen.Test
     [TestClass()]
     public class UblDocLoadTest
     {
-
-
         private TestContext testContextInstance;
 
         /// <summary>
@@ -68,8 +61,6 @@ namespace UblLarsen.Test
         //
         #endregion
 
-
-
         [TestMethod()]
         public void ReadCreditNote()
         {
@@ -79,7 +70,7 @@ namespace UblLarsen.Test
             Assert.AreEqual("IYT Corporation", value);
 
             bool areEqual = UblXmlComparer.IsCopyEqual<CreditNoteType>(filename, doc);
-            Assert.AreEqual(areEqual, true, "Written UBL doc differs from original");
+            Assert.IsTrue(areEqual, "Written UBL doc differs from original");
         }
 
         [TestMethod()]
@@ -92,7 +83,7 @@ namespace UblLarsen.Test
             Assert.AreEqual(name, "IYT Corporation");
 
             bool areEqual = UblXmlComparer.IsCopyEqual<InvoiceType>(filename, doc);
-            Assert.AreEqual(areEqual, true, "Written invoice differs from the one read");
+            Assert.IsTrue(areEqual, "Written invoice differs from the one read");
 
         }
 
@@ -104,7 +95,7 @@ namespace UblLarsen.Test
             Assert.AreEqual("Mr Fred Churchill", doc.Shipment.Consignment[0].ConsigneeParty.Contact.Name.Value);
 
             bool areEqual = UblXmlComparer.IsCopyEqual<ForwardingInstructionsType>(filename, doc);
-            Assert.AreEqual(areEqual, true, "Written UBL doc differs from original");
+            Assert.IsTrue(areEqual, "Written UBL doc differs from original");
         }
 
         [TestMethod]
@@ -114,7 +105,7 @@ namespace UblLarsen.Test
             OrderType doc = UblDoc<OrderType>.Create(filename);
             Assert.AreEqual("Mrs Bouquet", doc.SellerSupplierParty.Party.Contact.Name.Value);
             bool areEqual = UblXmlComparer.IsCopyEqual<OrderType>(filename, doc);
-            Assert.AreEqual(areEqual, true, "Written UBL doc differs from original");
+            Assert.IsTrue(areEqual, "Written UBL doc differs from original");
         }
 
         [TestMethod]
@@ -124,7 +115,7 @@ namespace UblLarsen.Test
             OrderType doc = UblDoc<OrderType>.Create(filename);
             Assert.AreEqual("bouquet@fpconsortial.co.uk", doc.SellerSupplierParty.Party.Contact.ElectronicMail.Value);
             bool areEqual = UblXmlComparer.IsCopyEqual<OrderType>(filename, doc);
-            Assert.AreEqual(areEqual, true, "Written UBL doc differs from original");
+            Assert.IsTrue(areEqual, "Written UBL doc differs from original");
         }
 
         [TestMethod]
@@ -134,7 +125,7 @@ namespace UblLarsen.Test
             OrderResponseSimpleType doc = UblDoc<OrderResponseSimpleType>.Create(filename);
             Assert.AreEqual("Farthing Purchasing Consortia", doc.SellerSupplierParty.Party.PartyTaxScheme[0].RegistrationName.Value);
             bool areEqual = UblXmlComparer.IsCopyEqual<OrderResponseSimpleType>(filename, doc);
-            Assert.AreEqual(areEqual, true, "Written UBL doc differs from original");
+            Assert.IsTrue(areEqual, "Written UBL doc differs from original");
         }
 
         [TestMethod]
@@ -144,7 +135,7 @@ namespace UblLarsen.Test
             QuotationType doc = UblDoc<QuotationType>.Create(filename);
             Assert.AreEqual("Busy Street", doc.SellerSupplierParty.Party.PostalAddress.StreetName.Value);
             bool areEqual = UblXmlComparer.IsCopyEqual<QuotationType>(filename, doc);
-            Assert.AreEqual(areEqual, true, "Written UBL doc differs from original");
+            Assert.IsTrue(areEqual, "Written UBL doc differs from original");
         }
 
         [TestMethod]
@@ -154,7 +145,7 @@ namespace UblLarsen.Test
             ReceiptAdviceType doc = UblDoc<ReceiptAdviceType>.Create(filename);
             Assert.AreEqual("Heremouthshire", (string)doc.DespatchSupplierParty.Party.PostalAddress.CountrySubentity);
             bool areEqual = UblXmlComparer.IsCopyEqual<ReceiptAdviceType>(filename, doc);
-            Assert.AreEqual(areEqual, true, "Written UBL doc differs from original");
+            Assert.IsTrue(areEqual, "Written UBL doc differs from original");
         }
 
         [TestMethod]
@@ -164,7 +155,7 @@ namespace UblLarsen.Test
             RemittanceAdviceType doc = UblDoc<RemittanceAdviceType>.Create(filename);
             Assert.AreEqual("849FBBCE-E081-40B4-906C-94C5FF9D1AC3", (string)doc.RemittanceAdviceLine[0].BillingReference[0].InvoiceDocumentReference.UUID);
             bool areEqual = UblXmlComparer.IsCopyEqual<RemittanceAdviceType>(filename, doc);
-            Assert.AreEqual(areEqual, true, "Written UBL doc differs from original");
+            Assert.IsTrue(areEqual, "Written UBL doc differs from original");
         }
 
         [TestMethod]
@@ -174,7 +165,7 @@ namespace UblLarsen.Test
             RequestForQuotationType doc = UblDoc<RequestForQuotationType>.Create(filename);
             Assert.AreEqual("56A", doc.Delivery[0].DeliveryAddress.BuildingNumber.Value);
             bool areEqual = UblXmlComparer.IsCopyEqual<RequestForQuotationType>(filename, doc);
-            Assert.AreEqual(areEqual, true, "Written UBL doc differs from original");
+            Assert.IsTrue(areEqual, "Written UBL doc differs from original");
         }
 
         [TestMethod]
@@ -184,9 +175,9 @@ namespace UblLarsen.Test
             StatementType doc = UblDoc<StatementType>.Create(filename);
             UblLarsen.Ubl2.Udt.AmountType line = doc.StatementLine[0].CreditLineAmount;
             Assert.AreEqual(107.50M, line.Value);
-            Assert.AreEqual("GBP", line.currencyID); // Codelist is a problem
+            Assert.AreEqual("GBP", line.currencyID);
             bool areEqual = UblXmlComparer.IsCopyEqual<StatementType>(filename, doc);
-            Assert.AreEqual(areEqual, true, "Written UBL doc differs from original");
+            Assert.IsTrue(areEqual, "Written UBL doc differs from original");
         }
 
         [TestMethod]
@@ -196,7 +187,7 @@ namespace UblLarsen.Test
             WaybillType doc = UblDoc<WaybillType>.Create(filename);
             Assert.AreEqual("urn:oasis:names:specification:ubl:xpath:Waybill-2.0:samples-2.0-draft", doc.CustomizationID.Value);
             bool areEqual = UblXmlComparer.IsCopyEqual<WaybillType>(filename, doc);
-            Assert.AreEqual(areEqual, true, "Written UBL doc differs from original");
+            Assert.IsTrue(areEqual, "Written UBL doc differs from original");
         }
 
         [TestMethod, ExpectedException(typeof(InvalidOperationException))]
@@ -214,7 +205,7 @@ namespace UblLarsen.Test
             InvoiceType doc = UblDoc<InvoiceType>.Create(filename);
             Assert.AreEqual("Accounting department", doc.AccountingCustomerParty.Party.PostalAddress.Department.Value);
             bool areEqual = UblXmlComparer.IsCopyEqual<InvoiceType>(filename, doc);
-            Assert.AreEqual(areEqual, true, "Written UBL doc differs from original");
+            Assert.IsTrue(areEqual, "Written UBL doc differs from original");
         }
 
         [TestMethod]
@@ -224,7 +215,7 @@ namespace UblLarsen.Test
             CreditNoteType doc = UblDoc<CreditNoteType>.Create(filename);
             Assert.AreEqual("5645342123", doc.AccountingCustomerParty.Party.PartyLegalEntity[0].CompanyID.Value);
             bool areEqual = UblXmlComparer.IsCopyEqual<CreditNoteType>(filename, doc);
-            Assert.AreEqual(areEqual, true, "Written UBL doc differs from original");
+            Assert.IsTrue(areEqual, "Written UBL doc differs from original");
         }
 
         [TestMethod, ExpectedException(typeof(System.InvalidOperationException))]

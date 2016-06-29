@@ -1,6 +1,6 @@
 UBL Larsen
 -----------
-UBL Larsen is a library of classes that can be streamed to/from "UBL 2.0 updated" compliant 
+UBL Larsen is a library of classes that can be streamed to/from "UBL 2.1" compliant 
 xml files by System.Xml.XmlSerializer. Knowledge of XmlSerialiser is preffered in order to 
 understand how class instances can be converted from/to xml without fiddly parsing.
 http://msdn.microsoft.com/en-us/library/system.xml.serialization.xmlserializer.aspx
@@ -26,16 +26,17 @@ The post build event contain a rem'ed out command for generating the precompiled
 of the library by using sgen.exe. The library should work without it but you may notice 
 a small delay first time a type is serialized. 
 
+UBL Generator
+--------------
+Project ublxsd generates the sourcefiles for the libary above.
 
 Unit test
 ----------
+select testsettings file named "Local.testsettings" before running tests. 
 Most of the unit tests deserialize xml documents made by Oasis to an UBL Larsen class instance. 
 This instance is then serialized back to xml and compared with the original using XmlDiffPatch.
 http://msdn.microsoft.com/en-us/library/aa302294.aspx
-Simple but effective method. 
 Adding you own test for other documents types is simple. Have a look at UblDocLoadTest.cs.
-
-Note that UBL Larsen does not output any annoying xml comments nor schema location.
 
 "xs:time" is treated as a string and can handle all datetimekinds. 
 Have a look at common/UBL-UnqualifiedDataTypes-2.1.partial.cs
@@ -56,8 +57,5 @@ IT IS FREE!
 ------------
 The library is free because I do not have time nor resources to give any product support. 
 I don't even sell support. It is not part of my business model. 
-Use the forums on http://ubllarsen.codeplex.com/ for general support, complaints about property rights, 
-non-compliance to ubl, why some ubl types have been replaced and so on. Anyone can contribute.
 
-Asker, Norway 2015'ish
-name here
+Hvalstad, Norway 2016'ish

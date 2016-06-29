@@ -74,59 +74,25 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="xml\UBL-CreditNote-2.0-Example.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\UBL-DespatchAdvice-2.0-Example.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\UBL-ForwardingInstructions-2.0-Example-International.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\UBL-Invoice-2.0-Example.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\UBL-Order-2.0-Example-International.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\UBL-Order-2.0-Example.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\UBL-OrderResponseSimple-2.0-Example.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\UBL-Quotation-2.0-Example.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\UBL-ReceiptAdvice-2.0-Example.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\UBL-RemittanceAdvice-2.0-Example.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\UBL-RequestForQuotation-2.0-Example.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\UBL-Statement-2.0-Example.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\UBL-Waybill-2.0-Example-International.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="xml\UBL-CreditNote-2.0-Example.xml" />
+    <None Include="xml\UBL-DespatchAdvice-2.0-Example.xml" />
+    <None Include="xml\UBL-ForwardingInstructions-2.0-Example-International.xml" />
+    <None Include="xml\UBL-Invoice-2.0-Example.xml" />
+    <None Include="xml\UBL-Order-2.0-Example-International.xml" />
+    <None Include="xml\UBL-Order-2.0-Example.xml" />
+    <None Include="xml\UBL-OrderResponseSimple-2.0-Example.xml" />
+    <None Include="xml\UBL-Quotation-2.0-Example.xml" />
+    <None Include="xml\UBL-ReceiptAdvice-2.0-Example.xml" />
+    <None Include="xml\UBL-RemittanceAdvice-2.0-Example.xml" />
+    <None Include="xml\UBL-RequestForQuotation-2.0-Example.xml" />
+    <None Include="xml\UBL-Statement-2.0-Example.xml" />
+    <None Include="xml\UBL-Waybill-2.0-Example-International.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="xml\BII04 T10 gyldig faktura med alle elementer.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\InvoiceBogusXml.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\BII05 T14 0 gyldig kreditnota med alle elementer.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="xml\NorwegianCreditNoteFromDifiPdfDoc.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="xml\BII04 T10 gyldig faktura med alle elementer.xml" />
+    <None Include="xml\InvoiceBogusXml.xml" />
+    <None Include="xml\BII05 T14 0 gyldig kreditnota med alle elementer.xml" />
+    <None Include="xml\NorwegianCreditNoteFromDifiPdfDoc.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UblLarsen.Ubl2\UblLarsen.Ubl2.csproj">
@@ -135,6 +101,9 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /D /Y $(ProjectDir)xml\*.xml $(TargetDir)</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
