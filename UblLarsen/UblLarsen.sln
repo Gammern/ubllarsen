@@ -180,6 +180,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{7C81F2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UblLarsen.IntegrationV2_0.Test", "UblLarsen.IntegrationV2_0.Test\UblLarsen.IntegrationV2_0.Test.csproj", "{86E5C1C6-A529-4110-A729-50B1F98330B1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{6E69500B-A38D-4EAB-A0B7-7F362C654DC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UblLarsen.Tools", "UblLarsen.Tools\UblLarsen.Tools.csproj", "{724CA043-499C-46C3-84AF-1355C036130F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -262,6 +266,18 @@ Global
 		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|x64.Build.0 = Release|Any CPU
 		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|x86.ActiveCfg = Release|Any CPU
 		{86E5C1C6-A529-4110-A729-50B1F98330B1}.Release|x86.Build.0 = Release|Any CPU
+		{724CA043-499C-46C3-84AF-1355C036130F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724CA043-499C-46C3-84AF-1355C036130F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724CA043-499C-46C3-84AF-1355C036130F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{724CA043-499C-46C3-84AF-1355C036130F}.Debug|x64.Build.0 = Debug|Any CPU
+		{724CA043-499C-46C3-84AF-1355C036130F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{724CA043-499C-46C3-84AF-1355C036130F}.Debug|x86.Build.0 = Debug|Any CPU
+		{724CA043-499C-46C3-84AF-1355C036130F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724CA043-499C-46C3-84AF-1355C036130F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724CA043-499C-46C3-84AF-1355C036130F}.Release|x64.ActiveCfg = Release|Any CPU
+		{724CA043-499C-46C3-84AF-1355C036130F}.Release|x64.Build.0 = Release|Any CPU
+		{724CA043-499C-46C3-84AF-1355C036130F}.Release|x86.ActiveCfg = Release|Any CPU
+		{724CA043-499C-46C3-84AF-1355C036130F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -276,6 +292,7 @@ Global
 		{AAAC30DF-69C6-4F41-BD51-80BEF1C4D18A} = {90921088-5342-4E3F-BBA2-E9C9AFBF75F7}
 		{7C81F29F-0117-45FE-BEFB-A5232DE4CFD2} = {90921088-5342-4E3F-BBA2-E9C9AFBF75F7}
 		{86E5C1C6-A529-4110-A729-50B1F98330B1} = {F3DCB420-CA59-4CB1-AE5C-097EC7277EDE}
+		{724CA043-499C-46C3-84AF-1355C036130F} = {6E69500B-A38D-4EAB-A0B7-7F362C654DC5}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = UblLarsen.vsmdi

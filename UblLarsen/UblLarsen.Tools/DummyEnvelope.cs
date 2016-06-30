@@ -17,7 +17,7 @@ using UblLarsen.Ubl2;
 //     </envl:Documents>
 //   </envl:UblDummyEnvelope>
 //
-namespace EnumrateUblFiles
+namespace UblLarsen.Tools
 {
     public static class Constants
     {

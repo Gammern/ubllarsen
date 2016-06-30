@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D811F56D-AC77-485D-8295-214FAB53BC4F}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{724CA043-499C-46C3-84AF-1355C036130F}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EnumrateUblFiles</RootNamespace>
-    <AssemblyName>EnumrateUblFiles</AssemblyName>
+    <RootNamespace>UblLarsen.Tools</RootNamespace>
+    <AssemblyName>UblLarsen.Tools</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,17 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="DummyEnvelope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UblLarsen.Tools\UblLarsen.Tools.csproj">
-      <Project>{724ca043-499c-46c3-84af-1355c036130f}</Project>
-      <Name>UblLarsen.Tools</Name>
-    </ProjectReference>
     <ProjectReference Include="..\UblLarsen.Ubl2\UblLarsen.Ubl2.csproj">
       <Project>{b5beb0f4-1d60-4079-847f-6120519e7b3b}</Project>
       <Name>UblLarsen.Ubl2</Name>
