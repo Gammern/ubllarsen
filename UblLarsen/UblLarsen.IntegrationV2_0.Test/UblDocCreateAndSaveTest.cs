@@ -7,6 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UblLarsen.Ubl2;
 using UblLarsen.Ubl2.Cac;
 using UblLarsen.Ubl2.Udt;
+using UblLarsen.Tools;
 
 namespace UblLarsen.Test
 {

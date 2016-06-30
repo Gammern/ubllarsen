@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using UblLarsen.Tools;
 using UblLarsen.Ubl2;
 
 namespace UblLarsen.Test

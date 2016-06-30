@@ -1,9 +1,8 @@
 ﻿using System.IO;
-using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace UblLarsen.Test
+namespace UblLarsen.Tools
 {
     public class UblDoc<T> where T : Ubl2.UblBaseDocumentType
     {
