@@ -1,6 +1,6 @@
 ﻿// ------------------------------------------------------------------------------
 //  This is a sample that show the following:
-//   - How to Validate xml file against UBL 2.1 invoice schema file
+//   - How to Validate xml file against UBL 2.1 invoice schema
 //   - How to read an UBL 2.0 xml invoice in to a .NET type
 // ------------------------------------------------------------------------------
 
@@ -21,6 +21,7 @@ namespace InvoiceSample
 
             LoadAndValidateInvoice("UBL-Invoice-2_0-Example.xml", invoiceSchemaSet);
             LoadAndValidateInvoice("UBL-Invoice-2_0-ExampleWithError.xml", invoiceSchemaSet);
+            LoadAndValidateInvoice("NotAnUblDocument.xml", invoiceSchemaSet); // WTF! Validates ok
         }
 
         private static void LoadAndValidateInvoice(string xmlFilename, XmlSchemaSet invoiceSchemaSet)
@@ -28,7 +29,8 @@ namespace InvoiceSample
             UblLarsen.Ubl2.InvoiceType invoice = null;
             using (FileStream fs = File.OpenRead(xmlFilename))
             {
-                // XDocument can contain any valid xml, dont know if it is an ubl invoice yet
+                Console.WriteLine($"Processing {xmlFilename} ...");
+                // XDocument can contain any valid xml, don't know if it is an ubl invoice yet
                 XDocument xmlInvoice = XDocument.Load(fs);
                 if (!ValidateUblInvoiceDocument(xmlInvoice, invoiceSchemaSet))
                 {
@@ -36,15 +38,15 @@ namespace InvoiceSample
                 }
 
                 // Reuse filestream and load into an InvoiceType instance by using XmlSerializer
+                fs.Position = 0;
                 XmlSerializer xs = new XmlSerializer(typeof(UblLarsen.Ubl2.InvoiceType));
                 try
                 {
-                    fs.Position = 0;
                     invoice = (UblLarsen.Ubl2.InvoiceType)xs.Deserialize(fs);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("Deserialize: " + ex.Message);
                 }
             }
 
@@ -56,32 +58,31 @@ namespace InvoiceSample
 
         private static bool ValidateUblInvoiceDocument(XDocument ublDocument, XmlSchemaSet invoiceSchemaSet)
         {
-            bool res = true;
-
-            ValidationEventHandler valHandler = (s, e) =>
-            {
-                Console.WriteLine("Validation: {0}: {1}", e.Severity.ToString(), e.Message);
-                if (e.Severity == XmlSeverityType.Error) res = false;
-            };
+            bool res = false;
 
             try
             {
-                System.Xml.Schema.Extensions.Validate(ublDocument, invoiceSchemaSet, valHandler);
+                invoiceSchemaSet = CreateInvoiceValidationSchemaSet();
+                System.Xml.Schema.Extensions.Validate(ublDocument, invoiceSchemaSet, null, false);
+                res = true;
             }
-            catch (Exception e)
+            catch (XmlSchemaValidationException ex)
             {
-                // Errors should be handled by valHandler above, but you never know...
-                res = false;
-                Console.WriteLine("Schema validation blew up. " + e.Message);
-            };
+                Console.WriteLine("Validation: " + ex.Message);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Validation: Unknown error. " + ex.Message);
+            }
 
             return res;
         }
 
         private static XmlSchemaSet CreateInvoiceValidationSchemaSet()
         {
-            string preloadToAvoidExceptionFilename = @"..\..\..\UBL-2.1\xsd\common\UBL-xmldsig-core-schema-2.1.xsd";
-            string invoiceSchemaFilename = @"..\..\..\UBL-2.1\xsd\maindoc\UBL-Invoice-2.1.xsd";
+            string ublXsdDir = @"..\..\..\UBL-2.1\xsd\";
+            string preloadToAvoidExceptionFilename = Path.Combine(ublXsdDir, @"common\UBL-xmldsig-core-schema-2.1.xsd");
+            string invoiceSchemaFilename = Path.Combine(ublXsdDir, @"maindoc\UBL-Invoice-2.1.xsd");
 
             XmlSchemaSet schemaSet = new XmlSchemaSet();
             schemaSet.ValidationEventHandler += (s, e) =>
