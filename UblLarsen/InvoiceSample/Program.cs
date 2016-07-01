@@ -21,7 +21,7 @@ namespace InvoiceSample
 
             LoadAndValidateInvoice("UBL-Invoice-2_0-Example.xml", invoiceSchemaSet);
             LoadAndValidateInvoice("UBL-Invoice-2_0-ExampleWithError.xml", invoiceSchemaSet);
-            LoadAndValidateInvoice("NotAnUblDocument.xml", invoiceSchemaSet); // WTF! Validates ok
+            LoadAndValidateInvoice("NotAnUblDocument.xml", invoiceSchemaSet); // WTF! Validates ok but fail serialization
         }
 
         private static void LoadAndValidateInvoice(string xmlFilename, XmlSchemaSet invoiceSchemaSet)
