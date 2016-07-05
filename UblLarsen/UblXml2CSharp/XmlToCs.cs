@@ -53,9 +53,15 @@ namespace UblXml2CSharp
             WriteLine(tabLevel, "{");
             if (xElement.HasElements)
             {
+
                 var xElements = xElement.Elements().GroupBy(g => g.Name.LocalName).ToList();
                 foreach (var elem in xElements)
                 {
+                    foreach (var attribute in elem.Attributes())
+                    {
+                        WriteLine(tabLevel + 1, attribute.ToString().Replace("=", " = ")+" (Attributes are fucked)"); // repeated!!!! why?
+                    }
+
                     string name = elem.First().Name.LocalName;
                     PropertyInfo propInfo = propType.GetProperty(name);
                     Write(tabLevel + 1, $"{name} = ");
@@ -64,8 +70,13 @@ namespace UblXml2CSharp
                     {
                         GenerateArray(elem.ToArray(), propInfo.PropertyType, tabLevel + 1, localDelimiter);
                     }
+                    else if(false) // something automagically make class instead of assignment
+                    {
+                        // HulaHulaAchbarMakeClass()
+                    }
                     else
                     {
+                        // should not generate simple assignment if HasAttributes HulaHulaAchbar
                         GeneratePropertyValue(elem.First(), propInfo.PropertyType, tabLevel, localDelimiter);
                     }
                 }
