@@ -11,6 +11,8 @@ namespace UblXml2CSharp
 {
     internal class XmlToCs
     {
+        private const int maxLevel = 20;
+        private static string[] tabs = Enumerable.Range(1, maxLevel).Select(n => new string(' ', n * 4)).ToArray();
         private Type docType;
         private XElement rootElement;
         private string xmlFilename;
@@ -47,6 +49,7 @@ namespace UblXml2CSharp
             {
                 var propInfo = docType.GetProperty(element.First().Name.LocalName);
                 //propInfo = GetPropInfoForMember(element.First(), propInfo);
+                string s = propInfo.Name;
                 GenerateProperty(element.ToArray(), propInfo, tabLevel + 1);
             }
             Console.WriteLine($"{tabs}}}");
@@ -77,7 +80,7 @@ namespace UblXml2CSharp
             string tabs = new string(' ', tabLevel * 4);
             if (!property.HasElements)
             {
-                if (property.HasAttributes)
+                if (IsComplexType(property,propertyInfo))
                 {
                     string delimiter = ",";
                     if (propertyInfo.PropertyType.IsArray)
@@ -115,6 +118,11 @@ namespace UblXml2CSharp
             }
         }
 
+        private bool IsComplexType(XElement property, PropertyInfo propertyInfo)
+        {
+            return property.HasAttributes || (propertyInfo.PropertyType.IsArray);
+        }
+
         private PropertyInfo GetPropInfoForMember(XElement xElement, PropertyInfo propertyInfo)
         {
             Type t;
@@ -126,7 +134,12 @@ namespace UblXml2CSharp
             {
                 t = propertyInfo.PropertyType;
             }
-            var propInfo = t.GetProperty(xElement.Name.LocalName);
+            string propName = xElement.Name.LocalName;
+            //if (propName == "UBLExtension")
+            //    propName = "UBLExtensionType";
+            var propInfo = t.GetProperty(propName);
+            var pp = t.GetProperties();
+            var ppItem = pp.Where(p => p.Name == propName).FirstOrDefault();
             return propInfo;
         }
 

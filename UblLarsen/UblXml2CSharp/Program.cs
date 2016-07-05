@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using UblLarsen.Ubl2;
