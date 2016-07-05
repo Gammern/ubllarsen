@@ -13,7 +13,7 @@ namespace UblXml2CSharp
     internal class XmlToCs
     {
         private const int maxLevel = 20;
-        private static string[] tabs = Enumerable.Range(1, maxLevel).Select(n => new string(' ', n * 4)).ToArray();
+        private static string[] tabs = Enumerable.Range(0, maxLevel).Select(n => new string(' ', n * 4)).ToArray();
         private static List<Type> numericBaseTypes = typeof(UblBaseDocumentType).Assembly.GetTypes()
             .Where(t => t.Namespace == "UblLarsen.Ubl2.Cctscct")
             .Where(t => t.GetProperty("Value").PropertyType == typeof(decimal)).ToList();
@@ -49,8 +49,8 @@ namespace UblXml2CSharp
 
         private void GenerateNewClass(XElement xElement, Type propType, int tabLevel, string delimiter)
         {
-            Console.WriteLine($"new {propType.Name}");
-            Console.WriteLine($"{tabs[tabLevel]}{{");
+            WriteLine(0, $"new {propType.Name}");
+            WriteLine(tabLevel, "{");
             if (xElement.HasElements)
             {
                 var xElements = xElement.Elements().GroupBy(g => g.Name.LocalName).ToList();
@@ -58,7 +58,7 @@ namespace UblXml2CSharp
                 {
                     string name = elem.First().Name.LocalName;
                     PropertyInfo propInfo = propType.GetProperty(name);
-                    Console.Write($"{tabs[tabLevel + 1]}{name} = ");
+                    Write(tabLevel + 1, $"{name} = ");
                     string localDelimiter = (elem == xElements.Last()) ? "" : ",";
                     if (propInfo.PropertyType.IsArray)
                     {
@@ -73,9 +73,9 @@ namespace UblXml2CSharp
             else
             {
                 string value = GetValue(xElement, propType);
-                Console.WriteLine($"{tabs[tabLevel + 1]}Value = {value}");
+                WriteLine(tabLevel + 1, $"Value = {value}");
             }
-            Console.WriteLine($"{tabs[tabLevel]}}}{delimiter}");
+            WriteLine(tabLevel,$"}}{delimiter}");
         }
 
         private string GetValue(XElement xElement, Type propType)
@@ -88,15 +88,15 @@ namespace UblXml2CSharp
 
         private void GenerateArray(XElement[] xElements, Type propType, int tabLevel, string delimiter)
         {
-            Console.WriteLine($"new {propType.Name}");
-            Console.WriteLine($"{tabs[tabLevel]}{{");
+            WriteLine(0, $"new {propType.Name}");
+            WriteLine(tabLevel, "{");
             foreach (var item in xElements)
             {
-                Console.Write($"{tabs[tabLevel+1]}");
+                Write(tabLevel+1, "");
                 string localDelimiter = (item == xElements.Last()) ? "" : ",";
                 GenerateNewClass(item, propType.GetElementType(), tabLevel + 1, localDelimiter);
             }
-            Console.WriteLine($"{tabs[tabLevel]}}}{delimiter}");
+            WriteLine(tabLevel, $"}}{delimiter}");
 
         }
 
@@ -105,7 +105,7 @@ namespace UblXml2CSharp
             if(!xElement.HasElements)
             {
                 string value = GetValue(xElement, propertyType);
-                Console.WriteLine($"{value}{delimiter}");
+                WriteLine(0, $"{value}{delimiter}");
             }
             else
             {
@@ -115,16 +115,28 @@ namespace UblXml2CSharp
 
         private void GenerateNamespaceDeclaration(int tabLevel)
         {
-            string tabs = new string(' ', tabLevel * 4);
             var namespaceAttributes = rootElement.Attributes().Where(a => a.Name.NamespaceName.Any()).ToList();
 
-            Console.WriteLine($"{tabs}new XmlSerializerNamespaces(new[]");
-            Console.WriteLine($"{tabs}{{");
+            WriteLine(tabLevel, "new XmlSerializerNamespaces(new[]");
+            WriteLine(tabLevel, "{");
             foreach (var nsatt in namespaceAttributes)
             {
-                Console.WriteLine($"{tabs}    new XmlQualifiedName(\"{nsatt.Name.LocalName}\",\"{nsatt.Value}\"),");
+                WriteLine(tabLevel+1, $"new XmlQualifiedName(\"{nsatt.Name.LocalName}\",\"{nsatt.Value}\"),");
             }
-            Console.WriteLine($"{tabs}}}");
+            WriteLine(tabLevel, "}");
         }
+
+        private void WriteLine(int tablevel, string s)
+        {
+            Write(tablevel, s + Environment.NewLine);
+        }
+
+        private void Write(int tabLevel, string s)
+        {
+            Console.Write($"{tabs[tabLevel]}{s}");
+        }
+
+
+
     }
 }
