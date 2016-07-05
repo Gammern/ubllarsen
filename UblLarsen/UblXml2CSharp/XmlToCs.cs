@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using UblLarsen.Ubl2;
 
 namespace UblXml2CSharp
 {
@@ -13,6 +14,10 @@ namespace UblXml2CSharp
     {
         private const int maxLevel = 20;
         private static string[] tabs = Enumerable.Range(1, maxLevel).Select(n => new string(' ', n * 4)).ToArray();
+        private static List<Type> numericBaseTypes = typeof(UblBaseDocumentType).Assembly.GetTypes()
+            .Where(t => t.Namespace == "UblLarsen.Ubl2.Cctscct")
+            .Where(t => t.GetProperty("Value").PropertyType == typeof(decimal)).ToList();
+
         private Type docType;
         private XElement rootElement;
         private string xmlFilename;
@@ -38,114 +43,79 @@ namespace UblXml2CSharp
 
         public bool GenerateClass()
         {
-            int tabLevel = 2;
-            string tabs = new string(' ', tabLevel * 4);
-            Console.WriteLine($"{tabs}new {docType.Name}");
-            Console.WriteLine($"{tabs}{{");
-            var NamespaceAttributes = rootElement.Attributes().Where(a => a.Name.NamespaceName.Any()).ToList();
-            GenerateNamespaceDeclaration(NamespaceAttributes, tabLevel + 1);
-            var elements = rootElement.Elements().GroupBy(g => g.Name).ToList();
-            foreach (var element in elements)
-            {
-                var propInfo = docType.GetProperty(element.First().Name.LocalName);
-                //propInfo = GetPropInfoForMember(element.First(), propInfo);
-                string s = propInfo.Name;
-                GenerateProperty(element.ToArray(), propInfo, tabLevel + 1);
-            }
-            Console.WriteLine($"{tabs}}}");
+
+            GenerateNewClass(rootElement, docType, 2);
             return true;
         }
 
-        private void GenerateProperty(XElement[] propertyGroping, PropertyInfo propertyInfo, int tabLevel)
+        private void GenerateNewClass(XElement xElement, Type propType, int tabLevel)
         {
-            string tabs = new string(' ', tabLevel * 4);
-            if (propertyInfo.PropertyType.IsArray)
+            Console.WriteLine($"new {propType.Name}");
+            Console.WriteLine($"{tabs[tabLevel]}{{");
+            if (xElement.HasElements)
             {
-                Console.WriteLine($"{tabs}{propertyInfo.Name} = new {propertyInfo.PropertyType.Name}");
-                Console.WriteLine($"{tabs}{{");
-                foreach (var property in propertyGroping)
+                var xElements = xElement.Elements().GroupBy(g => g.Name.LocalName).ToList();
+                foreach (var elem in xElements)
                 {
-                    GenerateProperty(property, propertyInfo, tabLevel + 1);
-                }
-                Console.WriteLine($"{tabs}}}");
-            }
-            else
-            {
-                GenerateProperty(propertyGroping.First(), propertyInfo, tabLevel);
-            }
-        }
-
-        private void GenerateProperty(XElement property, PropertyInfo propertyInfo, int tabLevel)
-        {
-            string tabs = new string(' ', tabLevel * 4);
-            if (!property.HasElements)
-            {
-                if (IsComplexType(property,propertyInfo))
-                {
-                    string delimiter = ",";
-                    if (propertyInfo.PropertyType.IsArray)
+                    string name = elem.First().Name.LocalName;
+                    PropertyInfo propInfo = propType.GetProperty(name);
+                    Console.Write($"{tabs[tabLevel + 1]}{name} = ");
+                    if (propInfo.PropertyType.IsArray)
                     {
-                        Console.WriteLine($"{tabs}new {propertyInfo.PropertyType.GetElementType().Name}");
+                        GenerateArray(elem.ToArray(), propInfo.PropertyType, tabLevel + 1);
                     }
                     else
                     {
-                        Console.WriteLine($"{tabs}{propertyInfo.Name} = new {propertyInfo.PropertyType.Name}");
+                        GeneratePropertyValue(elem.First(), propInfo.PropertyType, tabLevel);
                     }
-                    Console.WriteLine($"{tabs}{{");
-                    foreach (var attribute in property.Attributes())
-                    {
-                        Console.WriteLine($"{tabs}    {attribute.ToString().Replace("=", " = ")},");
-                    }
-                    Console.WriteLine($"{tabs}    Value = \"{property.Value}\"");
-                    Console.WriteLine($"{tabs}}}{delimiter}");
-                }
-                else
-                {
-                    Console.WriteLine($"{tabs}{property.Name.LocalName} = \"{property.Value}\",");
                 }
             }
             else
             {
-                Console.WriteLine($"{tabs}{propertyInfo.Name} = new {propertyInfo.PropertyType.Name}");
-                Console.WriteLine($"{tabs}{{");
-                var elements = property.Elements().GroupBy(g => g.Name).ToList();
-                foreach (var element in elements)
-                {
-                    PropertyInfo propInfo = GetPropInfoForMember(element.First(), propertyInfo);
-                    GenerateProperty(element.ToArray(), propInfo, tabLevel + 1);
-                }
-                Console.WriteLine($"{tabs}}}");
+                string value = GetValue(xElement, propType);
+                Console.WriteLine($"{tabs[tabLevel + 1]}Value = {value}");
             }
+            Console.WriteLine($"{tabs[tabLevel]}}},");
         }
 
-        private bool IsComplexType(XElement property, PropertyInfo propertyInfo)
+        private string GetValue(XElement xElement, Type propType)
         {
-            return property.HasAttributes || (propertyInfo.PropertyType.IsArray);
+            string value = xElement.Value;
+            if (numericBaseTypes.Contains(propType.BaseType))
+                return value;
+            return "\"" + value + "\"";
         }
 
-        private PropertyInfo GetPropInfoForMember(XElement xElement, PropertyInfo propertyInfo)
+        private void GenerateArray(XElement[] xElements, Type propType, int tabLevel)
         {
-            Type t;
-            if (propertyInfo.PropertyType.IsArray)
+            Console.WriteLine($"new {propType.Name}");
+            Console.WriteLine($"{tabs[tabLevel]}{{");
+            foreach (var item in xElements)
             {
-                t = propertyInfo.PropertyType.GetElementType(); // itemstype
+                Console.Write($"{tabs[tabLevel+1]}");
+                GenerateNewClass(item, propType.GetElementType(), tabLevel + 1);
+            }
+            Console.WriteLine($"{tabs[tabLevel]}}},");
+
+        }
+
+        private void GeneratePropertyValue(XElement xElement, Type propertyType, int tabLevel)
+        {
+            if(!xElement.HasElements)
+            {
+                string value = GetValue(xElement, propertyType);
+                Console.WriteLine($"{value},");
             }
             else
             {
-                t = propertyInfo.PropertyType;
+                GenerateNewClass(xElement, propertyType, tabLevel + 1);
             }
-            string propName = xElement.Name.LocalName;
-            //if (propName == "UBLExtension")
-            //    propName = "UBLExtensionType";
-            var propInfo = t.GetProperty(propName);
-            var pp = t.GetProperties();
-            var ppItem = pp.Where(p => p.Name == propName).FirstOrDefault();
-            return propInfo;
         }
 
-        private void GenerateNamespaceDeclaration(List<XAttribute> namespaceAttributes, int tabLevel)
+        private void GenerateNamespaceDeclaration(int tabLevel)
         {
             string tabs = new string(' ', tabLevel * 4);
+            var namespaceAttributes = rootElement.Attributes().Where(a => a.Name.NamespaceName.Any()).ToList();
 
             Console.WriteLine($"{tabs}new XmlSerializerNamespaces(new[]");
             Console.WriteLine($"{tabs}{{");
