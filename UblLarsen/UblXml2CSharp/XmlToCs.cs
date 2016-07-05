@@ -43,12 +43,11 @@ namespace UblXml2CSharp
 
         public bool GenerateClass()
         {
-
-            GenerateNewClass(rootElement, docType, 2);
+            GenerateNewClass(rootElement, docType, 2, "");
             return true;
         }
 
-        private void GenerateNewClass(XElement xElement, Type propType, int tabLevel)
+        private void GenerateNewClass(XElement xElement, Type propType, int tabLevel, string delimiter)
         {
             Console.WriteLine($"new {propType.Name}");
             Console.WriteLine($"{tabs[tabLevel]}{{");
@@ -60,13 +59,14 @@ namespace UblXml2CSharp
                     string name = elem.First().Name.LocalName;
                     PropertyInfo propInfo = propType.GetProperty(name);
                     Console.Write($"{tabs[tabLevel + 1]}{name} = ");
+                    string localDelimiter = (elem == xElements.Last()) ? "" : ",";
                     if (propInfo.PropertyType.IsArray)
                     {
-                        GenerateArray(elem.ToArray(), propInfo.PropertyType, tabLevel + 1);
+                        GenerateArray(elem.ToArray(), propInfo.PropertyType, tabLevel + 1, localDelimiter);
                     }
                     else
                     {
-                        GeneratePropertyValue(elem.First(), propInfo.PropertyType, tabLevel);
+                        GeneratePropertyValue(elem.First(), propInfo.PropertyType, tabLevel, localDelimiter);
                     }
                 }
             }
@@ -75,7 +75,7 @@ namespace UblXml2CSharp
                 string value = GetValue(xElement, propType);
                 Console.WriteLine($"{tabs[tabLevel + 1]}Value = {value}");
             }
-            Console.WriteLine($"{tabs[tabLevel]}}},");
+            Console.WriteLine($"{tabs[tabLevel]}}}{delimiter}");
         }
 
         private string GetValue(XElement xElement, Type propType)
@@ -86,29 +86,30 @@ namespace UblXml2CSharp
             return "\"" + value + "\"";
         }
 
-        private void GenerateArray(XElement[] xElements, Type propType, int tabLevel)
+        private void GenerateArray(XElement[] xElements, Type propType, int tabLevel, string delimiter)
         {
             Console.WriteLine($"new {propType.Name}");
             Console.WriteLine($"{tabs[tabLevel]}{{");
             foreach (var item in xElements)
             {
                 Console.Write($"{tabs[tabLevel+1]}");
-                GenerateNewClass(item, propType.GetElementType(), tabLevel + 1);
+                string localDelimiter = (item == xElements.Last()) ? "" : ",";
+                GenerateNewClass(item, propType.GetElementType(), tabLevel + 1, localDelimiter);
             }
-            Console.WriteLine($"{tabs[tabLevel]}}},");
+            Console.WriteLine($"{tabs[tabLevel]}}}{delimiter}");
 
         }
 
-        private void GeneratePropertyValue(XElement xElement, Type propertyType, int tabLevel)
+        private void GeneratePropertyValue(XElement xElement, Type propertyType, int tabLevel, string delimiter)
         {
             if(!xElement.HasElements)
             {
                 string value = GetValue(xElement, propertyType);
-                Console.WriteLine($"{value},");
+                Console.WriteLine($"{value}{delimiter}");
             }
             else
             {
-                GenerateNewClass(xElement, propertyType, tabLevel + 1);
+                GenerateNewClass(xElement, propertyType, tabLevel + 1, delimiter);
             }
         }
 
