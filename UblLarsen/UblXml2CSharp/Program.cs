@@ -29,7 +29,7 @@ namespace UblXml2CSharp
             foreach (var xmlFileInfo in xmlSamplesDir.GetFiles("*.xml"))
             {
                 XDocument doc = XDocument.Load(xmlFileInfo.FullName);
-                if(ublDocumentTypesDictionary.ContainsKey(doc.Root.Name))
+                if (ublDocumentTypesDictionary.ContainsKey(doc.Root.Name))
                 {
                     var docType = ublDocumentTypesDictionary[doc.Root.Name];
                     var xmlToCs = new XmlToCs(doc.Root, docType, xmlFileInfo.Name);
@@ -47,7 +47,7 @@ namespace UblXml2CSharp
             }
 
             // test one for now...
-            docsToConvert.Skip(1).First().GenerateClass();
+            docsToConvert.Skip(2).First().GenerateClass();
 
         }
 

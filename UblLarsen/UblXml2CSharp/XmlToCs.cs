@@ -14,9 +14,15 @@ namespace UblXml2CSharp
     {
         private const int maxLevel = 20;
         private static string[] tabs = Enumerable.Range(0, maxLevel).Select(n => new string(' ', n * 4)).ToArray();
-        private static List<Type> numericBaseTypes = typeof(UblBaseDocumentType).Assembly.GetTypes()
-            .Where(t => t.Namespace == "UblLarsen.Ubl2.Cctscct")
-            .Where(t => t.GetProperty("Value").PropertyType == typeof(decimal)).ToList();
+
+        private static Type[] nonStringUdtTypes = new[] { typeof(decimal), typeof(bool) };
+        private static List<Type> nonStringQuotableUblUdtTypes = typeof(UblBaseDocumentType).Assembly.GetTypes()
+            .Where(t => t.Namespace == "UblLarsen.Ubl2.Udt" && nonStringUdtTypes.Contains(t.GetProperty("Value").PropertyType))
+            .ToList();
+
+        private static List<Type> oneLineAssignableUblUdtTypes = typeof(UblBaseDocumentType).Assembly.GetTypes()
+            .Where(t => t.Namespace == "UblLarsen.Ubl2.Udt" && t.GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "op_Implicit").Any())
+            .ToList();
 
         private Type docType;
         private XElement rootElement;
@@ -57,11 +63,6 @@ namespace UblXml2CSharp
                 var xElements = xElement.Elements().GroupBy(g => g.Name.LocalName).ToList();
                 foreach (var elem in xElements)
                 {
-                    foreach (var attribute in elem.Attributes())
-                    {
-                        WriteLine(tabLevel + 1, attribute.ToString().Replace("=", " = ")+" (Attributes are fucked)"); // repeated!!!! why?
-                    }
-
                     string name = elem.First().Name.LocalName;
                     PropertyInfo propInfo = propType.GetProperty(name);
                     Write(tabLevel + 1, $"{name} = ");
@@ -70,19 +71,18 @@ namespace UblXml2CSharp
                     {
                         GenerateArray(elem.ToArray(), propInfo.PropertyType, tabLevel + 1, localDelimiter);
                     }
-                    else if(false) // something automagically make class instead of assignment
-                    {
-                        // HulaHulaAchbarMakeClass()
-                    }
                     else
                     {
-                        // should not generate simple assignment if HasAttributes HulaHulaAchbar
                         GeneratePropertyValue(elem.First(), propInfo.PropertyType, tabLevel, localDelimiter);
                     }
                 }
             }
             else
             {
+                foreach (var attribute in xElement.Attributes())
+                {
+                    WriteLine(tabLevel + 1, attribute.ToString().Replace("=", " = ") + ",");
+                }
                 string value = GetValue(xElement, propType);
                 WriteLine(tabLevel + 1, $"Value = {value}");
             }
@@ -92,7 +92,7 @@ namespace UblXml2CSharp
         private string GetValue(XElement xElement, Type propType)
         {
             string value = xElement.Value;
-            if (numericBaseTypes.Contains(propType.BaseType))
+            if (nonStringQuotableUblUdtTypes.Contains(propType))
                 return value;
             return "\"" + value + "\"";
         }
@@ -108,12 +108,11 @@ namespace UblXml2CSharp
                 GenerateNewClass(item, propType.GetElementType(), tabLevel + 1, localDelimiter);
             }
             WriteLine(tabLevel, $"}}{delimiter}");
-
         }
 
         private void GeneratePropertyValue(XElement xElement, Type propertyType, int tabLevel, string delimiter)
         {
-            if(!xElement.HasElements)
+            if(CanBeGeneratedAsOneLinerAssignment(xElement, propertyType))
             {
                 string value = GetValue(xElement, propertyType);
                 WriteLine(0, $"{value}{delimiter}");
@@ -122,6 +121,21 @@ namespace UblXml2CSharp
             {
                 GenerateNewClass(xElement, propertyType, tabLevel + 1, delimiter);
             }
+        }
+
+        private bool CanBeGeneratedAsOneLinerAssignment(XElement xElement, Type propertyType)
+        {
+            if (xElement.HasElements || xElement.HasAttributes)
+                return false;
+            // Only basetypes from UblLarsen.Ubl2.Udt having static implicit assignment functions can be assigned as a one-liner when Attributes and Elements are empty
+            var ublType = propertyType.Assembly == typeof(UblBaseDocumentType).Assembly;
+            if(ublType)
+            {
+                if (oneLineAssignableUblUdtTypes.Contains(propertyType))
+                    return true;
+                return false;
+            }
+            return true;
         }
 
         private void GenerateNamespaceDeclaration(int tabLevel)
@@ -146,8 +160,5 @@ namespace UblXml2CSharp
         {
             Console.Write($"{tabs[tabLevel]}{s}");
         }
-
-
-
     }
 }
