@@ -186,6 +186,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UblLarsen.Tools", "UblLarse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UblXml2CSharp", "UblXml2CSharp\UblXml2CSharp.csproj", "{17742495-4579-415F-ACD5-18CDCDA29716}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UblLarsen.IntegrationV2_1.Test", "UblLarsen.IntegrationV2_1.Test\UblLarsen.IntegrationV2_1.Test.csproj", "{2DECCFF0-5710-4F75-819B-3308CF3CDE8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -292,6 +294,18 @@ Global
 		{17742495-4579-415F-ACD5-18CDCDA29716}.Release|x64.Build.0 = Release|Any CPU
 		{17742495-4579-415F-ACD5-18CDCDA29716}.Release|x86.ActiveCfg = Release|Any CPU
 		{17742495-4579-415F-ACD5-18CDCDA29716}.Release|x86.Build.0 = Release|Any CPU
+		{2DECCFF0-5710-4F75-819B-3308CF3CDE8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DECCFF0-5710-4F75-819B-3308CF3CDE8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DECCFF0-5710-4F75-819B-3308CF3CDE8F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2DECCFF0-5710-4F75-819B-3308CF3CDE8F}.Debug|x64.Build.0 = Debug|Any CPU
+		{2DECCFF0-5710-4F75-819B-3308CF3CDE8F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2DECCFF0-5710-4F75-819B-3308CF3CDE8F}.Debug|x86.Build.0 = Debug|Any CPU
+		{2DECCFF0-5710-4F75-819B-3308CF3CDE8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DECCFF0-5710-4F75-819B-3308CF3CDE8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DECCFF0-5710-4F75-819B-3308CF3CDE8F}.Release|x64.ActiveCfg = Release|Any CPU
+		{2DECCFF0-5710-4F75-819B-3308CF3CDE8F}.Release|x64.Build.0 = Release|Any CPU
+		{2DECCFF0-5710-4F75-819B-3308CF3CDE8F}.Release|x86.ActiveCfg = Release|Any CPU
+		{2DECCFF0-5710-4F75-819B-3308CF3CDE8F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -308,6 +322,7 @@ Global
 		{86E5C1C6-A529-4110-A729-50B1F98330B1} = {F3DCB420-CA59-4CB1-AE5C-097EC7277EDE}
 		{724CA043-499C-46C3-84AF-1355C036130F} = {6E69500B-A38D-4EAB-A0B7-7F362C654DC5}
 		{17742495-4579-415F-ACD5-18CDCDA29716} = {6E69500B-A38D-4EAB-A0B7-7F362C654DC5}
+		{2DECCFF0-5710-4F75-819B-3308CF3CDE8F} = {F3DCB420-CA59-4CB1-AE5C-097EC7277EDE}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = UblLarsen.vsmdi

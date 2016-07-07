@@ -17,7 +17,7 @@ namespace UblXml2CSharp
 
         static void Main(string[] args)
         {
-            string cSharpOutputDir = "UblDoc";
+            string cSharpOutputDir = @"..\..\..\UblLarsen.IntegrationV2_1.Test\UblClass";
             string ublXmlInputDir = @"..\..\..\UBL-2.1\xml";
             List<XmlToCs> docsToConvert = new List<XmlToCs>();
 
@@ -41,13 +41,19 @@ namespace UblXml2CSharp
                 }
             }
 
+            //var d = docsToConvert.Where(n => n.IdentifierName == "UBLInvoice20ExampleNS4").Single();// Skip(17).First().SaveToDir(cSharpOutputDir);
+            //d.GenerateClass();
+            //d.SaveToDir(cSharpOutputDir);
+            //return;
+
             foreach (var xmlToCs in docsToConvert)
             {
-                //xmlToCs.GenerateClass();
+                xmlToCs.GenerateClass();
+                Console.WriteLine($"{xmlToCs.IdentifierName} \t{xmlToCs.CSharpFilename}");
+                xmlToCs.SaveToDir(cSharpOutputDir);
             }
 
             // test one for now...
-            docsToConvert.Skip(2).First().GenerateClass();
 
         }
 

@@ -12,12 +12,35 @@ namespace UblXml2CSharp
 {
     internal class XmlToCs
     {
+        private const string scFileHeaderContent = @"using System.Xml;
+using UblLarsen.Ubl2;
+using UblLarsen.Ubl2.Cac;
+using UblLarsen.Ubl2.Ext;
+using UblLarsen.Ubl2.Udt;
+
+namespace UblLarsen.Test.UblClass
+{0}
+    internal class {1}
+    {0}
+        public static {2} Create()
+        {0}
+            return ";
+        private const string scFileFooterContent = @";
+        }
+    }
+}
+";
+
         private const int maxLevel = 20;
         private static string[] tabs = Enumerable.Range(0, maxLevel).Select(n => new string(' ', n * 4)).ToArray();
 
         private static Type[] nonStringUdtTypes = new[] { typeof(decimal), typeof(bool) };
-        private static List<Type> nonStringQuotableUblUdtTypes = typeof(UblBaseDocumentType).Assembly.GetTypes()
-            .Where(t => t.Namespace == "UblLarsen.Ubl2.Udt" && nonStringUdtTypes.Contains(t.GetProperty("Value").PropertyType))
+        private static List<Type> decimalUblUdtTypes = typeof(UblBaseDocumentType).Assembly.GetTypes()
+            .Where(t => t.Namespace == "UblLarsen.Ubl2.Udt" && t.GetProperty("Value").PropertyType == typeof(decimal))
+            .ToList();
+
+        private static List<Type> binaryUblUdtTypes = typeof(UblBaseDocumentType).Assembly.GetTypes()
+            .Where(t => t.Namespace == "UblLarsen.Ubl2.Udt" && t.GetProperty("Value").PropertyType == typeof(byte[]))
             .ToList();
 
         private static List<Type> oneLineAssignableUblUdtTypes = typeof(UblBaseDocumentType).Assembly.GetTypes()
@@ -49,8 +72,20 @@ namespace UblXml2CSharp
 
         public bool GenerateClass()
         {
-            GenerateNewClass(rootElement, docType, 2, "");
+            string s = string.Format(scFileHeaderContent, "{", this.IdentifierName, this.docType.Name);
+            Write(0, s);
+            GenerateNewClass(rootElement, docType, 3, "");
+            Write(0, scFileFooterContent);
             return true;
+        }
+
+        internal void SaveToDir(string cSharpOutputDir)
+        {
+            string fullPath = Path.Combine(cSharpOutputDir, CSharpFilename);
+            using (TextWriter writer = File.CreateText(fullPath))
+            {
+                writer.Write(sb.ToString());
+            }
         }
 
         private void GenerateNewClass(XElement xElement, Type propType, int tabLevel, string delimiter)
@@ -70,6 +105,7 @@ namespace UblXml2CSharp
                         continue;
                     }
                     PropertyInfo propInfo = GetPropertyThatMightBeRenamed(propType, name);
+                    name = propInfo.Name;
                     Write(tabLevel + 1, $"{name} = ");
                     string localDelimiter = (elem == xElements.Last()) ? "" : ",";
                     if (propInfo.PropertyType.IsArray)
@@ -105,9 +141,28 @@ namespace UblXml2CSharp
         private string GetValue(XElement xElement, Type propType)
         {
             string value = xElement.Value;
-            if (nonStringQuotableUblUdtTypes.Contains(propType))
+            if (decimalUblUdtTypes.Contains(propType))
+            {
+                return value+"M";
+            }
+            if (propType == typeof(UblLarsen.Ubl2.Udt.IndicatorType))
+            {
                 return value;
-            return "\"" + value + "\"";
+            }
+            if (value.Contains("\""))
+                value = value.Replace("\"", "\\\"");
+            value = "\"" + value + "\"";
+            if (value.IndexOfAny(new char[] { '\r', '\n' }) > 0)
+                value = "@" + value;
+            if (propType == typeof(UblLarsen.Ubl2.Udt.DateType))
+            {
+                return $"XmlConvert.ToDateTime({value}, XmlDateTimeSerializationMode.RoundtripKind)";
+            }
+            if(binaryUblUdtTypes.Contains(propType))
+            {
+                value = "System.Text.Encoding.UTF8.GetBytes(" + value + ")";
+            }
+            return value;
         }
 
         private void GenerateArray(XElement[] xElements, Type propType, int tabLevel, string delimiter)
@@ -138,7 +193,8 @@ namespace UblXml2CSharp
 
         private bool CanBeGeneratedAsOneLinerAssignment(XElement xElement, Type propertyType)
         {
-            if (xElement.HasElements || xElement.HasAttributes)
+            var hasAttributes = xElement.Attributes().Where(a => a.IsNamespaceDeclaration == false).Any();
+            if (xElement.HasElements || hasAttributes)
                 return false;
             // Only basetypes from UblLarsen.Ubl2.Udt having static implicit assignment functions can be assigned as a one-liner when Attributes and Elements are empty
             var ublType = propertyType.Assembly == typeof(UblBaseDocumentType).Assembly;
@@ -164,14 +220,21 @@ namespace UblXml2CSharp
             WriteLine(tabLevel, "}");
         }
 
-        private void WriteLine(int tablevel, string s)
+        private void WriteLine(int tabLevel, string s)
         {
-            Write(tablevel, s + Environment.NewLine);
+            //Write(tablevel, s + Environment.NewLine);
+            sb.AppendLine($"{tabs[tabLevel]}{s}");
         }
 
         private void Write(int tabLevel, string s)
         {
-            Console.Write($"{tabs[tabLevel]}{s}");
+            //Console.Write($"{tabs[tabLevel]}{s}");
+            sb.Append($"{tabs[tabLevel]}{s}");
+        }
+
+        public override string ToString()
+        {
+            return sb.ToString();
         }
     }
 }
