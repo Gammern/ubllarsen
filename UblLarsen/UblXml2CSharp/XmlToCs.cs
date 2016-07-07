@@ -64,7 +64,12 @@ namespace UblXml2CSharp
                 foreach (var elem in xElements)
                 {
                     string name = elem.First().Name.LocalName;
-                    PropertyInfo propInfo = propType.GetProperty(name);
+                    if (name == "UBLExtension")
+                    {
+                        // Don't know how to handle this one yet. ExtensionContent = "new XElement.Parse(something)"?
+                        continue;
+                    }
+                    PropertyInfo propInfo = GetPropertyThatMightBeRenamed(propType, name);
                     Write(tabLevel + 1, $"{name} = ");
                     string localDelimiter = (elem == xElements.Last()) ? "" : ",";
                     if (propInfo.PropertyType.IsArray)
@@ -86,7 +91,15 @@ namespace UblXml2CSharp
                 string value = GetValue(xElement, propType);
                 WriteLine(tabLevel + 1, $"Value = {value}");
             }
-            WriteLine(tabLevel,$"}}{delimiter}");
+            WriteLine(tabLevel, $"}}{delimiter}");
+        }
+
+        private PropertyInfo GetPropertyThatMightBeRenamed(Type propType, string name)
+        {
+            var propInfo = propType.GetProperty(name);
+            if (propInfo == null)
+                propInfo = propType.GetProperty(name + "1");
+            return propInfo;
         }
 
         private string GetValue(XElement xElement, Type propType)
@@ -103,7 +116,7 @@ namespace UblXml2CSharp
             WriteLine(tabLevel, "{");
             foreach (var item in xElements)
             {
-                Write(tabLevel+1, "");
+                Write(tabLevel + 1, "");
                 string localDelimiter = (item == xElements.Last()) ? "" : ",";
                 GenerateNewClass(item, propType.GetElementType(), tabLevel + 1, localDelimiter);
             }
@@ -112,7 +125,7 @@ namespace UblXml2CSharp
 
         private void GeneratePropertyValue(XElement xElement, Type propertyType, int tabLevel, string delimiter)
         {
-            if(CanBeGeneratedAsOneLinerAssignment(xElement, propertyType))
+            if (CanBeGeneratedAsOneLinerAssignment(xElement, propertyType))
             {
                 string value = GetValue(xElement, propertyType);
                 WriteLine(0, $"{value}{delimiter}");
@@ -129,7 +142,7 @@ namespace UblXml2CSharp
                 return false;
             // Only basetypes from UblLarsen.Ubl2.Udt having static implicit assignment functions can be assigned as a one-liner when Attributes and Elements are empty
             var ublType = propertyType.Assembly == typeof(UblBaseDocumentType).Assembly;
-            if(ublType)
+            if (ublType)
             {
                 if (oneLineAssignableUblUdtTypes.Contains(propertyType))
                     return true;
@@ -146,7 +159,7 @@ namespace UblXml2CSharp
             WriteLine(tabLevel, "{");
             foreach (var nsatt in namespaceAttributes)
             {
-                WriteLine(tabLevel+1, $"new XmlQualifiedName(\"{nsatt.Name.LocalName}\",\"{nsatt.Value}\"),");
+                WriteLine(tabLevel + 1, $"new XmlQualifiedName(\"{nsatt.Name.LocalName}\",\"{nsatt.Value}\"),");
             }
             WriteLine(tabLevel, "}");
         }
