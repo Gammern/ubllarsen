@@ -16,7 +16,7 @@ namespace UblLarsen.Test.UblClass
                 UBLVersionID = "2.1",
                 ID = "AB011",
                 CopyIndicator = false,
-                IssueDate = XmlConvert.ToDateTime("2010-04-10", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2010-04-10",
                 Note = new TextType[]
                 {
                     new TextType
@@ -217,8 +217,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

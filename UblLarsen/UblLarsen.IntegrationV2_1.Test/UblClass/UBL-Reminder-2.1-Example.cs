@@ -15,7 +15,7 @@ namespace UblLarsen.Test.UblClass
             {
                 UBLVersionID = "2.1",
                 ID = "12",
-                IssueDate = XmlConvert.ToDateTime("2010-04-14", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2010-04-14",
                 AccountingSupplierParty = new SupplierPartyType
                 {
                     Party = new PartyType
@@ -306,8 +306,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

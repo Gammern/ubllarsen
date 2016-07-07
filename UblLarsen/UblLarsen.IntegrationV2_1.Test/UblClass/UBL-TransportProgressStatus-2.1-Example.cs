@@ -15,7 +15,7 @@ namespace UblLarsen.Test.UblClass
             {
                 UBLVersionID = "2.1",
                 ID = "TPSR_1",
-                IssueDate = XmlConvert.ToDateTime("2011-10-03", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2011-10-03",
                 IssueTime = "14:30:10+01:00",
                 StatusAvailableIndicator = true,
                 SenderParty = new PartyType
@@ -151,17 +151,16 @@ namespace UblLarsen.Test.UblClass
                             {
                                 new PeriodType
                                 {
-                                    StartDate = XmlConvert.ToDateTime("2011-10-03", XmlDateTimeSerializationMode.RoundtripKind),
+                                    StartDate = "2011-10-03",
                                     StartTime = "18:30:10+01:00",
-                                    EndDate = XmlConvert.ToDateTime("2011-10-03", XmlDateTimeSerializationMode.RoundtripKind),
+                                    EndDate = "2011-10-03",
                                     EndTime = "18:35:10+01:00"
                                 }
                             }
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

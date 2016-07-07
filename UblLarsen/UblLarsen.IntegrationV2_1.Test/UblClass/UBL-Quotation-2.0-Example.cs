@@ -19,7 +19,7 @@ namespace UblLarsen.Test.UblClass
                 ID = "QIY7655",
                 CopyIndicator = false,
                 UUID = "4D07786B-DA6D-439F-82D1-6FFFC7F4E3B1",
-                IssueDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2005-06-20",
                 Note = new TextType[]
                 {
                     new TextType
@@ -29,14 +29,14 @@ namespace UblLarsen.Test.UblClass
                 },
                 ValidityPeriod = new PeriodType
                 {
-                    StartDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind),
-                    EndDate = XmlConvert.ToDateTime("2005-07-20", XmlDateTimeSerializationMode.RoundtripKind)
+                    StartDate = "2005-06-20",
+                    EndDate = "2005-07-20"
                 },
                 RequestForQuotationDocumentReference = new DocumentReferenceType
                 {
                     ID = "G867B",
                     UUID = "8D076867-AE6D-439F-8281-5AAFC7F4E3B1",
-                    IssueDate = XmlConvert.ToDateTime("2005-06-19", XmlDateTimeSerializationMode.RoundtripKind)
+                    IssueDate = "2005-06-19"
                 },
                 SellerSupplierParty = new SupplierPartyType
                 {
@@ -185,9 +185,9 @@ namespace UblLarsen.Test.UblClass
                         },
                         RequestedDeliveryPeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2005-06-29", XmlDateTimeSerializationMode.RoundtripKind),
+                            StartDate = "2005-06-29",
                             StartTime = "09:30:47.0Z",
-                            EndDate = XmlConvert.ToDateTime("2005-06-29", XmlDateTimeSerializationMode.RoundtripKind),
+                            EndDate = "2005-06-29",
                             EndTime = "09:30:47.0Z"
                         }
                     }
@@ -417,8 +417,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

@@ -19,7 +19,7 @@ namespace UblLarsen.Test.UblClass
                 ID = "G867B",
                 CopyIndicator = false,
                 UUID = "8D076867-AE6D-439F-8281-5AAFC7F4E3B1",
-                IssueDate = XmlConvert.ToDateTime("2005-06-19", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2005-06-19",
                 IssueTime = "11:32:26.0Z",
                 Note = new TextType[]
                 {
@@ -31,7 +31,7 @@ namespace UblLarsen.Test.UblClass
                 CatalogueDocumentReference = new DocumentReferenceType
                 {
                     ID = "2005-9A",
-                    IssueDate = XmlConvert.ToDateTime("2005-11-03", XmlDateTimeSerializationMode.RoundtripKind)
+                    IssueDate = "2005-11-03"
                 },
                 OriginatorCustomerParty = new CustomerPartyType
                 {
@@ -180,9 +180,9 @@ namespace UblLarsen.Test.UblClass
                         },
                         RequestedDeliveryPeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2005-06-29", XmlDateTimeSerializationMode.RoundtripKind),
+                            StartDate = "2005-06-29",
                             StartTime = "09:30:47.0Z",
-                            EndDate = XmlConvert.ToDateTime("2005-06-29", XmlDateTimeSerializationMode.RoundtripKind),
+                            EndDate = "2005-06-29",
                             EndTime = "09:30:47.0Z"
                         }
                     }
@@ -214,7 +214,7 @@ namespace UblLarsen.Test.UblClass
                             new DocumentReferenceType
                             {
                                 ID = "GHJ76849",
-                                IssueDate = XmlConvert.ToDateTime("2002-08-13", XmlDateTimeSerializationMode.RoundtripKind)
+                                IssueDate = "2002-08-13"
                             }
                         }
                     }
@@ -261,8 +261,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

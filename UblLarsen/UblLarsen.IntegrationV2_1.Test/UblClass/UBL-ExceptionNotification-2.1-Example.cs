@@ -18,7 +18,7 @@ namespace UblLarsen.Test.UblClass
                 ID = "EN758494",
                 CopyIndicator = false,
                 UUID = "349ABBAE-DF9D-40B4-849F-94C5FF9D1AF4",
-                IssueDate = XmlConvert.ToDateTime("2010-04-26", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2010-04-26",
                 IssueTime = "12:00:01.000",
                 Note = new TextType[]
                 {
@@ -29,8 +29,8 @@ namespace UblLarsen.Test.UblClass
                 },
                 ExceptionObservationPeriod = new PeriodType
                 {
-                    StartDate = XmlConvert.ToDateTime("2010-03-26", XmlDateTimeSerializationMode.RoundtripKind),
-                    EndDate = XmlConvert.ToDateTime("2010-04-26", XmlDateTimeSerializationMode.RoundtripKind)
+                    StartDate = "2010-03-26",
+                    EndDate = "2010-04-26"
                 },
                 SenderParty = new PartyType
                 {
@@ -211,14 +211,14 @@ namespace UblLarsen.Test.UblClass
                         },
                         ExceptionObservationPeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2010-03-26", XmlDateTimeSerializationMode.RoundtripKind),
-                            EndDate = XmlConvert.ToDateTime("2010-04-10", XmlDateTimeSerializationMode.RoundtripKind)
+                            StartDate = "2010-03-26",
+                            EndDate = "2010-04-10"
                         },
                         ForecastException = new ForecastExceptionType
                         {
                             ForecastPurposeCode = "ORDER_FORECAST",
                             ForecastTypeCode = "TOTAL",
-                            IssueDate = XmlConvert.ToDateTime("2010-04-17", XmlDateTimeSerializationMode.RoundtripKind),
+                            IssueDate = "2010-04-17",
                             IssueTime = "10:00:00.000",
                             DataSourceCode = "BUYER"
                         },
@@ -247,8 +247,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

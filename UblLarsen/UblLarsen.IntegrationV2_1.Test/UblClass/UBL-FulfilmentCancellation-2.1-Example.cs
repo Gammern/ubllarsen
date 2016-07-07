@@ -16,7 +16,7 @@ namespace UblLarsen.Test.UblClass
                 UBLVersionID = "2.1",
                 ID = "00384",
                 CopyIndicator = false,
-                IssueDate = XmlConvert.ToDateTime("2005-06-22", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2005-06-22",
                 Note = new TextType[]
                 {
                     new TextType
@@ -38,7 +38,7 @@ namespace UblLarsen.Test.UblClass
                     {
                         ID = "565899",
                         UUID = "88C7280E-8F10-419F-9949-8EFFFA2842B8",
-                        IssueDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind)
+                        IssueDate = "2005-06-20"
                     }
                 },
                 ReceiptDocumentReference = new DocumentReferenceType[]
@@ -47,7 +47,7 @@ namespace UblLarsen.Test.UblClass
                     {
                         ID = "658398",
                         UUID = "89F82FA6-5331-491D-83BC-7B6CA7FD047C",
-                        IssueDate = XmlConvert.ToDateTime("2005-06-21", XmlDateTimeSerializationMode.RoundtripKind)
+                        IssueDate = "2005-06-21"
                     }
                 },
                 OrderReference = new OrderReferenceType[]
@@ -57,7 +57,7 @@ namespace UblLarsen.Test.UblClass
                         ID = "AEG012345",
                         SalesOrderID = "CON0095678",
                         UUID = "6E09886B-DC6E-439F-82D1-7CCAC7F4E3B1",
-                        IssueDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind)
+                        IssueDate = "2005-06-20"
                     }
                 },
                 BuyerCustomerParty = new CustomerPartyType
@@ -183,8 +183,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

@@ -22,7 +22,7 @@ namespace UblLarsen.Test.UblClass
                     Value = "urn:www.cenbii.eu:profile:BII01:ver1.0"
                 },
                 ID = "34",
-                IssueDate = XmlConvert.ToDateTime("2010-01-20", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2010-01-20",
                 IssueTime = "12:30:00",
                 Note = new TextType[]
                 {
@@ -37,7 +37,7 @@ namespace UblLarsen.Test.UblClass
                 {
                     new PeriodType
                     {
-                        EndDate = XmlConvert.ToDateTime("2010-01-31", XmlDateTimeSerializationMode.RoundtripKind)
+                        EndDate = "2010-01-31"
                     }
                 },
                 QuotationDocumentReference = new DocumentReferenceType
@@ -371,8 +371,8 @@ namespace UblLarsen.Test.UblClass
                         },
                         RequestedDeliveryPeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2010-02-10", XmlDateTimeSerializationMode.RoundtripKind),
-                            EndDate = XmlConvert.ToDateTime("2010-02-25", XmlDateTimeSerializationMode.RoundtripKind)
+                            StartDate = "2010-02-10",
+                            EndDate = "2010-02-25"
                         },
                         DeliveryParty = new PartyType
                         {
@@ -534,8 +534,8 @@ namespace UblLarsen.Test.UblClass
                                 {
                                     RequestedDeliveryPeriod = new PeriodType
                                     {
-                                        StartDate = XmlConvert.ToDateTime("2010-02-10", XmlDateTimeSerializationMode.RoundtripKind),
-                                        EndDate = XmlConvert.ToDateTime("2010-02-25", XmlDateTimeSerializationMode.RoundtripKind)
+                                        StartDate = "2010-02-10",
+                                        EndDate = "2010-02-25"
                                     }
                                 }
                             },
@@ -648,8 +648,8 @@ namespace UblLarsen.Test.UblClass
                                 {
                                     RequestedDeliveryPeriod = new PeriodType
                                     {
-                                        StartDate = XmlConvert.ToDateTime("2010-02-10", XmlDateTimeSerializationMode.RoundtripKind),
-                                        EndDate = XmlConvert.ToDateTime("2010-02-25", XmlDateTimeSerializationMode.RoundtripKind)
+                                        StartDate = "2010-02-10",
+                                        EndDate = "2010-02-25"
                                     }
                                 }
                             },
@@ -728,8 +728,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

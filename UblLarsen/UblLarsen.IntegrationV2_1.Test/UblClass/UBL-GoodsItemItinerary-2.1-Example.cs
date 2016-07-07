@@ -15,7 +15,7 @@ namespace UblLarsen.Test.UblClass
             {
                 UBLVersionID = "2.1",
                 ID = "1",
-                IssueDate = XmlConvert.ToDateTime("2011-09-13", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2011-09-13",
                 IssueTime = "10:05:20+01:00",
                 VersionID = "1",
                 TransportExecutionPlanReferenceID = "TEP_1",
@@ -295,9 +295,9 @@ namespace UblLarsen.Test.UblClass
                                     {
                                         new PeriodType
                                         {
-                                            StartDate = XmlConvert.ToDateTime("2011-10-03", XmlDateTimeSerializationMode.RoundtripKind),
+                                            StartDate = "2011-10-03",
                                             StartTime = "09:30:10+01:00",
-                                            EndDate = XmlConvert.ToDateTime("2011-10-03", XmlDateTimeSerializationMode.RoundtripKind),
+                                            EndDate = "2011-10-03",
                                             EndTime = "12:30:10+01:00"
                                         }
                                     }
@@ -327,9 +327,9 @@ namespace UblLarsen.Test.UblClass
                                     {
                                         new PeriodType
                                         {
-                                            StartDate = XmlConvert.ToDateTime("2011-10-03", XmlDateTimeSerializationMode.RoundtripKind),
+                                            StartDate = "2011-10-03",
                                             StartTime = "18:30:10+01:00",
-                                            EndDate = XmlConvert.ToDateTime("2011-10-03", XmlDateTimeSerializationMode.RoundtripKind),
+                                            EndDate = "2011-10-03",
                                             EndTime = "21:30:10+01:00"
                                         }
                                     }
@@ -473,9 +473,9 @@ namespace UblLarsen.Test.UblClass
                                     {
                                         new PeriodType
                                         {
-                                            StartDate = XmlConvert.ToDateTime("2011-10-04", XmlDateTimeSerializationMode.RoundtripKind),
+                                            StartDate = "2011-10-04",
                                             StartTime = "09:30:10+01:00",
-                                            EndDate = XmlConvert.ToDateTime("2011-10-04", XmlDateTimeSerializationMode.RoundtripKind),
+                                            EndDate = "2011-10-04",
                                             EndTime = "09:30:10+01:00"
                                         }
                                     }
@@ -499,9 +499,9 @@ namespace UblLarsen.Test.UblClass
                                     {
                                         new PeriodType
                                         {
-                                            StartDate = XmlConvert.ToDateTime("2011-10-04", XmlDateTimeSerializationMode.RoundtripKind),
+                                            StartDate = "2011-10-04",
                                             StartTime = "15:30:10+01:00",
-                                            EndDate = XmlConvert.ToDateTime("2011-10-04", XmlDateTimeSerializationMode.RoundtripKind),
+                                            EndDate = "2011-10-04",
                                             EndTime = "18:30:10+01:00"
                                         }
                                     }
@@ -659,9 +659,9 @@ namespace UblLarsen.Test.UblClass
                                     {
                                         new PeriodType
                                         {
-                                            StartDate = XmlConvert.ToDateTime("2011-10-06", XmlDateTimeSerializationMode.RoundtripKind),
+                                            StartDate = "2011-10-06",
                                             StartTime = "09:30:10+01:00",
-                                            EndDate = XmlConvert.ToDateTime("2011-10-06", XmlDateTimeSerializationMode.RoundtripKind),
+                                            EndDate = "2011-10-06",
                                             EndTime = "12:30:10+01:00"
                                         }
                                     }
@@ -684,9 +684,9 @@ namespace UblLarsen.Test.UblClass
                                     {
                                         new PeriodType
                                         {
-                                            StartDate = XmlConvert.ToDateTime("2011-10-06", XmlDateTimeSerializationMode.RoundtripKind),
+                                            StartDate = "2011-10-06",
                                             StartTime = "12:30:10+01:00",
-                                            EndDate = XmlConvert.ToDateTime("2011-10-06", XmlDateTimeSerializationMode.RoundtripKind),
+                                            EndDate = "2011-10-06",
                                             EndTime = "15:30:10+01:00"
                                         }
                                     }
@@ -695,8 +695,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

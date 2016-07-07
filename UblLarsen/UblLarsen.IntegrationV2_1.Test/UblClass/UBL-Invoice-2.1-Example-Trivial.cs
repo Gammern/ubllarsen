@@ -14,13 +14,13 @@ namespace UblLarsen.Test.UblClass
             return new InvoiceType
             {
                 ID = "123",
-                IssueDate = XmlConvert.ToDateTime("2011-09-22", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2011-09-22",
                 InvoicePeriod = new PeriodType[]
                 {
                     new PeriodType
                     {
-                        StartDate = XmlConvert.ToDateTime("2011-08-01", XmlDateTimeSerializationMode.RoundtripKind),
-                        EndDate = XmlConvert.ToDateTime("2011-08-31", XmlDateTimeSerializationMode.RoundtripKind)
+                        StartDate = "2011-08-01",
+                        EndDate = "2011-08-31"
                     }
                 },
                 AccountingSupplierParty = new SupplierPartyType
@@ -79,8 +79,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

@@ -23,7 +23,7 @@ namespace UblLarsen.Test.UblClass
                 CustomizationID = "urn:X-demo:TransportShipments",
                 ProfileID = "urn:X-demo:CoreElement",
                 ID = "1234",
-                IssueDate = XmlConvert.ToDateTime("2010-08-13", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2010-08-13",
                 IssueTime = "15:30:00.0Z",
                 Description = new TextType[]
                 {
@@ -74,8 +74,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

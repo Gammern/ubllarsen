@@ -15,7 +15,7 @@ namespace UblLarsen.Test.UblClass
             {
                 UBLVersionID = "2.1",
                 ID = "TPS_1",
-                IssueDate = XmlConvert.ToDateTime("2011-10-03", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2011-10-03",
                 IssueTime = "14:30:10+01:00",
                 SenderParty = new PartyType
                 {
@@ -105,8 +105,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

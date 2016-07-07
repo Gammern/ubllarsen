@@ -32,5 +32,4 @@ namespace UblLarsen.Ubl2.Udt
             return string.IsNullOrEmpty(value) ? null : new DateType { Value = XmlConvert.ToDateTime(value, XmlDateTimeSerializationMode.RoundtripKind) };
         }
     }
-
 }

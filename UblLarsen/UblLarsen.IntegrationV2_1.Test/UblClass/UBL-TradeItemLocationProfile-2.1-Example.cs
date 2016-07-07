@@ -18,7 +18,7 @@ namespace UblLarsen.Test.UblClass
                 ID = "TILP758494",
                 CopyIndicator = false,
                 UUID = "349ABBAE-DF9D-40B4-849F-94C5FF9D1AF4",
-                IssueDate = XmlConvert.ToDateTime("2005-01-10", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2005-01-10",
                 IssueTime = "12:00:01.000",
                 Note = new TextType[]
                 {
@@ -30,8 +30,8 @@ namespace UblLarsen.Test.UblClass
                 ProfileStatusCode = "NEW",
                 Period = new PeriodType
                 {
-                    StartDate = XmlConvert.ToDateTime("2005-02-26", XmlDateTimeSerializationMode.RoundtripKind),
-                    EndDate = XmlConvert.ToDateTime("2005-12-26", XmlDateTimeSerializationMode.RoundtripKind)
+                    StartDate = "2005-02-26",
+                    EndDate = "2005-12-26"
                 },
                 SenderParty = new PartyType
                 {
@@ -210,8 +210,8 @@ namespace UblLarsen.Test.UblClass
                         },
                         EffectivePeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2005-02-26", XmlDateTimeSerializationMode.RoundtripKind),
-                            EndDate = XmlConvert.ToDateTime("2005-12-26", XmlDateTimeSerializationMode.RoundtripKind)
+                            StartDate = "2005-02-26",
+                            EndDate = "2005-12-26"
                         },
                         Item = new ItemType
                         {
@@ -247,8 +247,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

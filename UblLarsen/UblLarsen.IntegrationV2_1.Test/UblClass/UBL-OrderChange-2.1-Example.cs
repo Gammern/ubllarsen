@@ -22,7 +22,7 @@ namespace UblLarsen.Test.UblClass
                     Value = "urn:www.cenbii.eu:profile:BIIXYZ:ver1.0"
                 },
                 ID = "7",
-                IssueDate = XmlConvert.ToDateTime("2010-01-21", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2010-01-21",
                 IssueTime = "12:30:00",
                 SequenceNumberID = "1",
                 Note = new TextType[]
@@ -140,8 +140,8 @@ namespace UblLarsen.Test.UblClass
                                 {
                                     RequestedDeliveryPeriod = new PeriodType
                                     {
-                                        StartDate = XmlConvert.ToDateTime("2010-02-10", XmlDateTimeSerializationMode.RoundtripKind),
-                                        EndDate = XmlConvert.ToDateTime("2010-02-25", XmlDateTimeSerializationMode.RoundtripKind)
+                                        StartDate = "2010-02-10",
+                                        EndDate = "2010-02-25"
                                     }
                                 }
                             },
@@ -220,8 +220,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

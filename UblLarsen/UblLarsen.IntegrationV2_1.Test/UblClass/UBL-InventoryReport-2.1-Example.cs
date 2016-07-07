@@ -16,7 +16,7 @@ namespace UblLarsen.Test.UblClass
                 UBLVersionID = "2.1",
                 ID = "CC2679",
                 CopyIndicator = false,
-                IssueDate = XmlConvert.ToDateTime("2010-04-12", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2010-04-12",
                 Note = new TextType[]
                 {
                     new TextType
@@ -31,9 +31,9 @@ namespace UblLarsen.Test.UblClass
                 },
                 InventoryPeriod = new PeriodType
                 {
-                    StartDate = XmlConvert.ToDateTime("2010-04-11", XmlDateTimeSerializationMode.RoundtripKind),
+                    StartDate = "2010-04-11",
                     StartTime = "14:00:00",
-                    EndDate = XmlConvert.ToDateTime("2010-04-11", XmlDateTimeSerializationMode.RoundtripKind)
+                    EndDate = "2010-04-11"
                 },
                 RetailerCustomerParty = new CustomerPartyType
                 {
@@ -228,8 +228,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

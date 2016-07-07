@@ -15,7 +15,7 @@ namespace UblLarsen.Test.UblClass
             {
                 UBLVersionID = "2.1",
                 ID = "TOSL108",
-                IssueDate = XmlConvert.ToDateTime("2009-12-15", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2009-12-15",
                 Note = new TextType[]
                 {
                     new TextType
@@ -35,8 +35,8 @@ namespace UblLarsen.Test.UblClass
                 {
                     new PeriodType
                     {
-                        StartDate = XmlConvert.ToDateTime("2009-11-01", XmlDateTimeSerializationMode.RoundtripKind),
-                        EndDate = XmlConvert.ToDateTime("2009-11-30", XmlDateTimeSerializationMode.RoundtripKind)
+                        StartDate = "2009-11-01",
+                        EndDate = "2009-11-30"
                     }
                 },
                 OrderReference = new OrderReferenceType
@@ -1128,8 +1128,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

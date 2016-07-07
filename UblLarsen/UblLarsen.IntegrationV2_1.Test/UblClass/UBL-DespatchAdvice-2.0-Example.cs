@@ -19,7 +19,7 @@ namespace UblLarsen.Test.UblClass
                 ID = "565899",
                 CopyIndicator = false,
                 UUID = "88C7280E-8F10-419F-9949-8EFFFA2842B8",
-                IssueDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2005-06-20",
                 DocumentStatusCode = "NoStatus",
                 DespatchAdviceTypeCode = "delivery",
                 Note = new TextType[]
@@ -36,7 +36,7 @@ namespace UblLarsen.Test.UblClass
                         ID = "AEG012345",
                         SalesOrderID = "CON0095678",
                         UUID = "6E09886B-DC6E-439F-82D1-7CCAC7F4E3B1",
-                        IssueDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind)
+                        IssueDate = "2005-06-20"
                     }
                 },
                 DespatchSupplierParty = new SupplierPartyType
@@ -196,9 +196,9 @@ namespace UblLarsen.Test.UblClass
                         },
                         RequestedDeliveryPeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind),
+                            StartDate = "2005-06-20",
                             StartTime = "10:30:47.0Z",
-                            EndDate = XmlConvert.ToDateTime("2005-06-21", XmlDateTimeSerializationMode.RoundtripKind),
+                            EndDate = "2005-06-21",
                             EndTime = "10:30:47.0Z"
                         }
                     }
@@ -244,7 +244,7 @@ namespace UblLarsen.Test.UblClass
                                     ID = "AEG012345",
                                     SalesOrderID = "CON0095678",
                                     UUID = "6E09886B-DC6E-439F-82D1-7CCAC7F4E3B1",
-                                    IssueDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind)
+                                    IssueDate = "2005-06-20"
                                 }
                             }
                         },
@@ -273,15 +273,14 @@ namespace UblLarsen.Test.UblClass
                                     LotIdentification = new LotIdentificationType
                                     {
                                         LotNumberID = "546378239",
-                                        ExpiryDate = XmlConvert.ToDateTime("2010-01-01", XmlDateTimeSerializationMode.RoundtripKind)
+                                        ExpiryDate = "2010-01-01"
                                     }
                                 }
                             }
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

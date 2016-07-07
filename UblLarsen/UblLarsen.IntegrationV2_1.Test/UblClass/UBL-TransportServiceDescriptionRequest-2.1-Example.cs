@@ -15,7 +15,7 @@ namespace UblLarsen.Test.UblClass
             {
                 UBLVersionID = "2.1",
                 ID = "TSD_REQ_1",
-                IssueDate = XmlConvert.ToDateTime("2011-09-12", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2011-09-12",
                 IssueTime = "11:01:10+01:00",
                 SenderParty = new PartyType
                 {
@@ -180,8 +180,8 @@ namespace UblLarsen.Test.UblClass
                                     {
                                         new PeriodType
                                         {
-                                            StartDate = XmlConvert.ToDateTime("2011-10-03", XmlDateTimeSerializationMode.RoundtripKind),
-                                            EndDate = XmlConvert.ToDateTime("2011-10-03", XmlDateTimeSerializationMode.RoundtripKind)
+                                            StartDate = "2011-10-03",
+                                            EndDate = "2011-10-03"
                                         }
                                     }
                                 },
@@ -203,8 +203,8 @@ namespace UblLarsen.Test.UblClass
                                     {
                                         new PeriodType
                                         {
-                                            StartDate = XmlConvert.ToDateTime("2011-10-06", XmlDateTimeSerializationMode.RoundtripKind),
-                                            EndDate = XmlConvert.ToDateTime("2011-10-06", XmlDateTimeSerializationMode.RoundtripKind)
+                                            StartDate = "2011-10-06",
+                                            EndDate = "2011-10-06"
                                         }
                                     }
                                 }
@@ -212,8 +212,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

@@ -25,7 +25,7 @@ namespace UblLarsen.Test.UblClass
                 ID = "A00095678",
                 CopyIndicator = false,
                 UUID = "849FBBCE-E081-40B4-906C-94C5FF9D1AC3",
-                IssueDate = XmlConvert.ToDateTime("2005-06-21", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2005-06-21",
                 InvoiceTypeCode = "SalesInvoice",
                 Note = new TextType[]
                 {
@@ -34,13 +34,13 @@ namespace UblLarsen.Test.UblClass
                         Value = "sample"
                     }
                 },
-                TaxPointDate = XmlConvert.ToDateTime("2005-06-21", XmlDateTimeSerializationMode.RoundtripKind),
+                TaxPointDate = "2005-06-21",
                 OrderReference = new OrderReferenceType
                 {
                     ID = "AEG012345",
                     SalesOrderID = "CON0095678",
                     UUID = "6E09886B-DC6E-439F-82D1-7CCAC7F4E3B1",
-                    IssueDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind)
+                    IssueDate = "2005-06-20"
                 },
                 Signature = new SignatureType[]
                 {
@@ -187,7 +187,7 @@ namespace UblLarsen.Test.UblClass
                 {
                     new DeliveryType
                     {
-                        ActualDeliveryDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind),
+                        ActualDeliveryDate = "2005-06-20",
                         ActualDeliveryTime = "11:30:00.0Z",
                         DeliveryAddress = new AddressType
                         {
@@ -216,7 +216,7 @@ namespace UblLarsen.Test.UblClass
                     new PaymentMeansType
                     {
                         PaymentMeansCode = "20",
-                        PaymentDueDate = XmlConvert.ToDateTime("2005-07-21", XmlDateTimeSerializationMode.RoundtripKind),
+                        PaymentDueDate = "2005-07-21",
                         PayeeFinancialAccount = new FinancialAccountType
                         {
                             ID = "12345678",
@@ -395,7 +395,7 @@ namespace UblLarsen.Test.UblClass
                                     ID = "AEG012345",
                                     SalesOrderID = "CON0095678",
                                     UUID = "6E09886B-DC6E-439F-82D1-7CCAC7F4E3B1",
-                                    IssueDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind)
+                                    IssueDate = "2005-06-20"
                                 }
                             }
                         },
@@ -462,7 +462,7 @@ namespace UblLarsen.Test.UblClass
                                     LotIdentification = new LotIdentificationType
                                     {
                                         LotNumberID = "546378239",
-                                        ExpiryDate = XmlConvert.ToDateTime("2010-01-01", XmlDateTimeSerializationMode.RoundtripKind)
+                                        ExpiryDate = "2010-01-01"
                                     }
                                 }
                             }
@@ -482,8 +482,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

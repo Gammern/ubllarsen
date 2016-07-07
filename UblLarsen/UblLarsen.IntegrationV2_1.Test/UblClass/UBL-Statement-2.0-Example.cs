@@ -19,7 +19,7 @@ namespace UblLarsen.Test.UblClass
                 ID = "JUL2005-07758990",
                 CopyIndicator = false,
                 UUID = "normalizedString",
-                IssueDate = XmlConvert.ToDateTime("2005-08-02", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2005-08-02",
                 Note = new TextType[]
                 {
                     new TextType
@@ -45,8 +45,8 @@ namespace UblLarsen.Test.UblClass
                 },
                 StatementPeriod = new PeriodType
                 {
-                    StartDate = XmlConvert.ToDateTime("2005-07-01", XmlDateTimeSerializationMode.RoundtripKind),
-                    EndDate = XmlConvert.ToDateTime("2005-07-31", XmlDateTimeSerializationMode.RoundtripKind),
+                    StartDate = "2005-07-01",
+                    EndDate = "2005-07-31",
                     Description = new TextType[]
                     {
                         new TextType
@@ -240,7 +240,7 @@ namespace UblLarsen.Test.UblClass
                     new PaymentMeansType
                     {
                         PaymentMeansCode = "20",
-                        PaymentDueDate = XmlConvert.ToDateTime("2005-07-21", XmlDateTimeSerializationMode.RoundtripKind),
+                        PaymentDueDate = "2005-07-21",
                         PayeeFinancialAccount = new FinancialAccountType
                         {
                             ID = "12345678",
@@ -414,14 +414,13 @@ namespace UblLarsen.Test.UblClass
                                 {
                                     ID = "CN758494",
                                     UUID = "349ABBAE-DF9D-40B4-849F-94C5FF9D1AF4",
-                                    IssueDate = XmlConvert.ToDateTime("2005-06-25", XmlDateTimeSerializationMode.RoundtripKind)
+                                    IssueDate = "2005-06-25"
                                 }
                             }
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

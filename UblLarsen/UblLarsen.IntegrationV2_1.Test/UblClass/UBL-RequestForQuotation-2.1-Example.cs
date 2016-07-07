@@ -24,9 +24,9 @@ namespace UblLarsen.Test.UblClass
                 ID = "G867B",
                 CopyIndicator = false,
                 UUID = "93T5G3G5-HYA3-7267-BVG3-GS46SW44WG53",
-                IssueDate = XmlConvert.ToDateTime("2008-04-19", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2008-04-19",
                 IssueTime = "11:32:26.0Z",
-                SubmissionDueDate = XmlConvert.ToDateTime("2008-04-24", XmlDateTimeSerializationMode.RoundtripKind),
+                SubmissionDueDate = "2008-04-24",
                 Note = new TextType[]
                 {
                     new TextType
@@ -235,9 +235,9 @@ namespace UblLarsen.Test.UblClass
                         },
                         RequestedDeliveryPeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2008-05-06", XmlDateTimeSerializationMode.RoundtripKind),
+                            StartDate = "2008-05-06",
                             StartTime = "09:30:47.0Z",
-                            EndDate = XmlConvert.ToDateTime("2008-05-10", XmlDateTimeSerializationMode.RoundtripKind),
+                            EndDate = "2008-05-10",
                             EndTime = "09:30:47.0Z"
                         }
                     }
@@ -264,7 +264,7 @@ namespace UblLarsen.Test.UblClass
                             new DocumentReferenceType
                             {
                                 ID = "SKI123456",
-                                IssueDate = XmlConvert.ToDateTime("2006-01-01", XmlDateTimeSerializationMode.RoundtripKind)
+                                IssueDate = "2006-01-01"
                             }
                         }
                     }
@@ -396,8 +396,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

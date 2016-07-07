@@ -16,7 +16,7 @@ namespace UblLarsen.Test.UblClass
                 UBLVersionID = "2.1",
                 ID = "ID0009",
                 CopyIndicator = false,
-                IssueDate = XmlConvert.ToDateTime("2010-04-10", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2010-04-10",
                 Note = new TextType[]
                 {
                     new TextType
@@ -27,7 +27,7 @@ namespace UblLarsen.Test.UblClass
                 },
                 ActivityPeriod = new PeriodType
                 {
-                    StartDate = XmlConvert.ToDateTime("2010-04-09", XmlDateTimeSerializationMode.RoundtripKind)
+                    StartDate = "2010-04-09"
                 },
                 SenderParty = new PartyType
                 {
@@ -258,8 +258,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

@@ -26,8 +26,7 @@ namespace UblLarsen.Test.UblClass
         public static {2} Create()
         {0}
             return ";
-        private const string scFileFooterContent = @";
-        }
+        private const string scFileFooterContent = @"        }
     }
 }
 ";
@@ -75,7 +74,7 @@ namespace UblLarsen.Test.UblClass
         {
             string s = string.Format(scFileHeaderContent, "{", this.IdentifierName, this.docType.Name);
             Write(0, s);
-            GenerateNewClass(rootElement, docType, 3, "");
+            GenerateNewClass(rootElement, docType, 3, ";");
             Write(0, scFileFooterContent);
             return true;
         }
@@ -155,10 +154,6 @@ namespace UblLarsen.Test.UblClass
             value = "\"" + value + "\"";
             if (value.IndexOfAny(new char[] { '\r', '\n' }) > 0)
                 value = "@" + value;
-            if (propType == typeof(UblLarsen.Ubl2.Udt.DateType))
-            {
-                return $"XmlConvert.ToDateTime({value}, XmlDateTimeSerializationMode.RoundtripKind)";
-            }
             if(binaryUblUdtTypes.Contains(propType))
             {
                 value = "System.Text.Encoding.UTF8.GetBytes(" + value + ")";

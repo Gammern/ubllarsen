@@ -18,7 +18,7 @@ namespace UblLarsen.Test.UblClass
                 ProfileID = "bpid:urn:oasis:names:draft:bpss:ubl-2-sample-international-scenario",
                 ID = "KHN23-44044",
                 UUID = "6E09886B-DC6E-439F-82D1-7C83746352B1",
-                IssueDate = XmlConvert.ToDateTime("2005-06-24", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2005-06-24",
                 IssueTime = "14:20:00.0Z",
                 ConsignorParty = new PartyType
                 {
@@ -423,8 +423,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

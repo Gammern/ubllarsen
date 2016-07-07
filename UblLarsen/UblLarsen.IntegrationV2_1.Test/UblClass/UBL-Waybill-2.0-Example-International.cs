@@ -19,7 +19,7 @@ namespace UblLarsen.Test.UblClass
                 ID = "KHN23-44044-1",
                 CarrierAssignedID = "123456789987654321",
                 UUID = "74638995-D67E-002F-436-8G17366352B1",
-                IssueDate = XmlConvert.ToDateTime("2005-06-25", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2005-06-25",
                 IssueTime = "09:00:00.0Z",
                 Name = "Air Waybill",
                 ShippingOrderID = "KHN23-44044",
@@ -297,13 +297,13 @@ namespace UblLarsen.Test.UblClass
                             TransportContract = new ContractType
                             {
                                 ID = "CONS-001",
-                                IssueDate = XmlConvert.ToDateTime("2005-06-24", XmlDateTimeSerializationMode.RoundtripKind),
+                                IssueDate = "2005-06-24",
                                 ContractType1 = "Forwarding Instructions",
                                 ValidityPeriod = new PeriodType
                                 {
-                                    StartDate = XmlConvert.ToDateTime("2005-06-25", XmlDateTimeSerializationMode.RoundtripKind),
+                                    StartDate = "2005-06-25",
                                     StartTime = "01:00:00.0Z",
-                                    EndDate = XmlConvert.ToDateTime("2005-06-30", XmlDateTimeSerializationMode.RoundtripKind),
+                                    EndDate = "2005-06-30",
                                     EndTime = "18:00:00.0Z"
                                 },
                                 ContractDocumentReference = new DocumentReferenceType[]
@@ -313,7 +313,7 @@ namespace UblLarsen.Test.UblClass
                                         ID = "normalizedString",
                                         CopyIndicator = false,
                                         UUID = "normalizedString",
-                                        IssueDate = XmlConvert.ToDateTime("1967-08-13", XmlDateTimeSerializationMode.RoundtripKind),
+                                        IssueDate = "1967-08-13",
                                         DocumentTypeCode = "normalizedString",
                                         DocumentType = "String",
                                         XPath = new TextType[]
@@ -338,7 +338,7 @@ namespace UblLarsen.Test.UblClass
                                             {
                                                 URI = "normalizedString",
                                                 DocumentHash = "String",
-                                                ExpiryDate = XmlConvert.ToDateTime("1967-08-13", XmlDateTimeSerializationMode.RoundtripKind),
+                                                ExpiryDate = "1967-08-13",
                                                 ExpiryTime = "14:20:00.0Z"
                                             }
                                         }
@@ -348,7 +348,7 @@ namespace UblLarsen.Test.UblClass
                                         ID = "normalizedString",
                                         CopyIndicator = false,
                                         UUID = "normalizedString",
-                                        IssueDate = XmlConvert.ToDateTime("1967-08-13", XmlDateTimeSerializationMode.RoundtripKind),
+                                        IssueDate = "1967-08-13",
                                         DocumentTypeCode = "normalizedString",
                                         DocumentType = "String",
                                         XPath = new TextType[]
@@ -373,7 +373,7 @@ namespace UblLarsen.Test.UblClass
                                             {
                                                 URI = "normalizedString",
                                                 DocumentHash = "String",
-                                                ExpiryDate = XmlConvert.ToDateTime("1967-08-13", XmlDateTimeSerializationMode.RoundtripKind),
+                                                ExpiryDate = "1967-08-13",
                                                 ExpiryTime = "14:20:00.0Z"
                                             }
                                         }
@@ -577,9 +577,9 @@ namespace UblLarsen.Test.UblClass
                             OnCarriageIndicator = false,
                             TransitPeriod = new PeriodType
                             {
-                                StartDate = XmlConvert.ToDateTime("2005-06-25", XmlDateTimeSerializationMode.RoundtripKind),
+                                StartDate = "2005-06-25",
                                 StartTime = "11:35:00.0Z",
-                                EndDate = XmlConvert.ToDateTime("2005-06-25", XmlDateTimeSerializationMode.RoundtripKind),
+                                EndDate = "2005-06-25",
                                 EndTime = "16:00:00.0Z"
                             },
                             CarrierParty = new PartyType[]
@@ -621,7 +621,7 @@ namespace UblLarsen.Test.UblClass
                             OnCarriageIndicator = false,
                             TransitPeriod = new PeriodType
                             {
-                                StartDate = XmlConvert.ToDateTime("2005-06-25", XmlDateTimeSerializationMode.RoundtripKind),
+                                StartDate = "2005-06-25",
                                 StartTime = "23:20:00.0Z"
                             },
                             CarrierParty = new PartyType[]
@@ -704,7 +704,7 @@ namespace UblLarsen.Test.UblClass
                     Delivery = new DeliveryType
                     {
                         Quantity = 1M,
-                        LatestDeliveryDate = XmlConvert.ToDateTime("2005-06-30", XmlDateTimeSerializationMode.RoundtripKind),
+                        LatestDeliveryDate = "2005-06-30",
                         LatestDeliveryTime = "18:00:00.0Z",
                         TrackingID = "NKH7712289-03339-000128",
                         DeliveryAddress = new AddressType
@@ -729,14 +729,14 @@ namespace UblLarsen.Test.UblClass
                         },
                         RequestedDeliveryPeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2005-06-29", XmlDateTimeSerializationMode.RoundtripKind),
+                            StartDate = "2005-06-29",
                             StartTime = "01:00:00.0Z",
-                            EndDate = XmlConvert.ToDateTime("2005-06-30", XmlDateTimeSerializationMode.RoundtripKind),
+                            EndDate = "2005-06-30",
                             EndTime = "18:00:00.0Z"
                         },
                         EstimatedDeliveryPeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2005-06-30", XmlDateTimeSerializationMode.RoundtripKind),
+                            StartDate = "2005-06-30",
                             StartTime = "01:00:00.0Z"
                         },
                         DeliveryParty = new PartyType
@@ -758,7 +758,7 @@ namespace UblLarsen.Test.UblClass
                         },
                         Despatch = new DespatchType
                         {
-                            ActualDespatchDate = XmlConvert.ToDateTime("2005-06-25", XmlDateTimeSerializationMode.RoundtripKind),
+                            ActualDespatchDate = "2005-06-25",
                             ActualDespatchTime = "11:35:00.0Z",
                             DespatchAddress = new AddressType
                             {
@@ -923,14 +923,14 @@ namespace UblLarsen.Test.UblClass
                     {
                         ID = "AEG012345",
                         UUID = "6E09886B-DC6E-439F-82D1-7CCAC7F4E3B1",
-                        IssueDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind),
+                        IssueDate = "2005-06-20",
                         DocumentType = "Order"
                     },
                     new DocumentReferenceType
                     {
                         ID = "KHN23-44044",
                         UUID = "6E09886B-DC6E-439F-82D1-7C83746352B1",
-                        IssueDate = XmlConvert.ToDateTime("2005-06-24", XmlDateTimeSerializationMode.RoundtripKind),
+                        IssueDate = "2005-06-24",
                         DocumentType = "Forwarding Instructions"
                     }
                 },
@@ -944,7 +944,7 @@ namespace UblLarsen.Test.UblClass
                         TargetCurrencyBaseRate = 1.00M,
                         CalculationRate = 1.8947M,
                         MathematicOperatorCode = "Multiply",
-                        Date = XmlConvert.ToDateTime("1967-08-13", XmlDateTimeSerializationMode.RoundtripKind)
+                        Date = "1967-08-13"
                     }
                 },
                 DocumentDistribution = new DocumentDistributionType[]
@@ -1028,8 +1028,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

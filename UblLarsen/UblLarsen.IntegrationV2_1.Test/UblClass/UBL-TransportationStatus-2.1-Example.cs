@@ -15,7 +15,7 @@ namespace UblLarsen.Test.UblClass
             {
                 UBLVersionID = "2.1",
                 ID = "TS_1",
-                IssueDate = XmlConvert.ToDateTime("2011-10-06", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2011-10-06",
                 IssueTime = "09:29:30+01:00",
                 TransportationStatusTypeCode = "All deviations",
                 TransportExecutionStatusCode = "35",
@@ -59,8 +59,7 @@ namespace UblLarsen.Test.UblClass
                 {
                     ID = "TEP_1"
                 }
-            }
-;
+            };
         }
     }
 }

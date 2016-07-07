@@ -16,7 +16,7 @@ namespace UblLarsen.Test.UblClass
                 UBLVersionID = "2.1",
                 ID = "SA2009",
                 CopyIndicator = false,
-                IssueDate = XmlConvert.ToDateTime("2010-04-11", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2010-04-11",
                 Note = new TextType[]
                 {
                     new TextType
@@ -26,9 +26,9 @@ namespace UblLarsen.Test.UblClass
                 },
                 InventoryPeriod = new PeriodType
                 {
-                    StartDate = XmlConvert.ToDateTime("2010-04-11", XmlDateTimeSerializationMode.RoundtripKind),
+                    StartDate = "2010-04-11",
                     StartTime = "08:00:00",
-                    EndDate = XmlConvert.ToDateTime("2011-04-11", XmlDateTimeSerializationMode.RoundtripKind)
+                    EndDate = "2011-04-11"
                 },
                 SellerSupplierParty = new SupplierPartyType
                 {
@@ -135,7 +135,7 @@ namespace UblLarsen.Test.UblClass
                             unitCode = "NAR",
                             Value = 50M
                         },
-                        AvailabilityDate = XmlConvert.ToDateTime("2010-04-20", XmlDateTimeSerializationMode.RoundtripKind),
+                        AvailabilityDate = "2010-04-20",
                         AvailabilityStatusCode = new CodeType
                         {
                             listID = "7011",
@@ -170,7 +170,7 @@ namespace UblLarsen.Test.UblClass
                             unitCode = "NAR",
                             Value = 80M
                         },
-                        AvailabilityDate = XmlConvert.ToDateTime("2010-04-11", XmlDateTimeSerializationMode.RoundtripKind),
+                        AvailabilityDate = "2010-04-11",
                         AvailabilityStatusCode = new CodeType
                         {
                             listID = "7011",
@@ -232,8 +232,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

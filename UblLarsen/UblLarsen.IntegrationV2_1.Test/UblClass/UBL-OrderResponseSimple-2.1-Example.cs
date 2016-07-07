@@ -22,7 +22,7 @@ namespace UblLarsen.Test.UblClass
                     Value = "urn:www.cenbii.eu:profile:BIIXYZ:ver1.0"
                 },
                 ID = "7",
-                IssueDate = XmlConvert.ToDateTime("2010-01-21", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2010-01-21",
                 IssueTime = "12:30:00",
                 AcceptedIndicator = true,
                 OrderReference = new OrderReferenceType
@@ -90,8 +90,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

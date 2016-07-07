@@ -19,7 +19,7 @@ namespace UblLarsen.Test.UblClass
                 ID = "RE758494",
                 CopyIndicator = false,
                 UUID = "349ABBAE-DF9D-40B4-849F-94C5FF9D1AF4",
-                IssueDate = XmlConvert.ToDateTime("2009-12-01", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2009-12-01",
                 IssueTime = "12:00:01.000",
                 Note = new TextType[]
                 {
@@ -39,8 +39,8 @@ namespace UblLarsen.Test.UblClass
                 },
                 Period = new PeriodType
                 {
-                    StartDate = XmlConvert.ToDateTime("2010-05-12", XmlDateTimeSerializationMode.RoundtripKind),
-                    EndDate = XmlConvert.ToDateTime("2010-06-12", XmlDateTimeSerializationMode.RoundtripKind)
+                    StartDate = "2010-05-12",
+                    EndDate = "2010-06-12"
                 },
                 SenderParty = new PartyType
                 {
@@ -199,8 +199,8 @@ namespace UblLarsen.Test.UblClass
                 PromotionalEvent = new PromotionalEventType
                 {
                     PromotionalEventTypeCode = "STORE_OPENING",
-                    SubmissionDate = XmlConvert.ToDateTime("2009-12-01", XmlDateTimeSerializationMode.RoundtripKind),
-                    LatestProposalAcceptanceDate = XmlConvert.ToDateTime("2010-01-06", XmlDateTimeSerializationMode.RoundtripKind),
+                    SubmissionDate = "2009-12-01",
+                    LatestProposalAcceptanceDate = "2010-01-06",
                     PromotionalSpecification = new PromotionalSpecificationType[]
                     {
                         new PromotionalSpecificationType
@@ -235,8 +235,8 @@ namespace UblLarsen.Test.UblClass
                                                 ForecastTypeCode = "PROMOTIONAL",
                                                 Period = new PeriodType
                                                 {
-                                                    StartDate = XmlConvert.ToDateTime("2010-05-12", XmlDateTimeSerializationMode.RoundtripKind),
-                                                    EndDate = XmlConvert.ToDateTime("2010-06-12", XmlDateTimeSerializationMode.RoundtripKind)
+                                                    StartDate = "2010-05-12",
+                                                    EndDate = "2010-06-12"
                                                 }
                                             }
                                         },
@@ -276,16 +276,15 @@ namespace UblLarsen.Test.UblClass
                                     },
                                     Period = new PeriodType
                                     {
-                                        StartDate = XmlConvert.ToDateTime("2010-04-01", XmlDateTimeSerializationMode.RoundtripKind),
-                                        EndDate = XmlConvert.ToDateTime("2010-06-12", XmlDateTimeSerializationMode.RoundtripKind)
+                                        StartDate = "2010-04-01",
+                                        EndDate = "2010-06-12"
                                     }
                                 }
                             }
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

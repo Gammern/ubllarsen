@@ -19,7 +19,7 @@ namespace UblLarsen.Test.UblClass
                 ID = "EC758494",
                 CopyIndicator = false,
                 UUID = "349ABBAE-DF9D-40B4-849F-94C5FF9D1AF4",
-                IssueDate = XmlConvert.ToDateTime("2009-12-25", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2009-12-25",
                 Note = new TextType[]
                 {
                     new TextType
@@ -29,8 +29,8 @@ namespace UblLarsen.Test.UblClass
                 },
                 ValidityPeriod = new PeriodType
                 {
-                    StartDate = XmlConvert.ToDateTime("2010-03-28", XmlDateTimeSerializationMode.RoundtripKind),
-                    EndDate = XmlConvert.ToDateTime("2010-08-29", XmlDateTimeSerializationMode.RoundtripKind)
+                    StartDate = "2010-03-28",
+                    EndDate = "2010-08-29"
                 },
                 SenderParty = new PartyType
                 {
@@ -202,8 +202,8 @@ namespace UblLarsen.Test.UblClass
                         SupplyChainActivityTypeCode = "SALES",
                         EffectivePeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2010-03-28", XmlDateTimeSerializationMode.RoundtripKind),
-                            EndDate = XmlConvert.ToDateTime("2010-08-29", XmlDateTimeSerializationMode.RoundtripKind)
+                            StartDate = "2010-03-28",
+                            EndDate = "2010-08-29"
                         },
                         SupplyItem = new ItemType[]
                         {
@@ -246,8 +246,8 @@ namespace UblLarsen.Test.UblClass
                         PerformanceMetricTypeCode = "SUPPLY",
                         EffectivePeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2010-03-28", XmlDateTimeSerializationMode.RoundtripKind),
-                            EndDate = XmlConvert.ToDateTime("2010-05-29", XmlDateTimeSerializationMode.RoundtripKind)
+                            StartDate = "2010-03-28",
+                            EndDate = "2010-05-29"
                         },
                         SupplyItem = new ItemType[]
                         {
@@ -273,8 +273,8 @@ namespace UblLarsen.Test.UblClass
                         CollaborationPriorityCode = "HIGH",
                         EffectivePeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2010-04-28", XmlDateTimeSerializationMode.RoundtripKind),
-                            EndDate = XmlConvert.ToDateTime("2010-06-29", XmlDateTimeSerializationMode.RoundtripKind)
+                            StartDate = "2010-04-28",
+                            EndDate = "2010-06-29"
                         },
                         SupplyItem = new ItemType[]
                         {
@@ -308,8 +308,8 @@ namespace UblLarsen.Test.UblClass
                         CollaborationPriorityCode = "HIGH",
                         EffectivePeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2010-04-28", XmlDateTimeSerializationMode.RoundtripKind),
-                            EndDate = XmlConvert.ToDateTime("2010-06-29", XmlDateTimeSerializationMode.RoundtripKind)
+                            StartDate = "2010-04-28",
+                            EndDate = "2010-06-29"
                         },
                         SupplyItem = new ItemType[]
                         {
@@ -330,8 +330,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

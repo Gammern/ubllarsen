@@ -19,7 +19,7 @@ namespace UblLarsen.Test.UblClass
                 ID = "66890-9-09",
                 CopyIndicator = false,
                 UUID = "569ED478-0EBE-4817-A234-DFB9ACA81218",
-                IssueDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2005-06-20",
                 Note = new TextType[]
                 {
                     new TextType
@@ -33,7 +33,7 @@ namespace UblLarsen.Test.UblClass
                     ID = "AEG012345",
                     SalesOrderID = "CON0095678",
                     UUID = "6E09886B-DC6E-439F-82D1-7CCAC7F4E3B1",
-                    IssueDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind)
+                    IssueDate = "2005-06-20"
                 },
                 SellerSupplierParty = new SupplierPartyType
                 {
@@ -218,8 +218,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

@@ -19,7 +19,7 @@ namespace UblLarsen.Test.UblClass
                 ID = "AEG012345",
                 CopyIndicator = false,
                 UUID = "6E09886B-DC6E-439F-82D1-7CCAC7F4E3B1",
-                IssueDate = XmlConvert.ToDateTime("2005-06-20", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2005-06-20",
                 Note = new TextType[]
                 {
                     new TextType
@@ -190,9 +190,9 @@ namespace UblLarsen.Test.UblClass
                         },
                         RequestedDeliveryPeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2005-06-29", XmlDateTimeSerializationMode.RoundtripKind),
+                            StartDate = "2005-06-29",
                             StartTime = "01:00:00.0Z",
-                            EndDate = XmlConvert.ToDateTime("2005-06-30", XmlDateTimeSerializationMode.RoundtripKind),
+                            EndDate = "2005-06-30",
                             EndTime = "18:00:00.0Z"
                         }
                     }
@@ -299,8 +299,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }

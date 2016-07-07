@@ -18,7 +18,7 @@ namespace UblLarsen.Test.UblClass
                 ID = "OF758494",
                 CopyIndicator = false,
                 UUID = "349ABBAE-DF9D-40B4-849F-94C5FF9D1AF4",
-                IssueDate = XmlConvert.ToDateTime("2010-01-01", XmlDateTimeSerializationMode.RoundtripKind),
+                IssueDate = "2010-01-01",
                 IssueTime = "12:00:01.000",
                 Note = new TextType[]
                 {
@@ -31,8 +31,8 @@ namespace UblLarsen.Test.UblClass
                 ForecastPurposeCode = "ORDER_FORECAST",
                 ForecastPeriod = new PeriodType
                 {
-                    StartDate = XmlConvert.ToDateTime("2010-02-01", XmlDateTimeSerializationMode.RoundtripKind),
-                    EndDate = XmlConvert.ToDateTime("2010-05-26", XmlDateTimeSerializationMode.RoundtripKind)
+                    StartDate = "2010-02-01",
+                    EndDate = "2010-05-26"
                 },
                 SenderParty = new PartyType
                 {
@@ -196,8 +196,8 @@ namespace UblLarsen.Test.UblClass
                         ForecastTypeCode = "TOTAL",
                         ForecastPeriod = new PeriodType
                         {
-                            StartDate = XmlConvert.ToDateTime("2010-02-01", XmlDateTimeSerializationMode.RoundtripKind),
-                            EndDate = XmlConvert.ToDateTime("2010-05-26", XmlDateTimeSerializationMode.RoundtripKind)
+                            StartDate = "2010-02-01",
+                            EndDate = "2010-05-26"
                         },
                         SalesItem = new SalesItemType
                         {
@@ -232,8 +232,7 @@ namespace UblLarsen.Test.UblClass
                         }
                     }
                 }
-            }
-;
+            };
         }
     }
 }
