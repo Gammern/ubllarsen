@@ -112,10 +112,6 @@ namespace UblLarsen.Test.UblClass
                                 listAgencyID = "UBL",
                                 listName = "Line Status",
                                 Value = "NoStatus"
-                            },
-                            Item = new ItemType
-                            {
-                                Value = ""
                             }
                         }
                     },
@@ -129,10 +125,6 @@ namespace UblLarsen.Test.UblClass
                                 listAgencyID = "UBL",
                                 listName = "Line Status",
                                 Value = "Disputed"
-                            },
-                            Item = new ItemType
-                            {
-                                Value = ""
                             }
                         }
                     }

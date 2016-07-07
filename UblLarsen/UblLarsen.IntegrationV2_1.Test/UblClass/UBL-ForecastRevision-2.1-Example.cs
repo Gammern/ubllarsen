@@ -193,8 +193,6 @@ namespace UblLarsen.Test.UblClass
                 {
                     new ForecastRevisionLineType
                     {
-                        ID = "",
-                        RevisedForecastLineID = "",
                         SourceForecastIssueDate = XmlConvert.ToDateTime("2005-02-17", XmlDateTimeSerializationMode.RoundtripKind),
                         SourceForecastIssueTime = "10:00:00.000",
                         AdjustmentReasonCode = "REVISED_PROMOTION",

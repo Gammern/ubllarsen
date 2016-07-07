@@ -96,7 +96,7 @@ namespace UblLarsen.Test.UblClass
             if (xElement.HasElements)
             {
 
-                var xElements = xElement.Elements().GroupBy(g => g.Name.LocalName).ToList();
+                var xElements = xElement.Elements().Where(e => !e.IsEmpty).GroupBy(g => g.Name.LocalName).ToList();
                 foreach (var elem in xElements)
                 {
                     string name = elem.First().Name.LocalName;

@@ -194,7 +194,6 @@ namespace UblLarsen.Test.UblClass
                         },
                         ActivityOriginLocation = new LocationType
                         {
-                            ID = ""
                         },
                         SalesItem = new SalesItemType[]
                         {
