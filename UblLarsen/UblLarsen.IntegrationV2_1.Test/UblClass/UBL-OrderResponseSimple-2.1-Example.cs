@@ -11,7 +11,7 @@ namespace UblLarsen.Test.UblClass
     {
         public static OrderResponseSimpleType Create()
         {
-            return new OrderResponseSimpleType
+            var doc = new OrderResponseSimpleType
             {
                 UBLVersionID = "2.1",
                 CustomizationID = "urn:www.cenbii.eu:transaction:biicoretrdmXYZ:ver1.0",
@@ -91,6 +91,12 @@ namespace UblLarsen.Test.UblClass
                     }
                 }
             };
+            doc.Xmlns = new System.Xml.Serialization.XmlSerializerNamespaces(new[]
+            {
+                new XmlQualifiedName("cac","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
+                new XmlQualifiedName("cbc","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+            });
+            return doc;
         }
     }
 }

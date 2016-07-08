@@ -11,7 +11,7 @@ namespace UblLarsen.Test.UblClass
     {
         public static DespatchAdviceType Create()
         {
-            return new DespatchAdviceType
+            var doc = new DespatchAdviceType
             {
                 UBLVersionID = "2.0",
                 CustomizationID = "urn:oasis:names:specification:ubl:xpath:DespatchAdvice-2.0:sbs-1.0-draft",
@@ -281,6 +281,12 @@ namespace UblLarsen.Test.UblClass
                     }
                 }
             };
+            doc.Xmlns = new System.Xml.Serialization.XmlSerializerNamespaces(new[]
+            {
+                new XmlQualifiedName("cbc","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+                new XmlQualifiedName("cac","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
+            });
+            return doc;
         }
     }
 }

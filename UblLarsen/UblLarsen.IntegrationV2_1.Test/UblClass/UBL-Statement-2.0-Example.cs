@@ -11,7 +11,7 @@ namespace UblLarsen.Test.UblClass
     {
         public static StatementType Create()
         {
-            return new StatementType
+            var doc = new StatementType
             {
                 UBLVersionID = "2.0",
                 CustomizationID = "urn:oasis:names:specification:ubl:xpath:Statement-2.0:sbs-1.0-draft",
@@ -421,6 +421,12 @@ namespace UblLarsen.Test.UblClass
                     }
                 }
             };
+            doc.Xmlns = new System.Xml.Serialization.XmlSerializerNamespaces(new[]
+            {
+                new XmlQualifiedName("cac","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
+                new XmlQualifiedName("cbc","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+            });
+            return doc;
         }
     }
 }

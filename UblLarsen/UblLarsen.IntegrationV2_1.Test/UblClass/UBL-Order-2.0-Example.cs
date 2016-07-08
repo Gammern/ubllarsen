@@ -11,7 +11,7 @@ namespace UblLarsen.Test.UblClass
     {
         public static OrderType Create()
         {
-            return new OrderType
+            var doc = new OrderType
             {
                 UBLVersionID = "2.0",
                 CustomizationID = "urn:oasis:names:specification:ubl:xpath:Order-2.0:sbs-1.0-draft",
@@ -347,6 +347,12 @@ namespace UblLarsen.Test.UblClass
                     }
                 }
             };
+            doc.Xmlns = new System.Xml.Serialization.XmlSerializerNamespaces(new[]
+            {
+                new XmlQualifiedName("cbc","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+                new XmlQualifiedName("cac","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
+            });
+            return doc;
         }
     }
 }

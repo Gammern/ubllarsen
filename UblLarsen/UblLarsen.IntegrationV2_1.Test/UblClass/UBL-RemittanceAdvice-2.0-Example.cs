@@ -11,7 +11,7 @@ namespace UblLarsen.Test.UblClass
     {
         public static RemittanceAdviceType Create()
         {
-            return new RemittanceAdviceType
+            var doc = new RemittanceAdviceType
             {
                 UBLVersionID = "2.0",
                 CustomizationID = "urn:oasis:names:specification:ubl:xpath:RemittanceAdvice-2.0:sbs-1.0-draft",
@@ -399,6 +399,12 @@ namespace UblLarsen.Test.UblClass
                     }
                 }
             };
+            doc.Xmlns = new System.Xml.Serialization.XmlSerializerNamespaces(new[]
+            {
+                new XmlQualifiedName("cac","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
+                new XmlQualifiedName("cbc","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+            });
+            return doc;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace UblLarsen.Test.UblClass
     {
         public static ExceptionNotificationType Create()
         {
-            return new ExceptionNotificationType
+            var doc = new ExceptionNotificationType
             {
                 UBLVersionID = "2.1",
                 ProfileID = "bpid:urn:oasis:names:draft:bpss:ubl-2-1-cpfr-exception-notification-draft",
@@ -248,6 +248,12 @@ namespace UblLarsen.Test.UblClass
                     }
                 }
             };
+            doc.Xmlns = new System.Xml.Serialization.XmlSerializerNamespaces(new[]
+            {
+                new XmlQualifiedName("cac","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
+                new XmlQualifiedName("cbc","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+            });
+            return doc;
         }
     }
 }

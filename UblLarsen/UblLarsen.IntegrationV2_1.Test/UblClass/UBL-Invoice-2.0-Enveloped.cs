@@ -11,7 +11,7 @@ namespace UblLarsen.Test.UblClass
     {
         public static InvoiceType Create()
         {
-            return new InvoiceType
+            var doc = new InvoiceType
             {
                 UBLExtensions = new UBLExtensionType[]
                 {
@@ -483,6 +483,13 @@ namespace UblLarsen.Test.UblClass
                     }
                 }
             };
+            doc.Xmlns = new System.Xml.Serialization.XmlSerializerNamespaces(new[]
+            {
+                new XmlQualifiedName("cbc","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+                new XmlQualifiedName("cac","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
+                new XmlQualifiedName("ext","urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"),
+            });
+            return doc;
         }
     }
 }

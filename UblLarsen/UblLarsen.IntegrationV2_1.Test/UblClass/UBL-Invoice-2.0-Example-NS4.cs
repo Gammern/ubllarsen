@@ -11,7 +11,7 @@ namespace UblLarsen.Test.UblClass
     {
         public static InvoiceType Create()
         {
-            return new InvoiceType
+            var doc = new InvoiceType
             {
                 UBLVersionID = "2.0",
                 CustomizationID = "urn:oasis:names:specification:ubl:xpath:Invoice-2.0:sbs-1.0-draft",
@@ -459,6 +459,13 @@ namespace UblLarsen.Test.UblClass
                     }
                 }
             };
+            doc.Xmlns = new System.Xml.Serialization.XmlSerializerNamespaces(new[]
+            {
+                new XmlQualifiedName("Harry","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+                new XmlQualifiedName("Sally","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
+                new XmlQualifiedName("Bob","urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"),
+            });
+            return doc;
         }
     }
 }

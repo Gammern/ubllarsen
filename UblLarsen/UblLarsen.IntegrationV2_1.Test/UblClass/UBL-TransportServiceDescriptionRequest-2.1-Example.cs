@@ -11,7 +11,7 @@ namespace UblLarsen.Test.UblClass
     {
         public static TransportServiceDescriptionRequestType Create()
         {
-            return new TransportServiceDescriptionRequestType
+            var doc = new TransportServiceDescriptionRequestType
             {
                 UBLVersionID = "2.1",
                 ID = "TSD_REQ_1",
@@ -213,6 +213,12 @@ namespace UblLarsen.Test.UblClass
                     }
                 }
             };
+            doc.Xmlns = new System.Xml.Serialization.XmlSerializerNamespaces(new[]
+            {
+                new XmlQualifiedName("cac","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
+                new XmlQualifiedName("cbc","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+            });
+            return doc;
         }
     }
 }

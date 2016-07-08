@@ -11,7 +11,7 @@ namespace UblLarsen.Test.UblClass
     {
         public static TransportationStatusType Create()
         {
-            return new TransportationStatusType
+            var doc = new TransportationStatusType
             {
                 UBLVersionID = "2.1",
                 ID = "TS_1",
@@ -60,6 +60,12 @@ namespace UblLarsen.Test.UblClass
                     ID = "TEP_1"
                 }
             };
+            doc.Xmlns = new System.Xml.Serialization.XmlSerializerNamespaces(new[]
+            {
+                new XmlQualifiedName("cac","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
+                new XmlQualifiedName("cbc","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+            });
+            return doc;
         }
     }
 }

@@ -24,9 +24,9 @@ namespace UblLarsen.Test.UblClass
     internal class {1}
     {0}
         public static {2} Create()
-        {0}
-            return ";
-        private const string scFileFooterContent = @"        }
+        {0}";
+        private const string scFileFooterContent = @"
+        }
     }
 }
 ";
@@ -72,9 +72,14 @@ namespace UblLarsen.Test.UblClass
 
         public bool GenerateClass()
         {
+            int tabLevel = 3;
             string s = string.Format(scFileHeaderContent, "{", this.IdentifierName, this.docType.Name);
-            Write(0, s);
+            WriteLine(0, s);
+            Write(tabLevel, "var doc = ");
             GenerateNewClass(rootElement, docType, 3, ";");
+            Write(tabLevel, "doc.Xmlns = ");
+            GenerateNamespaceDeclaration(tabLevel);
+            Write(tabLevel, "return doc;");
             Write(0, scFileFooterContent);
             return true;
         }
@@ -207,13 +212,13 @@ namespace UblLarsen.Test.UblClass
         {
             var namespaceAttributes = rootElement.Attributes().Where(a => a.Name.NamespaceName.Any()).ToList();
 
-            WriteLine(tabLevel, "new XmlSerializerNamespaces(new[]");
+            WriteLine(0, "new System.Xml.Serialization.XmlSerializerNamespaces(new[]");
             WriteLine(tabLevel, "{");
             foreach (var nsatt in namespaceAttributes)
             {
                 WriteLine(tabLevel + 1, $"new XmlQualifiedName(\"{nsatt.Name.LocalName}\",\"{nsatt.Value}\"),");
             }
-            WriteLine(tabLevel, "}");
+            WriteLine(tabLevel, "});");
         }
 
         private void WriteLine(int tabLevel, string s)

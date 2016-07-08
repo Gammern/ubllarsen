@@ -11,7 +11,7 @@ namespace UblLarsen.Test.UblClass
     {
         public static TransportProgressStatusRequestType Create()
         {
-            return new TransportProgressStatusRequestType
+            var doc = new TransportProgressStatusRequestType
             {
                 UBLVersionID = "2.1",
                 ID = "TPS_1",
@@ -106,6 +106,12 @@ namespace UblLarsen.Test.UblClass
                     }
                 }
             };
+            doc.Xmlns = new System.Xml.Serialization.XmlSerializerNamespaces(new[]
+            {
+                new XmlQualifiedName("cac","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
+                new XmlQualifiedName("cbc","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+            });
+            return doc;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace UblLarsen.Test.UblClass
     {
         public static InventoryReportType Create()
         {
-            return new InventoryReportType
+            var doc = new InventoryReportType
             {
                 UBLVersionID = "2.1",
                 ID = "CC2679",
@@ -229,6 +229,12 @@ namespace UblLarsen.Test.UblClass
                     }
                 }
             };
+            doc.Xmlns = new System.Xml.Serialization.XmlSerializerNamespaces(new[]
+            {
+                new XmlQualifiedName("cbc","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+                new XmlQualifiedName("cac","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
+            });
+            return doc;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace UblLarsen.Test.UblClass
     {
         public static ProductActivityType Create()
         {
-            return new ProductActivityType
+            var doc = new ProductActivityType
             {
                 UBLVersionID = "2.1",
                 ID = "ID0009",
@@ -259,6 +259,12 @@ namespace UblLarsen.Test.UblClass
                     }
                 }
             };
+            doc.Xmlns = new System.Xml.Serialization.XmlSerializerNamespaces(new[]
+            {
+                new XmlQualifiedName("cbc","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+                new XmlQualifiedName("cac","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
+            });
+            return doc;
         }
     }
 }
