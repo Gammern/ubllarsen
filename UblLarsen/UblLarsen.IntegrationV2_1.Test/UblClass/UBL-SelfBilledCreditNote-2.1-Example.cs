@@ -74,7 +74,7 @@ namespace UblLarsen.Test.UblClass
                             EmbeddedDocumentBinaryObject = new BinaryObjectType
                             {
                                 mimeCode = "application/pdf",
-                                Value = System.Text.Encoding.UTF8.GetBytes("UjBsR09EbGhjZ0dTQUxNQUFBUUNBRU1tQ1p0dU1GUXhEUzhi")
+                                Value = System.Convert.FromBase64String("UjBsR09EbGhjZ0dTQUxNQUFBUUNBRU1tQ1p0dU1GUXhEUzhi")
                             }
                         }
                     }

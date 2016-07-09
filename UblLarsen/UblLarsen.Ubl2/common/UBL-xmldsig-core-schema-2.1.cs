@@ -166,7 +166,7 @@ namespace UblLarsen.Ubl2.DS
 #if USE_IMPLICIT_ASSIGNMENT
         public static implicit operator SignatureValueType(System.Byte[] value)
         {
-             return value == default(System.Byte[]) ? null : new SignatureValueType { Value = value };
+             return new SignatureValueType { Value = value };
         }
 
         public static implicit operator System.Byte[](SignatureValueType @this)

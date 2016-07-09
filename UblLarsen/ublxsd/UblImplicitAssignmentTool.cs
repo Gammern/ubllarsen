@@ -86,7 +86,7 @@ namespace ublxsd
 @"#if USE_IMPLICIT_ASSIGNMENT
         public static implicit operator {1}({2} value)
         {{
-             return {0} ? null : new {1} {{ {3} = value }};
+             return {0}new {1} {{ {3} = value }};
         }}
 
         public static implicit operator {2}({1} @this)
@@ -97,7 +97,7 @@ namespace ublxsd
 
         private static void AddStaticImplicitAssignmentOperators(CodeTypeDeclaration codeDecl, Type parameterType, string propName)
         {
-            string nullTest = parameterType == typeof(string) ? "string.IsNullOrEmpty(value)" : $"value == default({parameterType.FullName})";
+            string nullTest = parameterType == typeof(string) ? "string.IsNullOrEmpty(value) ? null : " : "";
             string snipCodeString = string.Format(implicitAssignCodeStringFormat, nullTest, codeDecl.Name, parameterType.FullName, propName);
             CodeSnippetTypeMember codeSnippet = new CodeSnippetTypeMember(snipCodeString);
             codeDecl.Members.Add(codeSnippet);

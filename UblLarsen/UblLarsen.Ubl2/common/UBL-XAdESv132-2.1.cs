@@ -50,7 +50,7 @@ namespace UblLarsen.Ubl2.Xades
 #if USE_IMPLICIT_ASSIGNMENT
         public static implicit operator EncapsulatedPKIDataType(System.Byte[] value)
         {
-             return value == default(System.Byte[]) ? null : new EncapsulatedPKIDataType { Value = value };
+             return new EncapsulatedPKIDataType { Value = value };
         }
 
         public static implicit operator System.Byte[](EncapsulatedPKIDataType @this)

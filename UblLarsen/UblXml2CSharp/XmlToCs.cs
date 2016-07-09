@@ -161,7 +161,7 @@ namespace UblLarsen.Test.UblClass
                 value = "@" + value;
             if(binaryUblUdtTypes.Contains(propType))
             {
-                value = "System.Text.Encoding.UTF8.GetBytes(" + value + ")";
+                value = "System.Convert.FromBase64String(" + value + ")";
             }
             return value;
         }

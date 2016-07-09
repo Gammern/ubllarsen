@@ -35,7 +35,7 @@ namespace UblLarsen.Tools
             XmlSerializer xs = new XmlSerializer(typeof(T));
             using (XmlWriter writer = XmlWriter.Create(stream, setting))
             {
-                xs.Serialize(writer, doc);
+                xs.Serialize(writer, doc, doc.Xmlns);
             }
         }
     }
