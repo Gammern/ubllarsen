@@ -60,6 +60,17 @@ namespace UblLarsen.Test.UblClass
             this.sb = new StringBuilder();
         }
 
+
+        public string XmlFilename
+        {
+            get { return xmlFilename; }
+        }
+
+        public Type DocType
+        {
+            get { return docType; }
+        }
+
         public string CSharpFilename
         {
             get { return Path.ChangeExtension(xmlFilename, ".cs"); }

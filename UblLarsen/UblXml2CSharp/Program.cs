@@ -45,16 +45,33 @@ namespace UblXml2CSharp
             //d.GenerateClass();
             //d.SaveToDir(cSharpOutputDir);
             //return;
-
-            foreach (var xmlToCs in docsToConvert)
+            using (var writer = File.CreateText("tests.txt"))
             {
-                xmlToCs.GenerateClass();
-                Console.WriteLine($"{xmlToCs.IdentifierName} \t{xmlToCs.CSharpFilename}");
-                xmlToCs.SaveToDir(cSharpOutputDir);
+                foreach (var xmlToCs in docsToConvert)
+                {
+                    xmlToCs.GenerateClass();
+                    Console.WriteLine($"{xmlToCs.IdentifierName} \t{xmlToCs.CSharpFilename}");
+                    xmlToCs.SaveToDir(cSharpOutputDir);
+                    WriteTestMetod(writer, xmlToCs);
+                }
             }
 
-            // test one for now...
+        }
 
+        /// <summary>
+        /// 0-Instance, 1-xml, 2-typename
+        /// </summary>
+        private static string testMethodTemplate = @"        [TestMethod]
+        public void {0}Test()
+        {{
+            bool areEqual = TestDocument(""{1}"", UblClass.{0}.Create);
+            Assert.IsTrue(areEqual, ""Written invoice differs from the one read"");
+        }}
+";
+
+        private static void WriteTestMetod(TextWriter writer, XmlToCs xmlToCs)
+        {
+            writer.WriteLine(testMethodTemplate, xmlToCs.IdentifierName, xmlToCs.XmlFilename, xmlToCs.DocType.Name );   
         }
 
         private static XName GetQualifiedName(Type key)
