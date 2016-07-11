@@ -81,6 +81,8 @@ namespace UblLarsen.Test.UblClass
             get { return CodeIdentifier.MakePascal(Path.GetFileNameWithoutExtension(xmlFilename)); }
         }
 
+        public bool HasExtensionsOrSignature { get; set; }
+
         public bool GenerateClass()
         {
             int tabLevel = 3;
@@ -118,7 +120,12 @@ namespace UblLarsen.Test.UblClass
                     if (name == "UBLExtension")
                     {
                         // Don't know how to handle this one yet. ExtensionContent = "new XElement.Parse(something)"?
+                        HasExtensionsOrSignature = true;
                         continue;
+                    }
+                    if(name == "Signature" || name == "UBLExtensions")
+                    {
+                        HasExtensionsOrSignature = true;
                     }
                     PropertyInfo propInfo = GetPropertyThatMightBeRenamed(propType, name);
                     name = propInfo.Name;

@@ -64,14 +64,23 @@ namespace UblXml2CSharp
         private static string testMethodTemplate = @"        [TestMethod]
         public void {0}Test()
         {{
-            bool areEqual = TestDocument(""{1}"", UblClass.{0}.Create);
-            Assert.IsTrue(areEqual, ""Written invoice differs from the one read"");
-        }}
-";
+            bool areEqual = TestDocument(""{1}"", UblClass.{0}.Create);";
+//            Assert.IsTrue(areEqual, ""Written {2} differs from the one read"");
+//        }}
+//";
 
         private static void WriteTestMetod(TextWriter writer, XmlToCs xmlToCs)
         {
-            writer.WriteLine(testMethodTemplate, xmlToCs.IdentifierName, xmlToCs.XmlFilename, xmlToCs.DocType.Name );   
+            writer.WriteLine(testMethodTemplate, xmlToCs.IdentifierName, xmlToCs.XmlFilename);
+            if(xmlToCs.HasExtensionsOrSignature)
+            {
+                writer.WriteLine("            Assert.Inconclusive(\"Signatures/extensions not implemented!\");");
+            }
+            else
+            {
+                writer.WriteLine("            Assert.IsTrue(areEqual, \"Written {0} differs from the one read\");", xmlToCs.DocType.Name );
+            }
+            writer.WriteLine("        }\n");
         }
 
         private static XName GetQualifiedName(Type key)
