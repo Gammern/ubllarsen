@@ -133,8 +133,8 @@ namespace UblLarsen.Test
         public void UBLInvoice20EnvelopedTest()
         {
             bool areEqual = TestDocument("UBL-Invoice-2.0-Enveloped.xml", UblClass.UBLInvoice20Enveloped.Create);
-            Assert.IsTrue(areEqual, "Written invoice differs from the one read");
             Assert.Fail("Signatures/extensions not implemented!");
+            Assert.IsTrue(areEqual, "Written invoice differs from the one read");
         }
 
         [TestMethod]

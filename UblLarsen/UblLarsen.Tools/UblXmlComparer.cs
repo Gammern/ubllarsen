@@ -84,6 +84,13 @@ namespace UblLarsen.Tools
                 Ubl2.Udt.TimeType ublTimeType = node.Value; // assigning string will trigger implicit assignment function
                 node.Value = ublTimeType.ValueAsXmlString;
             }
+
+            // remove empty elements. Todo: Leave out Extension branch
+            // http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-EMPTY-ELEMENTS
+            foreach (XElement node in xDoc.Root.Descendants().Where(n => n.IsEmpty).ToList())
+            {
+                node.Remove();
+            }
         }
     }
 }
