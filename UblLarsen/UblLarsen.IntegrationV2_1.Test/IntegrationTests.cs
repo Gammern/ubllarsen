@@ -6,7 +6,7 @@ using UblLarsen.Ubl2;
 namespace UblLarsen.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class IntegrationTests
     {
         public bool TestDocument<T>(string filename, Func<T> Create) where T:UblBaseDocumentType
         {
@@ -14,7 +14,6 @@ namespace UblLarsen.Test
             T doc = Create();
             Tools.UblDoc<T>.Save(genFilename, doc);
             return Tools.UblXmlComparer.IsCopyEqual(filename, doc);
-
         }
 
         [TestMethod]
@@ -127,6 +126,7 @@ namespace UblLarsen.Test
         {
             bool areEqual = TestDocument("UBL-Invoice-2.0-Detached.xml", UblClass.UBLInvoice20Detached.Create);
             Assert.IsTrue(areEqual, "Written invoice differs from the one read");
+            Assert.Fail("Signatures/extensions not implemented!");
         }
 
         [TestMethod]
@@ -134,6 +134,7 @@ namespace UblLarsen.Test
         {
             bool areEqual = TestDocument("UBL-Invoice-2.0-Enveloped.xml", UblClass.UBLInvoice20Enveloped.Create);
             Assert.IsTrue(areEqual, "Written invoice differs from the one read");
+            Assert.Fail("Signatures/extensions not implemented!");
         }
 
         [TestMethod]

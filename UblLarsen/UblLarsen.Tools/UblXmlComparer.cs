@@ -81,7 +81,7 @@ namespace UblLarsen.Tools
             // Format the time string in the inputfile to make XmlComparer happy
             foreach (XElement node in xDoc.Root.Descendants().Where(n => n.Name.Namespace == cbcNamespace && n.Name.LocalName.EndsWith("Time")))
             {
-                Ubl2.Udt.TimeType ublTimeType = new Ubl2.Udt.TimeType { ValueAsXmlString = node.Value };
+                Ubl2.Udt.TimeType ublTimeType = node.Value; // assigning string will trigger implicit assignment function
                 node.Value = ublTimeType.ValueAsXmlString;
             }
         }

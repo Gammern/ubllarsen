@@ -9,6 +9,13 @@ namespace UblLarsen.Test.UblClass
 {
     internal class MyTransportationStatus
     {
+        private static XmlElement GetElement(string xml)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xml);
+            return doc.DocumentElement;
+        }
+
         public static TransportationStatusType Create()
         {
             var doc = new TransportationStatusType
@@ -17,6 +24,28 @@ namespace UblLarsen.Test.UblClass
                 {
                     new UBLExtensionType
                     {
+                        // Manually added for testing.
+                        ExtensionContent = GetElement(@"        <mec:Additional xmlns:mec=""urn:X-MyCompany:Extension"" 
+                        xmlns:cac=""urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2""
+                        xmlns:cbc=""urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2""
+                        xmlns:mac=""urn:X-MyCompany:Aggregate"" 
+                        xmlns:mbc=""urn:X-MyCompany:Basic"">
+
+          <mac:QualificationLevel>
+            <cbc:ID>L1</cbc:ID>
+            <cbc:Description>Level 1</cbc:Description>
+            <mbc:LevelPrerequisite>Level0</mbc:LevelPrerequisite>
+          </mac:QualificationLevel>
+
+          <mac:ThirdPartyBilling>
+            <cac:Party>
+              <cac:PartyName>
+                <cbc:Name>Jane Doe</cbc:Name>
+              </cac:PartyName>
+            </cac:Party>
+          </mac:ThirdPartyBilling>  
+
+        </mec:Additional>")
                     }
                 },
                 UBLVersionID = "2.1",

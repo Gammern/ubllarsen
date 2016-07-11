@@ -107,7 +107,7 @@
     <Compile Include="UblClass\UBL-TransportServiceDescription-2.1-Example.cs" />
     <Compile Include="UblClass\UBL-TransportServiceDescriptionRequest-2.1-Example.cs" />
     <Compile Include="UblClass\UBL-Waybill-2.0-Example-International.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="IntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
