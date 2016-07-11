@@ -12,6 +12,7 @@ namespace UblLarsen.Tools
     {
         private static readonly XNamespace cbcNamespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2";
         private static readonly XName schemaLocationAttrName = XName.Get("schemaLocation", XmlSchema.InstanceNamespace);
+        private static readonly XName extensionsElementName = XName.Get("Extensions", "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2");
         private static XmlReaderSettings closeInputSettings = new XmlReaderSettings { CloseInput = true };
 
         /// <summary>
@@ -85,9 +86,9 @@ namespace UblLarsen.Tools
                 node.Value = ublTimeType.ValueAsXmlString;
             }
 
-            // remove empty elements. Todo: Leave out Extension branch
+            // remove empty elements.
             // http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-EMPTY-ELEMENTS
-            foreach (XElement node in xDoc.Root.Descendants().Where(n => n.IsEmpty).ToList())
+            foreach (XElement node in xDoc.Root.Elements().Where(e => e.Name != extensionsElementName).Descendants().Where(n => n.IsEmpty).ToList())
             {
                 node.Remove();
             }
