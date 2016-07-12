@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using UblLarsen.Ubl2;
@@ -40,36 +37,33 @@ namespace UblXml2CSharp
                     Console.WriteLine($"Warning: Skip {xmlFileInfo.Name} of type {doc.Root.Name}");
                 }
             }
-
+            // debug sample
             //var d = docsToConvert.Where(n => n.IdentifierName == "UBLOrderResponse21Example").Single();
             //d.GenerateClass();
             //d.SaveToDir(cSharpOutputDir);
             //return;
-            using (var writer = File.CreateText("tests.txt"))
+            using (var writer = File.CreateText("tests.txt")) // paste content into cs file later
             {
                 foreach (var xmlToCs in docsToConvert)
                 {
-                    xmlToCs.GenerateClass();
+                    xmlToCs.GenerateSourceCode();
                     Console.WriteLine($"{xmlToCs.IdentifierName} \t{xmlToCs.CSharpFilename}");
                     xmlToCs.SaveToDir(cSharpOutputDir);
-                    WriteTestMetod(writer, xmlToCs);
+                    GenerateTestMethod(writer, xmlToCs);
                 }
             }
 
         }
 
         /// <summary>
-        /// 0-Instance, 1-xml, 2-typename
+        /// 0-Instance, 1-xmlfile
         /// </summary>
         private static string testMethodTemplate = @"        [TestMethod]
         public void {0}Test()
         {{
             bool areEqual = TestDocument(""{1}"", UblClass.{0}.Create);";
-//            Assert.IsTrue(areEqual, ""Written {2} differs from the one read"");
-//        }}
-//";
 
-        private static void WriteTestMetod(TextWriter writer, XmlToCs xmlToCs)
+        private static void GenerateTestMethod(TextWriter writer, XmlToCs xmlToCs)
         {
             writer.WriteLine(testMethodTemplate, xmlToCs.IdentifierName, xmlToCs.XmlFilename);
             if(xmlToCs.HasExtensionsOrSignature)
