@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Xml.Serialization;
+using UblLarsen.Tools;
 using UblLarsen.Ubl2;
 
 /// <summary>

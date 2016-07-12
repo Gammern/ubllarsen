@@ -24,4 +24,12 @@ namespace UblLarsen.Ubl2.Udt
             return string.IsNullOrEmpty(value) ? null : new TimeType { ValueAsXmlString = value };
         }
     }
+
+    public partial class DateType
+    {
+        public static implicit operator DateType(System.String value)
+        {
+            return string.IsNullOrEmpty(value) ? null : new DateType { Value = XmlConvert.ToDateTime(value, XmlDateTimeSerializationMode.RoundtripKind) };
+        }
+    }
 }

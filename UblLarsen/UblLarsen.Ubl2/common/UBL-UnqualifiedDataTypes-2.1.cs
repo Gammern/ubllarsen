@@ -183,7 +183,7 @@ namespace UblLarsen.Ubl2.Udt
 #if USE_IMPLICIT_ASSIGNMENT
         public static implicit operator QuantityType(System.Decimal value)
         {
-             return value == default(System.Decimal) ? null : new QuantityType { Value = value };
+             return new QuantityType { Value = value };
         }
 
         public static implicit operator System.Decimal(QuantityType @this)
@@ -213,7 +213,7 @@ namespace UblLarsen.Ubl2.Udt
 #if USE_IMPLICIT_ASSIGNMENT
         public static implicit operator NumericType(System.Decimal value)
         {
-             return value == default(System.Decimal) ? null : new NumericType { Value = value };
+             return new NumericType { Value = value };
         }
 
         public static implicit operator System.Decimal(NumericType @this)
@@ -243,7 +243,7 @@ namespace UblLarsen.Ubl2.Udt
 #if USE_IMPLICIT_ASSIGNMENT
         public static implicit operator RateType(System.Decimal value)
         {
-             return value == default(System.Decimal) ? null : new RateType { Value = value };
+             return new RateType { Value = value };
         }
 
         public static implicit operator System.Decimal(RateType @this)
@@ -273,7 +273,7 @@ namespace UblLarsen.Ubl2.Udt
 #if USE_IMPLICIT_ASSIGNMENT
         public static implicit operator PercentType(System.Decimal value)
         {
-             return value == default(System.Decimal) ? null : new PercentType { Value = value };
+             return new PercentType { Value = value };
         }
 
         public static implicit operator System.Decimal(PercentType @this)
@@ -303,7 +303,7 @@ namespace UblLarsen.Ubl2.Udt
 #if USE_IMPLICIT_ASSIGNMENT
         public static implicit operator ValueType(System.Decimal value)
         {
-             return value == default(System.Decimal) ? null : new ValueType { Value = value };
+             return new ValueType { Value = value };
         }
 
         public static implicit operator System.Decimal(ValueType @this)
@@ -355,7 +355,7 @@ namespace UblLarsen.Ubl2.Udt
 #if USE_IMPLICIT_ASSIGNMENT
         public static implicit operator DateType(System.DateTime value)
         {
-             return value == default(System.DateTime) ? null : new DateType { Value = value };
+             return new DateType { Value = value };
         }
 
         public static implicit operator System.DateTime(DateType @this)
@@ -388,7 +388,7 @@ namespace UblLarsen.Ubl2.Udt
 #if USE_IMPLICIT_ASSIGNMENT
         public static implicit operator TimeType(System.DateTime value)
         {
-             return value == default(System.DateTime) ? null : new TimeType { Value = value };
+             return new TimeType { Value = value };
         }
 
         public static implicit operator System.DateTime(TimeType @this)
@@ -421,7 +421,7 @@ namespace UblLarsen.Ubl2.Udt
 #if USE_IMPLICIT_ASSIGNMENT
         public static implicit operator IndicatorType(System.Boolean value)
         {
-             return value == default(System.Boolean) ? null : new IndicatorType { Value = value };
+             return new IndicatorType { Value = value };
         }
 
         public static implicit operator System.Boolean(IndicatorType @this)

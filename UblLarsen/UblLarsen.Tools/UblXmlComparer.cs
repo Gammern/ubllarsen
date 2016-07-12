@@ -6,12 +6,13 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
 
-namespace UblLarsen.Test
+namespace UblLarsen.Tools
 {
     public class UblXmlComparer
     {
         private static readonly XNamespace cbcNamespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2";
         private static readonly XName schemaLocationAttrName = XName.Get("schemaLocation", XmlSchema.InstanceNamespace);
+        private static readonly XName extensionsElementName = XName.Get("Extensions", "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2");
         private static XmlReaderSettings closeInputSettings = new XmlReaderSettings { CloseInput = true };
 
         /// <summary>
@@ -81,8 +82,15 @@ namespace UblLarsen.Test
             // Format the time string in the inputfile to make XmlComparer happy
             foreach (XElement node in xDoc.Root.Descendants().Where(n => n.Name.Namespace == cbcNamespace && n.Name.LocalName.EndsWith("Time")))
             {
-                Ubl2.Udt.TimeType ublTimeType = new Ubl2.Udt.TimeType { ValueAsXmlString = node.Value };
+                Ubl2.Udt.TimeType ublTimeType = node.Value; // assigning string will trigger implicit assignment function
                 node.Value = ublTimeType.ValueAsXmlString;
+            }
+
+            // remove empty elements.
+            // http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-EMPTY-ELEMENTS
+            foreach (XElement node in xDoc.Root.Elements().Where(e => e.Name != extensionsElementName).Descendants().Where(n => n.IsEmpty).ToList())
+            {
+                node.Remove();
             }
         }
     }

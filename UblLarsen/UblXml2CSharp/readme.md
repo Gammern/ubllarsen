@@ -1,0 +1,1 @@
+Tool to generate csharp files for UblLarsen.IntegrationV2_1.Test project. Takes all the xml sample files in the ubl2.1 download package and produces csharp code to recreate those files. Do not run. The files are already present. You ain't gonna need this tool. Only here for reference.

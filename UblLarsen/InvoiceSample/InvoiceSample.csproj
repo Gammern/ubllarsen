@@ -50,6 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="NotAnUblDocument.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="UBL-Invoice-2_0-ExampleWithError.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

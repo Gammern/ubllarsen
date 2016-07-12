@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2DECCFF0-5710-4F75-819B-3308CF3CDE8F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UblLarsen.Test</RootNamespace>
+    <AssemblyName>UblLarsen.IntegrationV2_1.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="UblClass\MyTransportationStatus.cs" />
+    <Compile Include="UblClass\UBL-CreditNote-2.0-Example.cs" />
+    <Compile Include="UblClass\UBL-CreditNote-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-DebitNote-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-DespatchAdvice-2.0-Example.cs" />
+    <Compile Include="UblClass\UBL-ExceptionCriteria-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-ExceptionNotification-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-Forecast-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-ForecastRevision-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-ForwardingInstructions-2.0-Example-International.cs" />
+    <Compile Include="UblClass\UBL-FreightInvoice-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-FulfilmentCancellation-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-GoodsItemItinerary-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-InstructionForReturns-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-InventoryReport-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-Invoice-2.0-Detached.cs" />
+    <Compile Include="UblClass\UBL-Invoice-2.0-Enveloped.cs" />
+    <Compile Include="UblClass\UBL-Invoice-2.0-Example-NS1.cs" />
+    <Compile Include="UblClass\UBL-Invoice-2.0-Example-NS2.cs" />
+    <Compile Include="UblClass\UBL-Invoice-2.0-Example-NS3.cs" />
+    <Compile Include="UblClass\UBL-Invoice-2.0-Example-NS4.cs" />
+    <Compile Include="UblClass\UBL-Invoice-2.0-Example.cs" />
+    <Compile Include="UblClass\UBL-Invoice-2.1-Example-Trivial.cs" />
+    <Compile Include="UblClass\UBL-Invoice-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-Order-2.0-Example-International.cs" />
+    <Compile Include="UblClass\UBL-Order-2.0-Example.cs" />
+    <Compile Include="UblClass\UBL-Order-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-OrderCancellation-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-OrderChange-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-OrderResponse-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-OrderResponseSimple-2.0-Example.cs" />
+    <Compile Include="UblClass\UBL-OrderResponseSimple-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-ProductActivity-2.1-Example-1.cs" />
+    <Compile Include="UblClass\UBL-ProductActivity-2.1-Example-2.cs" />
+    <Compile Include="UblClass\UBL-ProductActivity-2.1-Example-3.cs" />
+    <Compile Include="UblClass\UBL-Quotation-2.0-Example.cs" />
+    <Compile Include="UblClass\UBL-Quotation-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-ReceiptAdvice-2.0-Example.cs" />
+    <Compile Include="UblClass\UBL-Reminder-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-RemittanceAdvice-2.0-Example.cs" />
+    <Compile Include="UblClass\UBL-RequestForQuotation-2.0-Example.cs" />
+    <Compile Include="UblClass\UBL-RequestForQuotation-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-RetailEvent-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-SelfBilledCreditNote-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-Statement-2.0-Example.cs" />
+    <Compile Include="UblClass\UBL-StockAvailabilityReport-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-TradeItemLocationProfile-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-TransportationStatus-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-TransportationStatusRequest-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-TransportExecutionPlan-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-TransportExecutionPlanRequest-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-TransportProgressStatus-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-TransportProgressStatusRequest-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-TransportServiceDescription-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-TransportServiceDescriptionRequest-2.1-Example.cs" />
+    <Compile Include="UblClass\UBL-Waybill-2.0-Example-International.cs" />
+    <Compile Include="IntegrationTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\UblLarsen.Tools\UblLarsen.Tools.csproj">
+      <Project>{724ca043-499c-46c3-84af-1355c036130f}</Project>
+      <Name>UblLarsen.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UblLarsen.Ubl2\UblLarsen.Ubl2.csproj">
+      <Project>{b5beb0f4-1d60-4079-847f-6120519e7b3b}</Project>
+      <Name>UblLarsen.Ubl2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /D /Y $(SolutionDir)UBL-2.1\xml\*.xml $(TargetDir)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

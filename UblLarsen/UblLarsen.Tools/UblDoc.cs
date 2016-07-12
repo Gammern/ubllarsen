@@ -1,9 +1,8 @@
 ﻿using System.IO;
-using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace UblLarsen.Test
+namespace UblLarsen.Tools
 {
     public class UblDoc<T> where T : Ubl2.UblBaseDocumentType
     {
@@ -26,6 +25,12 @@ namespace UblLarsen.Test
             }
         }
 
+        /// <summary>
+        /// Use of a BOM is neither required nor recommended for UTF-8
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="doc"></param>
+        /// <param name="writeBom"></param>
         public static void Save(Stream stream, T doc)
         {
             XmlWriterSettings setting = new XmlWriterSettings();
@@ -33,10 +38,11 @@ namespace UblLarsen.Test
             setting.Indent = true;
             setting.IndentChars = "\t";
             setting.NamespaceHandling = NamespaceHandling.OmitDuplicates;
+            setting.Encoding = new System.Text.UTF8Encoding(false);
             XmlSerializer xs = new XmlSerializer(typeof(T));
             using (XmlWriter writer = XmlWriter.Create(stream, setting))
             {
-                xs.Serialize(writer, doc);
+                xs.Serialize(writer, doc, doc.Xmlns);
             }
         }
     }
