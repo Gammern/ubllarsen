@@ -5,3 +5,8 @@ An older version (UBL 2.0) of this project was previously hosted at [CodePlex](h
 
 # Using the library
 All ubl types are contained in library project UblLarsen.Ubl2. Compile it. To use it in you own project, use the "Add reference ..." option and locate UblLarsen.Ubl2.dll produced in the bin output folder during compile.
+
+# Status
+Extensions and document signatures support are missing. 3 of the integration tests do not work properly.
+
+Open an [Issue](https://github.com/Gammern/ubllarsen/issues) if you have any questions.
