@@ -18,7 +18,7 @@ namespace UblLarsen.Ubl2
         /// Takes care of namespace prefix in saved xml documents
         /// </summary>
         [System.Xml.Serialization.XmlNamespaceDeclarations()]
-        public XmlSerializerNamespaces Xmlns = xmlns;
+        public XmlSerializerNamespaces Xmlns = new XmlSerializerNamespaces(xmlns);
 
         /// <summary>
         /// Only need this dictionary when maindoc node is at top level. 
